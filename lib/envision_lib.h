@@ -26,7 +26,15 @@ extern "C" {
 #ifdef  __cplusplus
 extern "C" {
 #endif
-  int envision_init(int width, int height);
+  int envision_initL(int width, int height);
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  int envision_initR(int width, int height);
 #ifdef  __cplusplus
 }
 #endif
@@ -50,7 +58,15 @@ extern "C" {
 #ifdef  __cplusplus
 extern "C" {
 #endif
-  int* envision_nextpic_frommem(const IplImage* ipl_input, IplImage* output, int desired_numsalwinners);
+  int* envision_nextpic_frommemL(const IplImage* ipl_input, IplImage* output, int desired_numsalwinners);
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  int* envision_nextpic_frommemR(const IplImage* ipl_input, IplImage* output, int desired_numsalwinners);
 #ifdef  __cplusplus
 }
 #endif
