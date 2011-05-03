@@ -80,8 +80,11 @@ double decay; //30MS tau, assumed 10ms update... (too much?)
 double decay_complement;
 
 
-int INITIALIZED = 0;
-int FIRSTFRAME = 1;
+int INITIALIZEDR = 0;
+int INITIALIZEDL = 0;
+int FIRSTFRAMER = 1;
+int FIRSTFRAMEL = 1;
+
 
 struct timeval tv;
 struct timezone tz;
@@ -471,7 +474,7 @@ int* envision_nextpic_frommemL(const IplImage* ipl_input,  //ipl image as input
   float width_scale = 320 / indims.w; //this is written for 320...multiply everything hardcoded by scale, right?
   
   //initialize if necessary...note size is pretty manual
-  if( !(INITIALIZED == 1) ) { envision_initL(indims.w/16, indims.h/16); INITIALIZED=1; } 
+  if( !(INITIALIZEDL == 1) ) { envision_initL(indims.w/16, indims.h/16); INITIALIZEDL=1; } 
   
   struct env_image ivcout = env_img_initializer;
   struct env_image intens = env_img_initializer;
@@ -503,7 +506,7 @@ int* envision_nextpic_frommemL(const IplImage* ipl_input,  //ipl image as input
 			     );
   
   
-  if(FIRSTFRAME == 0) //because movement isn't calculated until 2nd frame...only use ivcout for now or it will segfault
+  if(FIRSTFRAMEL == 0) //because movement isn't calculated until 2nd frame...only use ivcout for now or it will segfault
     {
       //needs to be inside bc there is nothing to scale first frame (we just do it to build the lpf for motion next time)
       env_visual_cortex_rescale_ranges(
@@ -801,7 +804,7 @@ int* envision_nextpic_frommemL(const IplImage* ipl_input,  //ipl image as input
       env_img_make_empty(&motion);
 #endif
     }
-  FIRSTFRAME=0; //REV: weve been through things once...
+  FIRSTFRAMEL=0; //REV: weve been through things once...
   
   
  
@@ -839,7 +842,7 @@ int* envision_nextpic_frommemR(const IplImage* ipl_input,  //ipl image as input
   float width_scale = 320 / indims.w; //this is written for 320...multiply everything hardcoded by scale, right?
   
   //initialize if necessary...note size is pretty manual
-  if( !(INITIALIZED == 1) ) { envision_initR(indims.w/16, indims.h/16); INITIALIZED=1; } 
+  if( !(INITIALIZEDR == 1) ) { envision_initR(indims.w/16, indims.h/16); INITIALIZEDR=1; } 
   
   struct env_image ivcout = env_img_initializer;
   struct env_image intens = env_img_initializer;
@@ -871,7 +874,7 @@ int* envision_nextpic_frommemR(const IplImage* ipl_input,  //ipl image as input
 			     );
   
   
-  if(FIRSTFRAME == 0) //because movement isn't calculated until 2nd frame...only use ivcout for now or it will segfault
+  if(FIRSTFRAMER == 0) //because movement isn't calculated until 2nd frame...only use ivcout for now or it will segfault
     {
       //needs to be inside bc there is nothing to scale first frame (we just do it to build the lpf for motion next time)
       env_visual_cortex_rescale_ranges(
@@ -1169,7 +1172,7 @@ int* envision_nextpic_frommemR(const IplImage* ipl_input,  //ipl image as input
       env_img_make_empty(&motion);
 #endif
     }
-  FIRSTFRAME=0; //REV: weve been through things once...
+  FIRSTFRAMER=0; //REV: weve been through things once...
   
   
  
@@ -1186,7 +1189,8 @@ int envision_cleanup(void)
   struct env_alloc_stats stats;
   env_allocation_get_stats(&stats);
   env_stdio_print_alloc_stats(&stats, npixels ? npixels : 1);
-  env_visual_cortex_destroy(&ivc);
+  env_visual_cortex_destroy(&ivcL);
+  env_visual_cortex_destroy(&ivcR);
   
   //REV: } close the unqualified { } section here... (important? for threading?)
   env_allocation_cleanup();
