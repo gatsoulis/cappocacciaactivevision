@@ -1,0 +1,276 @@
+#include "box.h"
+
+using namespace std;
+
+Box::Box(std::string name) : Module(name) {
+	std::cout << "Constructing " << getName() << "...";
+	
+	cvImageInLeft.setModule(this);
+	cvImageInRight.setModule(this);
+	regionsInLeft.setModule(this);
+	regionsInRight.setModule(this);
+	
+	newFrameRGBLeft=NULL;
+	newFrameRGBRight=NULL;
+	newFrameGrayLeft=NULL;
+	newFrameGrayRight=NULL;
+	outputImageLeft=NULL;
+	outputImageRight=NULL;
+	sideBySideImage=NULL;
+	cvimgleft=NULL;
+	cvimgright=NULL;
+	regionLeft=NULL;
+	regionRight=NULL;
+
+	debug = false;
+	
+	std::cout << "finished.\n";
+}
+
+Box::~Box() {
+	std::cout << "Destructing " << getName() << "...";
+	
+	cvReleaseImage(&newFrameRGBLeft);
+	cvReleaseImage(&newFrameRGBRight);
+	cvReleaseImage(&newFrameGrayLeft);
+	cvReleaseImage(&newFrameGrayRight);
+	cvReleaseImage(&outputImageLeft);
+	cvReleaseImage(&outputImageRight);
+	cvReleaseImage(&sideBySideImage);
+	if(cvimgleft) delete cvimgleft;
+	if(cvimgright) delete cvimgright;
+	if(regionLeft) delete regionLeft;
+	if(regionRight) delete regionRight;
+
+	std::cout << "finished.\n";
+}
+
+// Initializes the application
+void Box::init(){
+	
+	// Memory Allocations
+	newFrameGrayLeft = cvCreateImage(cvSize(FRAME_WIDTH, FRAME_HEIGHT), IPL_DEPTH_8U, 1);
+	newFrameGrayRight = cvCreateImage(cvSize(FRAME_WIDTH, FRAME_HEIGHT), IPL_DEPTH_8U, 1);
+	outputImageLeft = cvCreateImage(cvSize(FRAME_WIDTH, FRAME_HEIGHT), IPL_DEPTH_8U, 3);
+	outputImageRight = cvCreateImage(cvSize(FRAME_WIDTH, FRAME_HEIGHT), IPL_DEPTH_8U, 3);
+	sideBySideImage = cvCreateImage(cvSize(2 * FRAME_WIDTH, FRAME_HEIGHT), IPL_DEPTH_8U, 3);
+	cvNamedWindow("WINDOW", 0);
+
+
+}
+
+// Main function of the class
+void Box::execute(){
+	
+	IplImage* resultLeft = outputImageLeft;
+	IplImage* resultRight = outputImageRight;
+
+	takeNewFrame();
+	cvCopyImage(newFrameRGBLeft, outputImageRight);
+	cvCopyImage(newFrameRGBRight, outputImageRight);
+	putImagesSideBySide(sideBySideImage, newFrameRGBLeft, newFrameRGBRight);
+    //	doDetection();
+	showKeypoints();
+	resultLeft = sideBySideImage;
+	cvShowImage("WINDOW",resultLeft);
+	cvWaitKey(33);
+	//cvReleaseImage(&resultLeft);
+	//cvReleaseImage(&resultRight);
+
+
+}
+
+// Captures a new frame. Returns if capture is taken without problem or not.
+bool Box::takeNewFrame()
+{
+	cvimgleft = cvImageInLeft.getBuffer();
+	cvimgright = cvImageInRight.getBuffer();
+	if ((newFrameRGBLeft = cvimgleft->ipl) &&(newFrameRGBRight = cvimgright->ipl))
+	{
+		cvCvtColor(newFrameRGBLeft, newFrameGrayLeft, CV_BGR2GRAY);
+		cvCvtColor(newFrameRGBRight, newFrameGrayRight, CV_BGR2GRAY);
+	}
+	else
+		return false;
+	return true;
+}
+
+void Box::release(){
+
+	cvDestroyWindow("WINDOW");
+
+
+}
+
+// Puts img1 and img2 side by side and stores into result
+void Box::putImagesSideBySide(IplImage* result, const IplImage* img1, const IplImage* img2)
+{
+	// widthStep of the resulting image
+	const int bigWS = result->widthStep;
+	// half of the widthStep of the resulting image
+	const int bigHalfWS = result->widthStep >> 1;
+	// widthStep of the image which will be put in the left
+	const int lWS = img1->widthStep;
+	// widthStep of the image which will be put in the right
+	const int rWS = img2->widthStep;
+
+	// pointer to the beginning of the left image
+	char *p_big = result->imageData;
+	// pointer to the beginning of the right image
+	char *p_bigMiddle = result->imageData + bigHalfWS;
+	// pointer to the image data which will be put in the left
+	const char *p_l = img1->imageData;
+	// pointer to the image data which will be put in the right
+	const char *p_r = img2->imageData;
+
+	for (int i = 0; i < FRAME_HEIGHT; ++i, p_big += bigWS, p_bigMiddle += bigWS) {
+		// copy a row of the left image till the half of the resulting image
+		memcpy(p_big, p_l + i*lWS, lWS);
+		// copy a row of the right image from the half of the resulting image to the end of it
+		memcpy(p_bigMiddle, p_r + i*rWS, rWS);
+	}
+}
+
+/*
+// Detects the template object in the incoming frame
+void Box::doDetection()
+{
+  // Variables for elapsed time estimations
+  static int64 startTime, endTime;
+
+  // Homography Matrix
+  static CvMat* H = cvCreateMat(3, 3, CV_64FC1);
+
+  // Corners of the detected planar object
+  static double detectedObjCornersData[8];
+  static CvMat detectedObjCorners = cvMat(1, 4, CV_64FC2, detectedObjCornersData);
+
+  // Keypoints of the incoming frame
+  vector<cv::KeyPoint> kpts;
+  
+  // BRIEF descriptors of kpts
+  vector< bitset<CVLAB::DESC_LEN> > descs;
+
+  // Coordinates of the matching keypoints
+  CvMat match1, match2;
+
+  float maxRatio = 0.0;
+  int maxScaleInd = 0;
+  int maxRotInd = 0;
+  int maximumNumberOfMatches = 0;
+
+  // If !doDBSearch then only try to match the original template image
+  const int dbScaleSz = doDBSearch ? NUMBER_OF_SCALE_STEPS : 1;
+  const int dbRotationSz = doDBSearch ? NUMBER_OF_ROTATION_STEPS : 1;
+
+  startTime = cvGetTickCount();
+  // Detect the FAST keypoints of the incoming frame
+  //extractKeypoints(kpts, fastThreshold, newFrameGray);
+  endTime = cvGetTickCount();
+  keypointExtractTime = endTime - startTime;
+
+
+  startTime = cvGetTickCount();
+  // Describe the keypoints with BRIEF descriptors
+  //brief.getBriefDescriptors(descs, kpts, newFrameGray);
+  endTime = cvGetTickCount();
+  bitDescTime = endTime - startTime;
+
+  startTime = cvGetTickCount();
+  // Search through all the templates
+  for (int scaleInd = 0; scaleInd < dbScaleSz; ++scaleInd) {
+    for (int rotInd = 0; rotInd < dbRotationSz; ++rotInd) {
+      const int numberOfMatches = matchDescriptors(match1, match2,
+						   templateDescs[scaleInd][rotInd], descs,
+						   templateKpts[scaleInd][rotInd], kpts);
+
+      // Since RANSAC needs at least 4 points, ignore this match
+      if (numberOfMatches < 4)
+	continue;
+
+      // Save the matrix index of the best fitting template to the incoming frame
+      const float currentRatio = float(numberOfMatches) / templateKpts[scaleInd][rotInd].size();
+      if (currentRatio > maxRatio) {
+	maxRatio = currentRatio;
+	maxScaleInd = scaleInd;
+	maxRotInd = rotInd;
+	maximumNumberOfMatches = numberOfMatches;
+      }
+    }
+  }
+  endTime = cvGetTickCount();
+  totalMatchTime = endTime - startTime;
+
+
+  matchPercentage = int(maxRatio * 100.0);
+
+  if (maximumNumberOfMatches > 3) {
+    startTime = cvGetTickCount();
+    // Match the best fitting template's BRIEF descriptors with the incoming frame
+    matchDescriptors(match1, match2,
+		     templateDescs[maxScaleInd][maxRotInd], descs,
+		     templateKpts[maxScaleInd][maxRotInd], kpts);
+    endTime = cvGetTickCount();
+    matchTime = endTime - startTime;
+
+    // Calculate the homography matrix via RANSAC
+    cvFindHomography(&match1, &match2, H, CV_RANSAC, 10, 0);
+
+    // If H is not a feasible homography matrix, ignore it
+    if (niceHomography(H)) {
+      startTime = cvGetTickCount();
+      // Transform the coordinates of the corners of the template into image coordinates
+      cvPerspectiveTransform(&templateObjectCorners[maxScaleInd][maxRotInd], &detectedObjCorners, H);
+      endTime = cvGetTickCount();
+      hmgEstTime = endTime - startTime;
+
+      // Draw the detected object on the image
+      markDetectedObject(sideBySideImage, detectedObjCornersData);
+
+      // Scale and rotate the coordinates of the template keypoints to transform them into the original
+      // template image's coordinates to show the matches
+      transformPointsIntoOriginalImageCoordinates(maximumNumberOfMatches, maxScaleInd, maxRotInd);
+    }
+  }
+
+  // Mark the keypoints detected with plus signs:
+  showKeypoints(sideBySideImage, kpts);
+
+  // Indicate the matches with lines:
+  showMatches(maximumNumberOfMatches);
+}
+
+*/
+
+// Marks the keypoints with plus signs on img
+void Box::showKeypoints()
+{
+	regionLeft = regionsInLeft.getBuffer();
+	regionRight = regionsInRight.getBuffer();
+	unsigned int heightLeft = regionLeft->getCurrentSize();
+	unsigned int widthLeft = regionLeft->getWidth();
+	unsigned int heightRight = regionRight->getCurrentSize();
+	unsigned int widthRight = regionRight->getWidth();
+	float* dataLeft = regionLeft->getData();
+	float* dataRight = regionRight->getData();
+	for(unsigned int i = 0;i<heightLeft;i++) {
+		float posxLeft = dataLeft[i*widthLeft];
+		float posyLeft = dataLeft[i*widthLeft+1];
+		float posxRight = dataRight[i*widthRight] + 320;
+		float posyRight = dataRight[i*widthRight+1];
+		drawAPlusandLine(posxLeft,posyLeft,posxRight,posyRight);
+	}
+}
+
+// Draws a plus sign on img given (x, y) coordinate
+void Box::drawAPlusandLine(const int xL, const int yL, const int xR, const int yR)
+{
+  cvLine(sideBySideImage, cvPoint(xL - 5, yL), cvPoint(xL + 5, yL), CV_RGB(255, 0, 0));
+  cvLine(sideBySideImage, cvPoint(xL, yL - 5), cvPoint(xL, yL + 5), CV_RGB(255, 0, 0));
+  cvLine(sideBySideImage, cvPoint(xR - 5, yR), cvPoint(xR + 5, yR), CV_RGB(255, 0, 0));
+  cvLine(sideBySideImage, cvPoint(xR, yR - 5), cvPoint(xR, yR + 5), CV_RGB(255, 0, 0));
+
+  // Draw a line between matching keypoints
+  cvLine(sideBySideImage, cvPoint(xL, yL), cvPoint(xR,yR), cvScalar(0, 255, 0), 0.5);
+
+}
