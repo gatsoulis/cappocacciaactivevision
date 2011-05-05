@@ -15,7 +15,7 @@
 #define SC_thresh 0.3 //arbitrary threshold
 #define SC_W_mult 10.0
 
-#define MEMB_T_CONST 0.05 //time constant for membrane potential of SC neurons
+#define MEMB_T_CONST 0.005 //time constant for membrane potential of SC neurons
 
 #define L_EYE 0
 #define R_EYE 1
@@ -433,13 +433,16 @@ void envision_nextframe(const IplImage* ipl_input,  //ipl image as input
 
 
 //=================== SC_FIND_WINNERS_SUBSET ==================//
-void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_l) //assume l NUMBER OF POINTS (not size of array)
+int SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_l) //assume l NUMBER OF POINTS (not size of array)
 {
     
   SC_l_maxval = -1;
   SC_r_maxval = -1;
   
   //naive fashion: just find the max of the subsets given to us.
+  
+  int lwin=-1;
+  int rwin=-1;
   
   //LEFT SIDE
   for(int x=0; x<l_subset_l; x+=2)
@@ -449,6 +452,7 @@ void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset
       float val = SC_l[xloc][yloc];
       if(val > SC_l_maxval) // && greater than threshold?
 	{
+	  lwin = x/2; //ARRAY INDEX
 	  SC_l_maxval = val;
 	  SC_l_maxx = xloc;
 	  SC_l_maxy = yloc;
@@ -462,12 +466,24 @@ void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset
       float val = SC_r[xloc][yloc];
       if(val > SC_r_maxval) // && greater than threshold?
 	{
+	  rwin = x/2; //ARRAY INDEX
 	  SC_r_maxval = val;
 	  SC_r_maxx = xloc;
 	  SC_r_maxy = yloc;
 	}
     }
-}
+ 
+  if(SC_l_maxval > SC_r_maxval && SC_l_maxval > -1)
+    {
+      return lwin;
+    }
+  if(SC_r_maxval > SC_l_maxval && SC_r_maxval > -1)
+    {
+      return rwin;
+    }
+  else
+    return -1;
+} //end subset
 
 //==================== SC_WINNERS_UPDATE ============//
 void SC_winners_update()
@@ -524,13 +540,13 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
     }
   //else, maxval just stays -1, and winside remains -1 (i.e. no winner (yet))
   //we might want a THRESHOLD for winning too! (the other way of doing things)
-  if(SC_win_side == L_EYE)
+  /*if(SC_win_side == L_EYE)
     printf("WIN (L EYE): %0.2f (%i %i)\n", SC_l_maxval, SC_l_maxx, SC_l_maxy);
   else if(SC_win_side == R_EYE)
     printf("WIN (R EYE): %0.2f (%i %i)\n", SC_r_maxval, SC_r_maxx, SC_r_maxy);
   else
     printf("WIN: NONE\n");
-  
+  */
   /*for(int y=0; y<salmap_h; y++)
     {
       for(int x=0; x<salmap_w; x++)
