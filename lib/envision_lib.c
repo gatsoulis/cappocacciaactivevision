@@ -1,21 +1,22 @@
 //REV: Jan 2010, saliency map implementation/functions for running it in real time.
 //REV: May 2011: modifications for running on binocular (L eye, R eye), and stuff for im-clever 2011
 
+//REV: TODO make it so that when it chooses subset points do the gaussian around it (or even just mass)
 
 
 //########## DEFINES ###########//
 
 //instantaneous map Gaussian LPF SD (in pixels, 1 pixel == 1 unit distance). using salience "mass"
-#define GAUSS_LPF_SD 1.0 //0.00001 for original one (i.e. no gaussian combination)
+#define GAUSS_LPF_SD 1.5 //0.00001 for original one (i.e. no gaussian combination)
 //instantaneous map Gaussian LPF cutoff value (in weight)
 #define GAUSS_LPF_CUTOFF 0.05
 //define to turn on/off edge correction for gaussian (basically normalize by integral of weights)
 #define EDGECORR
 
-#define SC_thresh 0.3 //arbitrary threshold
+#define SC_thresh 0.2 //arbitrary threshold
 #define SC_W_mult 10.0
 
-#define MEMB_T_CONST 0.005 //time constant for membrane potential of SC neurons
+#define MEMB_T_CONST 0.3 //time constant for membrane potential of SC neurons
 
 #define L_EYE 0
 #define R_EYE 1
@@ -55,6 +56,7 @@ static void* malloc_thunk(env_size_t);
 gsl_rng* gsl_rand_source; //for uniform random
 
 //========= SALMAP GAUSSIAN FILTER VARIABLES ============//
+//   REV: LPF (via separable gauss filter) the INPUT to the long-term map (SC)
 float** gauss_filter;
 int gauss_filter_radius;
 int gauss_filter_w;
@@ -65,11 +67,34 @@ int salmap_w; //width and height of output array (instantaneous salmap)
 int salmap_h;
 
 //========== SUPERIOR COLLICULUS VARIABLES ===========//
-float** SC_l; //left superior colliculus (long term salmap). These should be neurons, this is just float Vm
+//   REV; note it's really just the salmap, and likely isn't in SC anyways. But whatever, they want something to work :)
+float** SC_l; //left superior colliculus (long term salmap). These (should) be neurons, this is just float Vm
 float** SC_r; //right superior colliculus (long term salmap)
 float SC_memb_t_const=-1; //time constant of decay for membrane potential of superior colliculus neurons
 float SC_memb_decay=-1; //analytically solved decay constant for remainder&leakage term of differential equation solution
 float SC_memb_decay_compl=-1; //analytically solved decay constant for addition term of differential equation solution
+
+//   --- TOP DOWN SC INHIB WEIGHTS from reticular formation RF---  //
+//   REV: note supposed to be "interest" or "excitement" or "baseline arousal" as a result of stimulating stimulus
+float** RF_SC_inhib; //inhib weight matrix. Note normally its not to SC but rather to e.g. BG or something.
+float RF_gauss_SD = 1.5;
+float RF_amplitude = 6.0;
+float RF_w_baseline = 1.0; //baseline of weights ('lift off ground')
+
+float RF; //reticular formation (population coding of excitement...?). This will be SET to the value, and decay exponent
+float RF_memb_t_const = 0.5; //50ms...?
+float RF_decay;
+//float RF_decay_compl; //don't need bc we're just going to "SET" once. Note, why not just do linear decay for RF?
+float RF_baseline = 0.0; //baseline of activity in RF at all times... (+ gaussian?)
+
+//  --- Substantia Nigra pars reticulata (SNr) GAUSSIAN NOISE WEIGHTS ----   // 
+//REV: note this isn't modeling SNr effect, but rather DEVIATIONS in SNr effect. I.e. it's already doing top-down inhibition.
+//(alternatively, try roulette wheel from prob mass)
+float SNr_baseline = 1.0; //this is offset (zero?) or is it baseline of VALUE (i.e. for certain X, how much A do we get out?)
+float SNr_gauss_SD = 0.00001; //this is for distribution TO DRAW FROM! Just need SD and mean (zero?)
+float SNr_amplitude = 1.0; //multiply things by? Prob of getting 'really far out x values' is less!
+
+//NOTE TO SELF: using learning RATE, not learning PROGRESS (?)
 
 float SC_l_maxval=-1;
 float SC_r_maxval=-1;
@@ -98,13 +123,11 @@ struct status_data
   int frame_number;
 };
 
-//REV: some globals...
+//REV: some globals...just for now
 struct env_params envp; //REV: hack for left and right eye!
 struct env_visual_cortex ivcR; //REV: this is holding each previous img (lowpass5 filtered) for motion (one for each eye)
 struct env_visual_cortex ivcL;
 env_size_t npixels = 0;
-
-//REV: just for now...
 int multithreaded=0;
 
 
@@ -214,12 +237,38 @@ void envision_init(int w, int h) //just do both the eyes!
     }
   
   printf("FINISHED INITIALIZING SUPERIOR COLLICULUS MODEL\n");
+  
+  // ------ INITIALIZE RETICULAR FORMATION DYNAMICS (TC etc.)---//
+  RF_decay = exp(-RF_memb_t_const);
+  RF = RF_baseline; //remember to reset every time (SC_reset())
 
   
+  // ------ INITIALIZE RETICULAR FORMATION WEIGHTS ------------//
+  RF_SC_inhib = malloc(sizeof(float*) * salmap_w);
+  for(int x=0; x<salmap_w; x++)
+    RF_SC_inhib[x] = malloc(sizeof(float) * salmap_h);
+  
+  float RF_w_c = (float)(salmap_w-1)/2; //just assume circle macula (fovea)
+  float RF_h_c = (float)(salmap_h-1)/2;
+  printf("Reticular Formation -> Superior Colliuclus (RF->SC) weights (inhib): (centre: %f %f)\n", RF_w_c, RF_h_c);
+  for(int y=0; y<salmap_h; y++)
+    {
+      for(int x=0; x<salmap_w; x++)
+	{
+	  float dist = sqrt((((float)x-RF_w_c)*((float)x-RF_w_c))+(((float)y-RF_h_c)*((float)y-RF_h_c)));
+	  float w = -RF_w_baseline + -gaussian_val(dist, RF_gauss_SD, 0.0, RF_amplitude);
+	  RF_SC_inhib[x][y] = w;
+	  printf("%2.2f ", w);
+	}
+      printf("\n");
+    }
+  printf("FINISHED INITIALIZING RF->SC weights\n\n");
  
   
+  // ------ INIT GSL RANDOM STUFF FOR SNr afferents' GAUSSIAN NOISE ------//
+  //done (at top)
   
-  return 0;
+
 } //end envision_init
 
 
@@ -380,8 +429,10 @@ void envision_nextframe(const IplImage* ipl_input,  //ipl image as input
 	{
 	  for(int y=0; y<salmap_h; y++)
 	    {
-	      
-	      float Isyn = lpf_salmap[x][y] * SC_W_mult;
+	      //MAKE SURE TO ONLY UPDATE RF ONCE!
+	      float inhib = RF * RF_SC_inhib[x][y];
+	      float noise = gsl_ran_gaussian(gsl_rand_source, SNr_gauss_SD);
+	      float Isyn = (lpf_salmap[x][y] * SC_W_mult) + noise + inhib;
 	      //printf("Adding: %0.2f (decay: %0.2f   compl: %0.2f)\n", Isyn, SC_memb_decay, SC_memb_decay_compl);
 	      
 	      if(eye_side == L_EYE)
@@ -514,6 +565,13 @@ void SC_winners_update()
     }
 }
 
+//================== RF INJECT ========================//
+void RF_inject(float excitement)
+{
+  RF = excitement; //or RF = excitement?
+}
+
+
 //REV: this doesn't deal with ties yet (or sub-threshold stuff!). Add constant BG currents to FORCE SC neurons to
 //start firing if nothing happens (e.g. if in dark!) But, input might beat out the BG currents. The currents will force
 //one to cross threshold. But, we want a sort of probabilistic thing?
@@ -522,6 +580,9 @@ void SC_winners_update()
 //compares SC_l_maxval to SC_r_maxval (req. maxval > 1) and gives a winner. Draws?
 int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
 {
+  //do RF decay here!
+  RF = RF * RF_decay;
+  
   int* SC_winner = malloc(sizeof(int) * 3); //return 3. EYE_SIDE (-1 is none, 0 is left, 1 is right), then X, Y
   SC_winner[0] = -1;
   
@@ -540,24 +601,24 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
     }
   //else, maxval just stays -1, and winside remains -1 (i.e. no winner (yet))
   //we might want a THRESHOLD for winning too! (the other way of doing things)
-  /*if(SC_win_side == L_EYE)
+  if(SC_win_side == L_EYE)
     printf("WIN (L EYE): %0.2f (%i %i)\n", SC_l_maxval, SC_l_maxx, SC_l_maxy);
   else if(SC_win_side == R_EYE)
     printf("WIN (R EYE): %0.2f (%i %i)\n", SC_r_maxval, SC_r_maxx, SC_r_maxy);
   else
     printf("WIN: NONE\n");
-  */
-  /*for(int y=0; y<salmap_h; y++)
+  /*
+  for(int y=0; y<salmap_h; y++)
     {
       for(int x=0; x<salmap_w; x++)
 	{
-	  printf("%0.2f ", SC_l[x][y]);
+	  printf("%0.1f ", SC_l[x][y]);
 	}
       
       printf("     ");
       for(int x=0; x<salmap_w; x++)
 	{
-	  printf("%0.2f ", SC_r[x][y]);
+	  printf("%0.1f ", SC_r[x][y]);
 	    }
       printf("\n");
     }
@@ -705,13 +766,13 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   SC_winner[0] = SC_win_side;
   if(SC_win_side == L_EYE)
     {
-      SC_winner[1] = SC_l_maxx * 16 +8; // * 16 to put it back in the original space! +8 to centre it in square
-      SC_winner[2] = SC_l_maxy * 16 +8;
+      SC_winner[1] = SC_l_maxx /** 16 +8*/; // * 16 to put it back in the original space! +8 to centre it in square
+      SC_winner[2] = SC_l_maxy /** 16 +8*/;
     }
   else if(SC_win_side == R_EYE)
     {
-      SC_winner[1] = SC_r_maxx * 16 +8;
-      SC_winner[2] = SC_r_maxy * 16 +8;
+      SC_winner[1] = SC_r_maxx /** 16 +8*/;
+      SC_winner[2] = SC_r_maxy /** 16 +8*/;
     }
   
   return SC_winner;
@@ -737,6 +798,8 @@ int envision_cleanup(void)
 
 void SC_reset()
 {
+  RF = RF_baseline;
+  
   for(int x=0; x<salmap_w; x++)
     {
       for(int y=0; y<salmap_h; y++)

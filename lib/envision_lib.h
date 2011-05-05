@@ -30,6 +30,14 @@ extern "C" {
 #ifdef  __cplusplus
 extern "C" {
 #endif
+  void RF_inject(float current);
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
   int SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_l); //assume l NUMBER OF POINTS (not size of array)
 #ifdef  __cplusplus
 }
