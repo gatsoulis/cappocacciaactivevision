@@ -459,7 +459,7 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   else
     printf("WIN: NONE\n");
   
-  for(int y=0; y<salmap_h; y++)
+  /*for(int y=0; y<salmap_h; y++)
     {
       for(int x=0; x<salmap_w; x++)
 	{
@@ -474,7 +474,7 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       printf("\n");
     }
   printf("\n\n");
-  
+  */
   //either way, draw the shizzle! //first, just draw the two!
   //just draw at original size! (do L first, then R)
   //problem is that the LIF neurons have no "cap" for their Vm, since they could explode from lots of input
@@ -506,7 +506,7 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       for(int y=0; y<salmap_h; y++)
 	{
 	  float val = state_ptr[x][y] / CAP; //calc ratio
-	  if(val > 1) printf("SOMETHING IS BROKEN IT HSOULDNT BIG BIGGER\n");
+	  if(val > 1) printf("SOMETHING IS BROKEN IT SHOULDNT BE BIGGER THAN 1 LEFT\n");
 	  val *= 255; //put it in right range
 	  int intval = (int)val; //this SHOULD be between 0, 255... 
 	  char charval = (char)intval; //(converting directly might do something fishy with floating point representation)
