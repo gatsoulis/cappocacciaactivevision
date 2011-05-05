@@ -607,7 +607,7 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
     printf("WIN (R EYE): %0.2f (%i %i)\n", SC_r_maxval, SC_r_maxx, SC_r_maxy);
   else
     printf("WIN: NONE\n");
-  /*
+  
   for(int y=0; y<salmap_h; y++)
     {
       for(int x=0; x<salmap_w; x++)
@@ -623,7 +623,7 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       printf("\n");
     }
   printf("\n\n");
-  */
+  
   //either way, draw the shizzle! //first, just draw the two!
   //just draw at original size! (do L first, then R)
   //problem is that the LIF neurons have no "cap" for their Vm, since they could explode from lots of input
