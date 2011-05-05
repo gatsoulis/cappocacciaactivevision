@@ -6,7 +6,7 @@
 //########## DEFINES ###########//
 
 //instantaneous map Gaussian LPF SD (in pixels, 1 pixel == 1 unit distance). using salience "mass"
-#define GAUSS_LPF_SD 1.5 //0.00001 for original one (i.e. no gaussian combination)
+#define GAUSS_LPF_SD 1.0 //0.00001 for original one (i.e. no gaussian combination)
 //instantaneous map Gaussian LPF cutoff value (in weight)
 #define GAUSS_LPF_CUTOFF 0.05
 //define to turn on/off edge correction for gaussian (basically normalize by integral of weights)
@@ -489,13 +489,24 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   char* img_output_ptr = ipl_outputL->imageData;
   float** state_ptr = SC_l;
   
+  float CAP=SC_thresh;
+  //find max first...lame
+  for(int x=0; x<salmap_w; x++)
+    {
+      for(int y=0; y<salmap_h; y++)
+	{
+	  if(state_ptr[x][y] > CAP)
+	    CAP = state_ptr[x][y];
+	}
+    }
+  
   //for each state_ptr[x][y], go and draw a 16x16 square in output (starting at x*16, y*16), offset by proper amount.
   for(int x=0; x<salmap_w; x++) //16 is hard coded lewl
     {
       for(int y=0; y<salmap_h; y++)
 	{
-	  float val = state_ptr[x][y] / SC_thresh; //calc ratio
-	  if(val > 1) val = 1; //cap it
+	  float val = state_ptr[x][y] / CAP; //calc ratio
+	  if(val > 1) printf("SOMETHING IS BROKEN IT HSOULDNT BIG BIGGER\n");
 	  val *= 255; //put it in right range
 	  int intval = (int)val; //this SHOULD be between 0, 255... 
 	  char charval = (char)intval; //(converting directly might do something fishy with floating point representation)
@@ -547,14 +558,25 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   //RIGHT SIDE
   img_output_ptr = ipl_outputR->imageData;
   state_ptr = SC_r;
+   
+  CAP=SC_thresh;
+  //find max first...lame
+  for(int x=0; x<salmap_w; x++)
+    {
+      for(int y=0; y<salmap_h; y++)
+	{
+	  if(state_ptr[x][y] > CAP)
+	    CAP = state_ptr[x][y];
+	}
+    }
   
   //for each state_ptr[x][y], go and draw a 16x16 square in output (starting at x*16, y*16), offset by proper amount.
   for(int x=0; x<salmap_w; x++) //16 is hard coded lewl
     {
       for(int y=0; y<salmap_h; y++)
 	{
-	  float val = state_ptr[x][y] / SC_thresh; //calc ratio
-	  if(val > 1) val = 1; //cap it
+	  float val = state_ptr[x][y] / CAP; //calc ratio
+	  if(val > 1) printf("SOMETHING IS BROKEN IT SHOULDNT BE GREATHER THAN 1 RIGHT\n"); //cap it
 	  val *= 255; //put it in right range
 	  int intval = (int)val; //this SHOULD be between 0, 255... 
 	  char charval = (char)intval; //(converting directly might do something fishy with floating point representation)
