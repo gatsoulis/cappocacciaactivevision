@@ -440,6 +440,8 @@ void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset
   SC_r_maxval = -1;
   
   //naive fashion: just find the max of the subsets given to us.
+  
+  //LEFT SIDE
   for(int x=0; x<l_subset_l; x+=2)
     {
       int xloc = l_subset[x] / 16; //have to div by 16
@@ -455,8 +457,8 @@ void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset
   //RIGHT SIDE
   for(int x=0; x<r_subset_l; x+=2)
     {
-      int xloc = r_subset[x];
-      int yloc = r_subset[x+1];
+      int xloc = r_subset[x] /16;
+      int yloc = r_subset[x+1] /16;
       float val = SC_r[xloc][yloc];
       if(val > SC_r_maxval) // && greater than threshold?
 	{
@@ -565,8 +567,10 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
     {
       for(int y=0; y<salmap_h; y++)
 	{
-	  if(state_ptr[x][y] > CAP)
-	    CAP = state_ptr[x][y];
+	  if(SC_l[x][y] > CAP)
+	    CAP = SC_l[x][y];
+	  if(SC_r[x][y] > CAP)
+	    CAP = SC_r[x][y];
 	}
     }
   
@@ -629,17 +633,6 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   //RIGHT SIDE
   img_output_ptr = ipl_outputR->imageData;
   state_ptr = SC_r;
-   
-  CAP=SC_thresh;
-  //find max first...lame
-  for(int x=0; x<salmap_w; x++)
-    {
-      for(int y=0; y<salmap_h; y++)
-	{
-	  if(state_ptr[x][y] > CAP)
-	    CAP = state_ptr[x][y];
-	}
-    }
   
   //for each state_ptr[x][y], go and draw a 16x16 square in output (starting at x*16, y*16), offset by proper amount.
   for(int x=0; x<salmap_w; x++) //16 is hard coded lewl
