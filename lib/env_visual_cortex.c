@@ -507,7 +507,7 @@ void env_visual_cortex_rescale_ranges(
         intg32 ma = INTG32_MIN;
 
         // first rescale the overall output on its own:
-        env_merge_range(result, &mi, &ma);
+        env_merge_range(result, &mi, &ma); //REV: this is ivcout, wtf why address of min and max?
         env_rescale_range_inplace(result, mi, ma);
 
         // now compute a single min/max range covering ALL of the
