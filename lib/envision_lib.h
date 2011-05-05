@@ -6,7 +6,7 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
-  int envision_nextframe(const IplImage* ipl_input, IplImage* ipl_output, int eye_side);
+  void envision_nextframe(const IplImage* ipl_input, IplImage* ipl_output, int eye_side);
 #ifdef  __cplusplus
 }
 #endif
@@ -14,7 +14,31 @@ extern "C" {
 #ifdef  __cplusplus
 extern "C" {
 #endif
-  int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR);
+  int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR); //returns 3 int array: eyeside, x, y
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  void SC_winners_update();
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_l); //assume l NUMBER OF POINTS (not size of array)
+#ifdef  __cplusplus
+}
+#endif
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  void SC_reset();
 #ifdef  __cplusplus
 }
 #endif

@@ -15,6 +15,7 @@
 #define SC_thresh 0.3 //arbitrary threshold
 #define SC_W_mult 10.0
 
+#define MEMB_T_CONST 0.05 //time constant for membrane potential of SC neurons
 
 #define L_EYE 0
 #define R_EYE 1
@@ -44,7 +45,7 @@
 #include <gsl/gsl_rng.h> //gsl random number generator
 
 
-
+int reset_SC();
 float gaussian_val(float, float, float, float);
 int x_loc(int, int);
 int y_loc(int, int);
@@ -107,7 +108,7 @@ env_size_t npixels = 0;
 int multithreaded=0;
 
 
-int envision_init(int w, int h) //just do both the eyes!
+void envision_init(int w, int h) //just do both the eyes!
 {
   printf("INITIALIZING...");
   
@@ -196,7 +197,7 @@ int envision_init(int w, int h) //just do both the eyes!
   printf("FINISHED INITIALIZING GAUSSIAN FILTERS\n");
   
   //----- INITIALIZING SUPERIOR COLLICULUS SIMULATIONS -------//
-  SC_memb_t_const = 0.1; //in s, i.e. 500ms
+  SC_memb_t_const = MEMB_T_CONST; //in s, i.e. 500ms
   SC_memb_decay = exp(-SC_memb_t_const); //div DT
   SC_memb_decay_compl = 1 - SC_memb_decay;
   SC_l = malloc(sizeof(float*) * salmap_w); //assume we just want salmap w neurons. note we could just use fixed memory...
@@ -224,7 +225,7 @@ int envision_init(int w, int h) //just do both the eyes!
 
 //======================= ENVISION NEXTPIC FROMMEM ===============================//
 
-int envision_nextframe(const IplImage* ipl_input,  //ipl image as input
+void envision_nextframe(const IplImage* ipl_input,  //ipl image as input
 		       IplImage* ipl_output, int eye_side)   //output image we'll write to (use ->imageData to write)
 {
     
@@ -387,33 +388,31 @@ int envision_nextframe(const IplImage* ipl_input,  //ipl image as input
 		{
 		  
 		  SC_l[x][y] = (SC_l[x][y] * SC_memb_decay) + (SC_memb_decay_compl * (0+Isyn)); //0 is Ibg
-		  if(SC_l[x][y] > SC_l_maxval)
+		  //REV: moving these check maxval things down to where we do naive competition
+		  /*if(SC_l[x][y] > SC_l_maxval)
 		    {
 		      SC_l_maxval = SC_l[x][y];
 		      SC_l_maxx= x;
 		      SC_l_maxy= y;
 		      
-		    }
+		      }*/
 		  
 		}
 	      else if(eye_side == R_EYE)
 		{
 		  SC_r[x][y] = (SC_r[x][y] * SC_memb_decay) + (SC_memb_decay_compl * (0+Isyn)); //0 is Ibg
-		  if(SC_r[x][y] > SC_r_maxval)
+		  /*if(SC_r[x][y] > SC_r_maxval)
 		    {
 		      SC_r_maxval = SC_r[x][y];
 		      SC_r_maxx= x;
 		      SC_r_maxy= y;
-		    }
+		      }*/
 		}
 	    }
 	}
       
       
-      //DRAW SHIT! (note there needs to be an update step or something...? This one could draw the other 3 boxes, 
-      //but what we're interested in is drawing the main one right? That could be in another function...?)
-      //need some marker to tell which side (L or R) the current winning max-thing is?
-      //(diff function?)
+      //DRAW STUFF (if you want to draw the individual saliency channels)
       
       // cleaning up memory (deallocating the different salmaps channels & ivcout!) for next run-through
       env_img_make_empty(&ivcout);
@@ -430,13 +429,84 @@ int envision_nextframe(const IplImage* ipl_input,  //ipl image as input
   if(eye_side == L_EYE)       FIRSTFRAMEL=0; 
   else if(eye_side == R_EYE)  FIRSTFRAMER=0;
   
-  return 0; //success?
 } //end nextpic_frommem
 
-//==================== SC_NAIVE_WINNER =====================//
-//compares SC_l_maxval to SC_r_maxval (req. maxval > 1) and gives a winner. Draws?
-int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
+
+//=================== SC_FIND_WINNERS_SUBSET ==================//
+void SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_l) //assume l NUMBER OF POINTS (not size of array)
 {
+    
+  SC_l_maxval = -1;
+  SC_r_maxval = -1;
+  
+  //naive fashion: just find the max of the subsets given to us.
+  for(int x=0; x<l_subset_l; x+=2)
+    {
+      int xloc = l_subset[x] / 16; //have to div by 16
+      int yloc = l_subset[x+1] / 16; //have to div by 16
+      float val = SC_l[xloc][yloc];
+      if(val > SC_l_maxval) // && greater than threshold?
+	{
+	  SC_l_maxval = val;
+	  SC_l_maxx = xloc;
+	  SC_l_maxy = yloc;
+	}
+    }
+  //RIGHT SIDE
+  for(int x=0; x<r_subset_l; x+=2)
+    {
+      int xloc = r_subset[x];
+      int yloc = r_subset[x+1];
+      float val = SC_r[xloc][yloc];
+      if(val > SC_r_maxval) // && greater than threshold?
+	{
+	  SC_r_maxval = val;
+	  SC_r_maxx = xloc;
+	  SC_r_maxy = yloc;
+	}
+    }
+}
+
+//==================== SC_WINNERS_UPDATE ============//
+void SC_winners_update()
+{
+  SC_l_maxval = -1;
+  SC_r_maxval = -1;
+  
+  for(int x=0; x<salmap_w; x++)
+    {
+      for(int y=0; y<salmap_h; y++)
+	{
+	  //LEFT SIDE
+	  if(SC_l[x][y] > SC_l_maxval)
+	    {
+	      SC_l_maxval = SC_l[x][y];
+	      SC_l_maxx= x;
+	      SC_l_maxy= y;
+	      
+	    }
+	  //RIGHT SIDE
+	  if(SC_r[x][y] > SC_r_maxval)
+	    {
+	      SC_r_maxval = SC_r[x][y];
+	      SC_r_maxx= x;
+	      SC_r_maxy= y;
+	    }
+	}
+    }
+}
+
+//REV: this doesn't deal with ties yet (or sub-threshold stuff!). Add constant BG currents to FORCE SC neurons to
+//start firing if nothing happens (e.g. if in dark!) But, input might beat out the BG currents. The currents will force
+//one to cross threshold. But, we want a sort of probabilistic thing?
+
+//==================== SC_NAIVE_COMPETITION =====================//
+//compares SC_l_maxval to SC_r_maxval (req. maxval > 1) and gives a winner. Draws?
+int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
+{
+  int* SC_winner = malloc(sizeof(int) * 3); //return 3. EYE_SIDE (-1 is none, 0 is left, 1 is right), then X, Y
+  SC_winner[0] = -1;
+  
   float maxval=-1;
   if(SC_l_maxval > maxval)
     {
@@ -453,9 +523,9 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
   //else, maxval just stays -1, and winside remains -1 (i.e. no winner (yet))
   //we might want a THRESHOLD for winning too! (the other way of doing things)
   if(SC_win_side == L_EYE)
-    printf("WIN: %0.2f (%i %i)\n", SC_l_maxval, SC_l_maxx, SC_l_maxy);
+    printf("WIN (L EYE): %0.2f (%i %i)\n", SC_l_maxval, SC_l_maxx, SC_l_maxy);
   else if(SC_win_side == R_EYE)
-    printf("WIN: %0.2f (%i %i)\n", SC_r_maxval, SC_r_maxx, SC_r_maxy);
+    printf("WIN (R EYE): %0.2f (%i %i)\n", SC_r_maxval, SC_r_maxx, SC_r_maxy);
   else
     printf("WIN: NONE\n");
   
@@ -506,7 +576,8 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       for(int y=0; y<salmap_h; y++)
 	{
 	  float val = state_ptr[x][y] / CAP; //calc ratio
-	  if(val > 1) printf("SOMETHING IS BROKEN IT SHOULDNT BE BIGGER THAN 1 LEFT\n");
+	  if(val > 1) { printf("SOMETHING IS BROKEN IT SHOULDNT BE BIGGER THAN 1 LEFT\n"); exit(1);}
+	  if(val < 0) val = 0;
 	  val *= 255; //put it in right range
 	  int intval = (int)val; //this SHOULD be between 0, 255... 
 	  char charval = (char)intval; //(converting directly might do something fishy with floating point representation)
@@ -576,7 +647,8 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       for(int y=0; y<salmap_h; y++)
 	{
 	  float val = state_ptr[x][y] / CAP; //calc ratio
-	  if(val > 1) printf("SOMETHING IS BROKEN IT SHOULDNT BE GREATHER THAN 1 RIGHT\n"); //cap it
+	  if(val > 1) { printf("SOMETHING IS BROKEN IT SHOULDNT BE GREATHER THAN 1 RIGHT\n"); exit(1);}//cap it
+	  if(val < 0) val = 0;
 	  val *= 255; //put it in right range
 	  int intval = (int)val; //this SHOULD be between 0, 255... 
 	  char charval = (char)intval; //(converting directly might do something fishy with floating point representation)
@@ -621,10 +693,19 @@ int SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
       
     }
   
+  SC_winner[0] = SC_win_side;
+  if(SC_win_side == L_EYE)
+    {
+      SC_winner[1] = SC_l_maxx * 16 +8; // * 16 to put it back in the original space! +8 to centre it in square
+      SC_winner[2] = SC_l_maxy * 16 +8;
+    }
+  else if(SC_win_side == R_EYE)
+    {
+      SC_winner[1] = SC_r_maxx * 16 +8;
+      SC_winner[2] = SC_r_maxy * 16 +8;
+    }
   
-  
-  //DRAW A CIRCLE!
-  
+  return SC_winner;
 }
 
 
@@ -645,443 +726,21 @@ int envision_cleanup(void)
 }//end envision cleanup
 
 
-
-
-
-
-
-
-//===================== OLD VERSION =====================//
-
-int WTAnet_winner = -1;
-
-int MASS_pixels;
-int MASS_radius;
-
-//REV: nextpic_frommem: calculates saliency on given input, and draws appropriate pictures on output, 
-//given input (assumedly from some other program implementing winner-take-all saliency, etc.)
-int* envision_nextpic_frommem(const IplImage* ipl_input,  //ipl image as input
-			      IplImage* output, int desired_numsalwinners, int eye_side)   //output image we'll write to
+void SC_reset()
 {
-  int* xywinners = malloc(2* sizeof(int) * desired_numsalwinners); //*2 because we are giving 2 points for each.
-  int* xywinners1d = malloc( sizeof(int) * desired_numsalwinners); //whatever, ints when we could use chars, who cares.
-
-  for(int zz=0; zz<desired_numsalwinners; zz++)
+  for(int x=0; x<salmap_w; x++)
     {
-      xywinners1d[zz] = -1;
-      xywinners[zz*2] = -1;
-      xywinners[zz*2+1] = -1;
+      for(int y=0; y<salmap_h; y++)
+	{
+	  SC_l[x][y] = 0;
+	  SC_r[x][y] = 0;
+	  SC_win_side = -1;
+	  SC_l_maxval = -1;
+	  SC_r_maxval = -1;
+	}
     }
-  
-  struct env_dims indims;
-  indims.w = ipl_input->width;
-  indims.h = ipl_input->height;
-  
-  //printf("IMAGE SIZE: %i %i \n", ipl_input->width, ipl_input->height);
-  //input is ipl_input as const env_rgb_pixel*
-  const struct env_rgb_pixel* input = (struct env_rgb_pixel*)ipl_input->imageData;
-  
-  npixels = indims.w * indims.h;
-  float width_scale = 320 / indims.w; //this is written for 320...multiply everything hardcoded by scale, right?
-  
-  //initialize if necessary...note size is pretty manual. We really want ivcout.dims.w etc.
-  if(!(INITIALIZED == 1))
-    {
-      envision_init(indims.w, indims.h);
-      divnum=1;
-      for(int x=0; x<envp.output_map_level; x++)
-	{
-	  divnum *= 2; //just doing 2^output_map_level
-	}
-      
-      salmap_w = indims.w/divnum;
-      salmap_h = indims.h/divnum;
-      
-      
-      //REV: these are for drawing the box now, nothing more...
-      MASS_pixels = (indims.w/divnum)/3; //this will be ivcout.dims.w...?
-      MASS_radius = MASS_pixels/2;
-      
-      INITIALIZED=1;
-    }
-    
-  struct env_image ivcout = env_img_initializer;
-  struct env_image intens = env_img_initializer;
-  struct env_image color = env_img_initializer;
-  struct env_image ori = env_img_initializer;
-#ifdef ENV_WITH_DYNAMIC_CHANNELS
-  struct env_image flicker = env_img_initializer;
-  struct env_image motion = env_img_initializer;
-#endif
+}
 
-  struct status_data userdata; //REV: need this?
-  //used to have userdata.frame_number = img_num
-  
-  if(eye_side == 0)
-    {
-      //REV: note this function will call env_visual_cortex_input (the non-multithreaded version) since it's not multithreaded now.
-      env_mt_visual_cortex_input(multithreaded,
-				 &ivcL, &envp,
-				 "visualcortex",
-				 input, 0, indims,
-				 0, /*&print_chan_status, //REV: want this?*/ //we don't need status_func...if we don't
-				 //want to be printing shit.
-				 &userdata,
-				 &ivcout,
-				 &intens, &color,
-				 &ori
-#ifdef ENV_WITH_DYNAMIC_CHANNELS
-				 , &flicker, &motion
-#endif
-				 );
-  
-    } //end if eyeside == 0
-  else if(eye_side == 1)
-    {  
-      //REV: note this function will call env_visual_cortex_input (the non-multithreaded version) since it's not multithreaded now.
-      env_mt_visual_cortex_input(multithreaded,
-				 &ivcR, &envp,
-				 "visualcortex",
-				 input, 0, indims,
-				 0, /*&print_chan_status, //REV: want this?*/ //we don't need status_func...if we don't
-				 //want to be printing shit.
-				 &userdata,
-				 &ivcout,
-				 &intens, &color,
-				 &ori
-#ifdef ENV_WITH_DYNAMIC_CHANNELS
-				 , &flicker, &motion
-#endif
-				 );
-  
-    } //end if eyeside == 1
-  if((eye_side == 0 && FIRSTFRAMEL == 0) || (eye_side==1 && FIRSTFRAMER == 0)) 
-    //because movement isn't calculated until 2nd frame...only use ivcout for now or it will segfault
-    {
-      //REV: this scales to between 0 and 255 ...from min and max of the other one? Because remember, there could be negatives 
-      //(which is OK, just part of the "relative scale". So, that won't mess anything up, right...?
-      /*env_visual_cortex_rescale_ranges(
-				       &ivcout, &intens, &color, &ori
-#ifdef ENV_WITH_DYNAMIC_CHANNELS
-				       , &flicker, &motion
-#endif
-				       );
-      */
-      
-      //copy ivcout to ipl output image to draw...(I need to interpolate to the image size...)
-      char* dataptr = output->imageData;
-     
-      int max_loc = -1;
-      int max_val = -1;
-	       	  
-      for(int zz=0; zz<desired_numsalwinners; zz++)
-	{ 
-	  max_val = -1;
-	  max_loc = -1;
-	  
-	  //calc max_loc here (stupid, local, instantaneous)
-	  for(int y=0; y<ivcout.dims.h;y++)
-	    {
-	      for(int x=0; x<ivcout.dims.w; x++)
-		{
-		  int exists=0;
-		  int loc = x_y_to_array_loc(x, y, salmap_w);
-		  int val = ivcout.pixels[loc];
-		  if(zz==0)
-		    {
-		      printf("%0.3f ", (float)val/(float)INT_MAX);
-		      //printf("%3i ", val);
-		    }
-		  //check to make sure it's none of the others...
-		  for(int ee=0; ee<zz; ee++)
-		    {
-		      
-		      if(xywinners1d[ee] == loc)
-			{
-			  exists=1;
-			  
-			}
-		    }
-		  
-		  if(val > max_val && exists==0)
-		    {
-		      max_val = val;
-		      max_loc = loc;
-		    }
-		}
-	      if(zz==0)
-		{
-		  printf("\n");
-		}
-	    }
-	  if(zz==0)
-	    printf("\n\n");
-	  
-	  xywinners1d[zz] = max_loc;
-	  xywinners[zz*2] = x_loc(max_loc, ivcout.dims.w); //this is scaled up...?
-	  xywinners[zz*2+1] = y_loc(max_loc, ivcout.dims.w);
-	}
-            
-      
-      //set external x,y winners so avg color can be calced and passed to java side
-      //REV: this is in *SCALED UP* image...(for drawing only..WTAnet is for WTAnet calc too so not scaled)
-      
-      WTAnet_winner = xywinners1d[0]; //hope this works?
-      
-      
-      int c_width = ipl_input->width*3;
-      //let's write the picture...1st is FULL SALIENCY, then we have (left-right, up-down, as english)
-      //color, motion, (orientation, flicker, intensity)
-      
-      int x_scale = ipl_input->width/ivcout.dims.w; //160 / 10 = 16
-      //int y_scale = ipl_input->height/ivcout.dims.h; //120 / ?7? = 16
-      //printf("DIMSW: %i   DIMSH: %i   X_SCALE: %i   Y_SCALE: %i\n", ivcout.dims.w, ivcout.dims.h, x_scale, y_scale);
-      
-      
-      int startpos_s=0; int startpos_l=0;
-      
-      int max_loc_l[5];
-      for(int x=0; x<5; x++)
-	{
-	  max_loc_l[x] = -1;
-	}
-      
-      int y=0;
-      //REV: write out first two output quarters (top-left, top-right)
-      while(y<ivcout.dims.h*ivcout.dims.w)//all same size anyways...just use ivcout as reference
-	{
-	  
-	  for(int x=0; x<x_scale/2; x++)
-	    {
-	      for(int a=0; a<3; a++)
-		{
-		  dataptr[startpos_l + 3*((y - startpos_s) * (x_scale/2) + x)+a] = ivcout.pixels[y];
-		}
-	    } 
-	  if(y==max_loc)
-	    {
-	      max_loc_l[0] = startpos_l + 3*((y-startpos_s)* (x_scale/2));
-	    }
-	  if(y==WTAnet_winner) //for drawing longterm attn box
-	    {
-	      max_loc_l[4] = startpos_l + 3*((y-startpos_s)*(x_scale/2));
-	    }
-	  
-	  for(int x=0; x<x_scale/2; x++)
-	    {
-	      //add c_width/2 to get it halfway across...
-	      for(int a=0; a<3; a++)
-		{
-		  if(envp.chan_m_weight > 0)
-		    {
-		      dataptr[startpos_l + 3*(ipl_input->width/2 + (y - startpos_s) * (x_scale/2) + x)+a] = motion.pixels[y];
-		    }
-		  else
-		    {
-		      dataptr[startpos_l + 3*(ipl_input->width/2 + (y - startpos_s) * (x_scale/2) + x)+a] = 255;
-		    }
-		}
-	      if(y==max_loc)
-		max_loc_l[1] = startpos_l+3*(ipl_input->width/2 + (y-startpos_s)* (x_scale/2) +x);
-	    }
-	  //printf("1x\n");
-	  y++;
-	  if(y%ivcout.dims.w==0)
-	    {  
-	      //copy the previous like down y_scale times...
-	      //add c_width*x_scale to startpos_l
-	      startpos_s = y;
-	      for(int z=1; z<x_scale/2; z++)
-		{
-		  for(int x=c_width-1; x>=0; x--)
-		    {
-		      dataptr[startpos_l+z*c_width  + x] = dataptr[startpos_l+x];//copy the whole line above down...
-		    }
-		}
-	      startpos_l+=(x_scale/2)*c_width;
-	      
-	    }
-	}
-      //printf("DONE!\n\n");
-         
-      
-      //REV: now do next 2 output quartiles...color and intensity (intens)//orientation ("ori")
-      y=0;
-      startpos_s = 0;
-      while(y<ivcout.dims.h*ivcout.dims.w)
-	{
-	  for(int x=0; x<x_scale/2; x++)
-	    {
-	      for(int a=0; a<3; a++)
-		{
-		if(envp.chan_c_weight > 0)
-		  {
-		    dataptr[startpos_l + 3*((y - startpos_s) * x_scale/2 + x) +a] = color.pixels[y];
-		  }
-		else
-		  {
-		    dataptr[startpos_l + 3*((y - startpos_s) * x_scale/2 + x) +a] = 100;
-		  }
-		}
-	      if(y==max_loc)
-		max_loc_l[2] = startpos_l + 3*((y - startpos_s) * x_scale/2 + x);
-	    }
-	  for(int x=0; x<x_scale/2; x++)
-	    {
-	      
-	      //add c_width/2 to get it halfway across...
-	       
-	      //dataptr[startpos_l + c_width/2 + 3*((y - startpos_s) * x_scale/2 + x)+0] = current_sal_color[2]; //value
-	     
-	      for(int a=0; a<3; a++)
-		{
-		  if(envp.chan_f_weight > 0)
-		    {
-		      dataptr[startpos_l + c_width/2 + 3*((y - startpos_s) * x_scale/2 + x) + a] = flicker.pixels[y];
-		    }
-		  else
-		    {
-		      dataptr[startpos_l + c_width/2 + 3*((y - startpos_s) * x_scale/2 + x) + a] = 0;
-		    }
-		}
-	    }	
-	  
-	  y++;
-	  if(y%ivcout.dims.w==0)
-	    {  
-	      //copy the previous like down x_scale times...
-	      //add c_width*x_scale to startpos_l
-	      startpos_s = y;
-	      for(int z=1; z<x_scale/2; z++)
-		{
-		  for(int x=c_width-1; x>=0; x--)
-		    {
-		      dataptr[startpos_l+z*c_width  + x] = dataptr[startpos_l+x];//copy the whole line above down...
-		    }
-		}
-	      startpos_l+=x_scale/2*c_width; //2* bc we're making 4 boxes...2x2. So we need to get to right column, =*2
-	      
-	    }
-	}
-      
-      //draw the yellow squares...
-      //from -x*3 to +x*3 (add 3 every time...)
-      //   for y=+current+c_width*pixels and -current+c_width*pixels
-      y=0; //err?
-      if(WTAnet_winner > -1) //only if we've chosen a winner already...
-	{
-	  width_scale = 2; //bc 2 images per width of output image.
-	  int max_l_x; int max_l_y; int lt_x; int lt_y;
-	  for(int z=0; z<1; z++)//for each of the boxes...
-	    {
-	      //max_l_x = x_loc(max_loc_l[z], c_width);
-	      //max_l_y = y_loc(max_loc_l[z], c_width);
-	      lt_x = x_loc(max_loc_l[4], c_width);
-	      lt_y = y_loc(max_loc_l[4], c_width);
-	      max_l_x = lt_x;
-	      max_l_y = lt_y; //just make it follow the small one..
-	      //draw horizontal "Y" lines...
-	      for(int x= (-x_scale * (MASS_radius)) / 2;   x < x_scale/2 + (x_scale * (MASS_radius))/2; x++)
-		{
-		  if( x*3+max_l_x >= 0 && x*3+max_l_x<c_width/2)
-		    {
-		      y=(-x_scale * (MASS_radius)) / 2 +1;
-		      if(y+max_l_y>=0 && y+max_l_y<(ipl_input->height)/2)
-			{
-			  int loc = x_y_to_array_loc(max_l_x+(x*3),max_l_y+y,c_width);
-			  dataptr[loc +0] = 0;
-			  dataptr[loc +1] = 255;
-			  dataptr[loc +2] = 255;
-			}
-		      y=x_scale/2 +(x_scale*(MASS_radius))/2;
-		      
-		      if(y+max_l_y>=0 && y+max_l_y<(ipl_input->height)/2)
-			{
-			  int loc = x_y_to_array_loc(max_l_x+(x*3),max_l_y+y,c_width);
-			  dataptr[loc +0] = 0;
-			  dataptr[loc +1] = 255;
-			  dataptr[loc +2] = 255;
-			}
-		    } 
-		}
-	      
-	      //for longterm..
-	      for(int x=0; x<divnum/2; x++)
-		{
-		  y=0;
-		  int loc = x_y_to_array_loc(lt_x+(x*3),lt_y+y,c_width);
-		  dataptr[loc +0] = 0; //these didnt have +y (wtf?)
-		  dataptr[loc +1] = 255;
-		  dataptr[loc +2] = 0;
-		  
-		  y=divnum/2 -1; //-1 because, as above, see its x<16/2 (not <=) we want all INSIDE the square
-		  loc = x_y_to_array_loc(lt_x+(x*3), lt_y+y, c_width);
-		  dataptr[loc +0] = 0; //these didnt have +y
-		  dataptr[loc +1] = 255;
-		  dataptr[loc +2] = 0;
-		}
-	      
-	      for(y=0; y<divnum/2; y++)
-		{
-		  int x=0;
-		  int loc = x_y_to_array_loc(lt_x+(x*3), lt_y+y, c_width);
-		  dataptr[loc +0] = 0;
-		  dataptr[loc +1] = 255;
-		  dataptr[loc +2] = 0;
-		  
-		  x=divnum/2 -1; //-1 because, as above, see its y<16/2, we want it all INSIDE the square.
-		  loc = x_y_to_array_loc(lt_x+(x*3), lt_y+y, c_width);
-		  dataptr[loc +0] = 0;
-		  dataptr[loc +1] = 255;
-		  dataptr[loc +2] = 0;
-		}
-	      
-	      
-	      //draw vertical "X" lines...
-	      for(y=(-x_scale * (MASS_radius)) /2 +1; y< (x_scale/2) + (x_scale * (MASS_radius))/2; y++)
-		{ 
-		  if(y+max_l_y>=0 && y+max_l_y<(ipl_input->height)/2)
-		    {
-		      int x=(-x_scale * (MASS_radius)) /2;
-		      
-		      if( x*3+max_l_x >= 0 && x*3+max_l_x<c_width/2 )
-			{
-			  int loc = x_y_to_array_loc(max_l_x+(x*3), max_l_y+y, c_width);
-			  dataptr[loc +0] = 0;
-			  dataptr[loc +1] = 255;
-			  dataptr[loc +2] = 255;
-			} 
-		      x=x_scale/width_scale + ((MASS_radius) *x_scale)/2-1;
-		      
-		      if( x*3+max_l_x>= 0 && x*3+max_l_x<c_width/2 )
-			{
-			  int loc = x_y_to_array_loc(max_l_x+(x*3), max_l_y+y, c_width);
-			  dataptr[loc +0] = 0;
-			  dataptr[loc +1] = 255;
-			  dataptr[loc +2] = 255;
-			}
-		    }	  
-		}
-	    }
-	  //end for the z
-	} //end only if we've chosen a WTAnet winner already 
-      env_img_make_empty(&ivcout);
-      env_img_make_empty(&intens);
-      env_img_make_empty(&color);
-      env_img_make_empty(&ori);
-#ifdef ENV_WITH_DYNAMIC_CHANNELS
-      env_img_make_empty(&flicker);
-      env_img_make_empty(&motion);
-#endif
-    } //end if eye_side==0 && FIRSTFRAMEL == 0
-  if(eye_side == 0)
-    FIRSTFRAMEL=0; //REV: weve been through things once...
-  else if(eye_side == 1)
-    FIRSTFRAMER=0;
-  
-  return xywinners; //REV: for imclever return xywinners
-  
-} //end nextpic_frommem
 
 float gaussian_val(float x_input, float sd, float mean, float scale)
 {
