@@ -6,6 +6,8 @@
 
 //########## DEFINES ###########//
 
+#define PRINT_SC 0
+
 //instantaneous map Gaussian LPF SD (in pixels, 1 pixel == 1 unit distance). using salience "mass"
 #define GAUSS_LPF_SD 1.5 //0.00001 for original one (i.e. no gaussian combination)
 //instantaneous map Gaussian LPF cutoff value (in weight)
@@ -82,7 +84,7 @@ float RF_amplitude = 6.0;
 float RF_w_baseline = 1.0; //baseline of weights ('lift off ground')
 
 float RF; //reticular formation (population coding of excitement...?). This will be SET to the value, and decay exponent
-float RF_memb_t_const = 0.5; //50ms...?
+float RF_memb_t_const = 1000; //0.5; //50ms...? //note it's dt DIV by this number.
 float RF_decay;
 //float RF_decay_compl; //don't need bc we're just going to "SET" once. Note, why not just do linear decay for RF?
 float RF_baseline = 0.0; //baseline of activity in RF at all times... (+ gaussian?)
@@ -91,7 +93,7 @@ float RF_baseline = 0.0; //baseline of activity in RF at all times... (+ gaussia
 //REV: note this isn't modeling SNr effect, but rather DEVIATIONS in SNr effect. I.e. it's already doing top-down inhibition.
 //(alternatively, try roulette wheel from prob mass)
 float SNr_baseline = 1.0; //this is offset (zero?) or is it baseline of VALUE (i.e. for certain X, how much A do we get out?)
-float SNr_gauss_SD = 0.00001; //this is for distribution TO DRAW FROM! Just need SD and mean (zero?)
+float SNr_gauss_SD = 1.0; //this is for distribution TO DRAW FROM! Just need SD and mean (zero?)
 float SNr_amplitude = 1.0; //multiply things by? Prob of getting 'really far out x values' is less!
 
 //NOTE TO SELF: using learning RATE, not learning PROGRESS (?)
@@ -601,6 +603,9 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
     }
   //else, maxval just stays -1, and winside remains -1 (i.e. no winner (yet))
   //we might want a THRESHOLD for winning too! (the other way of doing things)
+  
+  if(PRINT_SC)
+    {
   if(SC_win_side == L_EYE)
     printf("WIN (L EYE): %0.2f (%i %i)\n", SC_l_maxval, SC_l_maxx, SC_l_maxy);
   else if(SC_win_side == R_EYE)
@@ -615,15 +620,16 @@ int* SC_naive_competition(IplImage* ipl_outputL, IplImage* ipl_outputR)
 	  printf("%0.1f ", SC_l[x][y]);
 	}
       
-      printf("     ");
+      /*printf("     ");
       for(int x=0; x<salmap_w; x++)
 	{
 	  printf("%0.1f ", SC_r[x][y]);
 	    }
+      */
       printf("\n");
     }
   printf("\n\n");
-  
+    }   
   //either way, draw the shizzle! //first, just draw the two!
   //just draw at original size! (do L first, then R)
   //problem is that the LIF neurons have no "cap" for their Vm, since they could explode from lots of input
