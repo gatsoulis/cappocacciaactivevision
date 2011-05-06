@@ -1,0 +1,53 @@
+<application>
+
+<name>FIAS Independent Moving Object Tracker </name>
+
+<dependencies>
+	<port>/root</port>
+		
+</dependencies> 
+
+
+		<module>
+			<name>indepMovingObjTracker</name>
+			<parameters>--startEnabled</parameters>
+			<tag>indep_obj_track</tag>
+			<node>pwrNode3</node>
+		</module>
+
+
+
+		<module>
+			<name>yarpview</name>
+			<parameters>--name /viewer --synch</parameters>
+			<node>pwrNode1</node>
+			<tag>viewer</tag> 
+		</module> 
+
+
+   
+   
+   
+	<connection>
+		<output>/icub/cam/left</output>
+		<input>/indepMotionDetector/img:i</input>
+		<protocol>udp</protocol>
+	</connection>
+
+
+	<connection>
+		<output>/indepMotionDetector/img:o</output>
+		<input>/viewer</input>
+		<protocol>udp</protocol>
+	</connection>
+
+	
+
+	<connection>
+		<output>/indepMotionDetector/blobs:o</output>
+		<input>/indepMovingObjTracker/in</input>
+		<protocol>tcp</protocol>
+	</connection>
+
+
+</application>
