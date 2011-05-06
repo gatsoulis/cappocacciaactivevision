@@ -1,0 +1,7 @@
+#based on original diagram, so b0:s1bt, b1:s1br, etc.
+#b
+0 0 0 0 0 0 0 0
+#c
+0 0 0 0 0 0 0 0
+#d -exception activation code
+0 1 0 0 0 0 0 0
