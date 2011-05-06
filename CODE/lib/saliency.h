@@ -35,6 +35,8 @@ public:
   ~saliency();
   void execute();
   void release();
+  void createwind();
+  void destroywind();
 
   InputConnector<CVImage*> cvImageInL;
   InputConnector<CVImage*> cvImageInR;
@@ -48,6 +50,8 @@ public:
 
   CvPoint pointOL;
   CvPoint pointOR;
+
+  bool move;
 
   bool debug;
 

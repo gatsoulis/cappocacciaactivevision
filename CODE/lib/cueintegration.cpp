@@ -622,7 +622,7 @@ void CueIntegration::execute() {
 	targetL.addDouble(xL);//millimeters to meters
 	targetL.addDouble(yL);//millimeters to meters
 	targetL.addDouble(1);//millimeters to meters
-	targetL.addString("LookAtLocation");
+	targetL.addString("LookAtStereoPixel");
         PointCueOutPort.write();
 
 

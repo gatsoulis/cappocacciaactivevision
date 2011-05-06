@@ -25,7 +25,7 @@ saliency::saliency(std::string name) : Module(name) {
 	cvNamedWindow((saliencystrL).c_str(), CV_WINDOW_AUTOSIZE);
 	cvNamedWindow((saliencystrR).c_str(), CV_WINDOW_AUTOSIZE);
 	
-
+	move = false;
 
 	debug = false;
 
@@ -40,17 +40,24 @@ saliency::~saliency() {
 	cvReleaseImage(&ipl_inputR);
 	cvReleaseImage(&ipl_outputL);
 	cvReleaseImage(&ipl_outputR);
-	cvDestroyWindow((saliencystrL).c_str());
-	cvDestroyWindow((saliencystrR).c_str());
-
 
 	std::cout << "finished.\n";
 }
 
+void saliency::createwind(){
+	
+	cvNamedWindow((saliencystrL).c_str(), CV_WINDOW_AUTOSIZE);
+	cvNamedWindow((saliencystrR).c_str(), CV_WINDOW_AUTOSIZE);
+}
 
+void saliency::destroywind(){
+	
+	cvDestroyWindow((saliencystrL).c_str());
+	cvDestroyWindow((saliencystrR).c_str());
+}
 void saliency::execute(){
 
-
+	move=false;
   
 	cvimgL = cvImageInL.getBuffer();
 	cvimgR = cvImageInR.getBuffer();
@@ -113,12 +120,11 @@ void saliency::execute(){
 	results=SC_naive_competition(ipl_outputL, ipl_outputR);
 //  results = envision_nextpic_frommem(ipl_input, ipl_output, desired_numsalwinners);
 
-  if(true)  
+  if(debug)  
   {
 		cout << "\n0=LEFT  1=RIGHT ? =>" << results[0]<< endl;
   		cout << "\nRESULT X, Y: (" << results[1] << ", " << results[2] << ")" << endl;
-  	//	cout << "RIGHT\nRESULT X, Y: (" << resultsR[0] << ", " << resultsR[1] << ")" << endl;
-
+  	
   }
 
   output_filenameL = "resultL.ppm";
@@ -208,6 +214,9 @@ cvWaitKey(0);
   cvThreshold(ipl_outputR, imageR, 230, 255.0, CV_THRESH_BINARY);
   cvShowImage((saliencystrR).c_str(), imageR);
 */
+
+  if(results[0]==0 || results[0]==1)
+	move = true;
 
   pointOL = cvPoint(posxL,posyL);
   pointOR = cvPoint(posxR,posyR);

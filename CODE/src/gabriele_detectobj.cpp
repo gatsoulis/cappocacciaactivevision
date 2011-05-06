@@ -362,6 +362,8 @@ int main(int argc, char* argv[])
 
 		trackptrL = NULL;
 		trackptrR = NULL;
+
+		sal.createwin();
 		
 		//MOVE
 		/*
@@ -454,7 +456,7 @@ int main(int argc, char* argv[])
 				}
 
 				key = cvWaitKey(33);
-				if (key == 'q') 
+				if (key == 'e') 
 					g_quit = true;
 			}
 
@@ -471,7 +473,9 @@ int main(int argc, char* argv[])
 		dispLeft.destroywin();
 		dispRight.destroywin();
 		DrawBox.destroywin();
+		sal.destroywin();
 
+		sleep(1);
 
 		//////////////////////////////////
 		//				//
