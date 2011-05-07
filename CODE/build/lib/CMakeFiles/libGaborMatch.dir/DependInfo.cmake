@@ -56,6 +56,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/gabriele/Desktop/ccav/CODE/lib/cuetemplate.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/cuetemplate.cpp.o"
   "/home/gabriele/Desktop/ccav/CODE/lib/cvimage.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/cvimage.cpp.o"
   "/home/gabriele/Desktop/ccav/CODE/lib/detectobject.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/detectobject.cpp.o"
+  "/home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o"
   "/home/gabriele/Desktop/ccav/CODE/lib/displaycvimage.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/displaycvimage.cpp.o"
   "/home/gabriele/Desktop/ccav/CODE/lib/dogdetector.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/dogdetector.cpp.o"
   "/home/gabriele/Desktop/ccav/CODE/lib/drawcross.cpp" "/home/gabriele/Desktop/ccav/CODE/build/lib/CMakeFiles/libGaborMatch.dir/drawcross.cpp.o"

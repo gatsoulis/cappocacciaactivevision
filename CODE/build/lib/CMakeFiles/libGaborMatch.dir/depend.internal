@@ -1275,6 +1275,48 @@ lib/CMakeFiles/libGaborMatch.dir/detectobject.cpp.o
  /usr/local/include/opencv/cxtypes.h
  /usr/local/include/opencv/highgui.h
  /usr/local/include/opencv/highgui.hpp
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCData.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCDescriptors.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCEllipticRegions.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCFeature.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCMatrix2D.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCVector.h
+ /home/gabriele/Desktop/ccav/CODE/lib/CSCViewData.h
+ /home/gabriele/Desktop/ccav/CODE/lib/convertflt.h
+ /home/gabriele/Desktop/ccav/CODE/lib/csctype.h
+ /home/gabriele/Desktop/ccav/CODE/lib/cvimage.h
+ /home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.cpp
+ /home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.h
+ /home/gabriele/Desktop/ccav/CODE/lib/dogdetector.h
+ /home/gabriele/Desktop/ccav/CODE/lib/gabordescriptor.h
+ /home/gabriele/Desktop/ccav/CODE/lib/gaborfilter.h
+ /home/gabriele/Desktop/ccav/CODE/lib/harrisdetector.h
+ /home/gabriele/Desktop/ccav/CODE/lib/imgfeatures.h
+ /home/gabriele/Desktop/ccav/CODE/lib/inputconnector.h
+ /home/gabriele/Desktop/ccav/CODE/lib/module.h
+ /home/gabriele/Desktop/ccav/CODE/lib/outputconnector.h
+ /home/gabriele/Desktop/ccav/CODE/lib/resize.h
+ /home/gabriele/Desktop/ccav/CODE/lib/sift.h
+ /home/gabriele/Desktop/ccav/CODE/lib/utils.h
+ /usr/local/include/opencv/cv.h
+ /usr/local/include/opencv/cv.hpp
+ /usr/local/include/opencv/cvaux.h
+ /usr/local/include/opencv/cvaux.hpp
+ /usr/local/include/opencv/cvcompat.h
+ /usr/local/include/opencv/cvtypes.h
+ /usr/local/include/opencv/cvver.h
+ /usr/local/include/opencv/cvvidsurv.hpp
+ /usr/local/include/opencv/cxcore.h
+ /usr/local/include/opencv/cxcore.hpp
+ /usr/local/include/opencv/cxerror.h
+ /usr/local/include/opencv/cxflann.h
+ /usr/local/include/opencv/cxmat.hpp
+ /usr/local/include/opencv/cxmisc.h
+ /usr/local/include/opencv/cxoperations.hpp
+ /usr/local/include/opencv/cxtypes.h
+ /usr/local/include/opencv/highgui.h
+ /usr/local/include/opencv/highgui.hpp
 lib/CMakeFiles/libGaborMatch.dir/displaycvimage.cpp.o
  /home/gabriele/Desktop/ccav/CODE/lib/CSCData.h
  /home/gabriele/Desktop/ccav/CODE/lib/cvimage.h

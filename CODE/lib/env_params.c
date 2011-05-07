@@ -61,12 +61,12 @@ void env_params_set_defaults(struct env_params* envp)
         envp->cs_del_max = 4;
         envp->output_map_level = 4;
       //  printf("REV: SETTING IN HERE\n");
-        envp->chan_i_weight = 0;//0; //REV: modulate channel weights here.
-        envp->chan_c_weight = 50;
-        envp->chan_o_weight = 0;//0;
+        envp->chan_i_weight = 250;//0; //REV: modulate channel weights here.
+        envp->chan_c_weight = 250;
+        envp->chan_o_weight = 250;//0;
 #ifdef ENV_WITH_DYNAMIC_CHANNELS
-        envp->chan_f_weight = 250;//0;
-        envp->chan_m_weight = 250;//0;
+        envp->chan_f_weight = 0;//0;
+        envp->chan_m_weight = 0;//0;
 #endif
 
         envp->red_bias = 1.0;

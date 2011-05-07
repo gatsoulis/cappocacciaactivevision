@@ -73,6 +73,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/libGaborMatch.dir/env_stdio_interface.c.o"
   "CMakeFiles/libGaborMatch.dir/env_visual_cortex.c.o"
   "CMakeFiles/libGaborMatch.dir/torichard.cpp.o"
+  "CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o"
   "liblibGaborMatch.pdb"
   "liblibGaborMatch.a"
 )

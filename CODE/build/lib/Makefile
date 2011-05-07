@@ -832,6 +832,30 @@ detectobject.cpp.s:
 	cd /home/gabriele/Desktop/ccav/CODE/build && $(MAKE) -f lib/CMakeFiles/libGaborMatch.dir/build.make lib/CMakeFiles/libGaborMatch.dir/detectobject.cpp.s
 .PHONY : detectobject.cpp.s
 
+detectobject_disp.o: detectobject_disp.cpp.o
+.PHONY : detectobject_disp.o
+
+# target to build an object file
+detectobject_disp.cpp.o:
+	cd /home/gabriele/Desktop/ccav/CODE/build && $(MAKE) -f lib/CMakeFiles/libGaborMatch.dir/build.make lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o
+.PHONY : detectobject_disp.cpp.o
+
+detectobject_disp.i: detectobject_disp.cpp.i
+.PHONY : detectobject_disp.i
+
+# target to preprocess a source file
+detectobject_disp.cpp.i:
+	cd /home/gabriele/Desktop/ccav/CODE/build && $(MAKE) -f lib/CMakeFiles/libGaborMatch.dir/build.make lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.i
+.PHONY : detectobject_disp.cpp.i
+
+detectobject_disp.s: detectobject_disp.cpp.s
+.PHONY : detectobject_disp.s
+
+# target to generate assembly for a file
+detectobject_disp.cpp.s:
+	cd /home/gabriele/Desktop/ccav/CODE/build && $(MAKE) -f lib/CMakeFiles/libGaborMatch.dir/build.make lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.s
+.PHONY : detectobject_disp.cpp.s
+
 displaycvimage.o: displaycvimage.cpp.o
 .PHONY : displaycvimage.o
 
@@ -1987,6 +2011,9 @@ help:
 	@echo "... detectobject.o"
 	@echo "... detectobject.i"
 	@echo "... detectobject.s"
+	@echo "... detectobject_disp.o"
+	@echo "... detectobject_disp.i"
+	@echo "... detectobject_disp.s"
 	@echo "... displaycvimage.o"
 	@echo "... displaycvimage.i"
 	@echo "... displaycvimage.s"

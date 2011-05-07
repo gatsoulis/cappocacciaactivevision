@@ -30,6 +30,7 @@ src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o
  ../lib/cuetemplate.h
  ../lib/cvimage.h
  ../lib/detectobject.h
+ ../lib/detectobject_disp.h
  ../lib/displaycvimage.h
  ../lib/dogdetector.h
  ../lib/drawcross.h

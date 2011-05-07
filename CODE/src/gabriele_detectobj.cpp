@@ -22,6 +22,7 @@
 #include "loadcvimage.h"
 #include "camera.h"
 #include "detectobject.h"
+#include "detectobject_disp.h"
 #include "cuetemplate.h"
 #include "cueprediction.h"
 #include "cuemotion.h"
@@ -161,16 +162,30 @@ int main(int argc, char* argv[])
 	DrawCross drawLeft("DrawLeft");
 	DrawCross drawRight("DrawRight");
 
+	DrawCross drawLeftdisp("DrawLeftDisp");
+	DrawCross drawRightdisp("DrawRightDisp");
+
 	DisplayCVImage dispLeft("Left", false);
 	DisplayCVImage dispRight("Right", false);
+
+	DisplayCVImage dispLeftdisp("LeftDisp", false);
+	DisplayCVImage dispRightdisp("RightDisp", false);
 
 	DetectObject detect("DetectObject");
 	detect.debug = true;
 
+	DetectObjectDisp detectdisp("DetectObjectDisp");
+	detectdisp.debug = true;
+
 	Box DrawBox("DrawBox");
+
+	Box DrawBoxdisp("DrawBoxDisp");
 
 	ToRichard ToRichardL("RichardLeft");
 	ToRichard ToRichardR("RichardRight");
+
+	ToRichard ToRichardLdisp("RichardLeftDisp");
+	ToRichard ToRichardRdisp("RichardRightDisp");
 
 	//////////////////////////////////
 	//				//
@@ -182,23 +197,41 @@ int main(int argc, char* argv[])
 	cam.cvLeftImage2Out.connectTo(&(drawLeft.cvImageIn), false);
 	cam.cvRightImage2Out.connectTo(&(drawRight.cvImageIn), false);
 
+	cam.cvLeftImage2Out.connectTo(&(drawLeftdisp.cvImageIn), false);
+	cam.cvRightImage2Out.connectTo(&(drawRightdisp.cvImageIn), false);
+
 	cam.cvLeftGrayImage2Out.connectTo(&(detect.cvLeftGrayImageIn), false);
 	cam.cvRightGrayImage2Out.connectTo(&(detect.cvRightGrayImageIn), false);
+
+	cam.cvLeftGrayImage2Out.connectTo(&(detectdisp.cvLeftGrayImageIn), false);
+	cam.cvRightGrayImage2Out.connectTo(&(detectdisp.cvRightGrayImageIn), false);
 
 	detect.regionsLeftOut.connectTo(&(drawLeft.regionsIn), false);
 	detect.regionsRightOut.connectTo(&(drawRight.regionsIn), false);
 
+	detectdisp.regionsLeftOut.connectTo(&(drawLeftdisp.regionsIn), false);
+	detectdisp.regionsRightOut.connectTo(&(drawRightdisp.regionsIn), false);
+
 	drawLeft.cvImageOut.connectTo(&(dispLeft.cvImageIn), false);
 	drawRight.cvImageOut.connectTo(&(dispRight.cvImageIn), false);
 
+	drawLeftdisp.cvImageOut.connectTo(&(dispLeftdisp.cvImageIn), false);
+	drawRightdisp.cvImageOut.connectTo(&(dispRightdisp.cvImageIn), false);
+
 	detect.regionsLeftOut.connectTo(&(ToRichardL.regionsIn), false);
 	detect.regionsRightOut.connectTo(&(ToRichardR.regionsIn), false);
+
+	detectdisp.regionsLeftOut.connectTo(&(ToRichardLdisp.regionsIn), false);
+	detectdisp.regionsRightOut.connectTo(&(ToRichardRdisp.regionsIn), false);
 
 	ToRichardL.arrayOut.connectTo(&(sal.arrayInL),false);
 	ToRichardR.arrayOut.connectTo(&(sal.arrayInR),false);
 
 	ToRichardL.sizearrayOut.connectTo(&(sal.sizearrayInL),false);
 	ToRichardL.sizearrayOut.connectTo(&(sal.sizearrayInR),false);
+
+	ToRichardLdisp.sizearrayOut.connectTo(&(sal.sizearraydispInL),false);
+	ToRichardLdisp.sizearrayOut.connectTo(&(sal.sizearraydispInR),false);
 
 
 	//////////////////////////////////
@@ -212,9 +245,14 @@ int main(int argc, char* argv[])
 	cam.cvLeftImage2Out.connectTo(&(DrawBox.cvImageInLeft), false);
 	cam.cvRightImage2Out.connectTo(&(DrawBox.cvImageInRight), false);
 
+	cam.cvLeftImage2Out.connectTo(&(DrawBoxdisp.cvImageInLeft), false);
+	cam.cvRightImage2Out.connectTo(&(DrawBoxdisp.cvImageInRight), false);
+
 	detect.regionsLeftOut.connectTo(&(DrawBox.regionsInLeft), false);
 	detect.regionsRightOut.connectTo(&(DrawBox.regionsInRight), false);
 
+	detectdisp.regionsLeftOut.connectTo(&(DrawBoxdisp.regionsInLeft), false);
+	detectdisp.regionsRightOut.connectTo(&(DrawBoxdisp.regionsInRight), false);
 
 	//////////////////////////////////
 	//				//
@@ -236,7 +274,18 @@ int main(int argc, char* argv[])
 	drawLeft.pointIn.in(&pos);
 	drawRight.pointIn.in(&pos);
 
+	drawLeftdisp.pointIn.in(&pos);
+	drawRightdisp.pointIn.in(&pos);
+
 	DrawBox.memoryall();
+
+	DrawBoxdisp.memoryall();
+
+
+	std::cout << "\nOBJECT NUMBER "<<objcount<<"\nPress any key to go to the next step: \n";
+	std::cin >> go;
+	std::cout << "\nOk...let's go!";
+
 
 
 	while(select==true)//chiudere
@@ -254,14 +303,14 @@ int main(int argc, char* argv[])
 	//	SendInput SendFromCue("SendFromCue");	
 
 		CueTemplate cuetemplateL("CueTemplate Left");
-		CuePrediction cuepredictionL("CuePrediction Left");
-		CueMotion cuemotionL("CueMotion Left");
-		CueColorKernel cuecolorkernelL("CueColorKernel Left");
-		CueContrastKernel cuecontrastkernelL("CueContrastKernel Left");
+		//CuePrediction cuepredictionL("CuePrediction Left");
+		//CueMotion cuemotionL("CueMotion Left");
+		//CueColorKernel cuecolorkernelL("CueColorKernel Left");
+		//CueContrastKernel cuecontrastkernelL("CueContrastKernel Left");
 
 		CueTemplate cuetemplateR("CueTemplate Right");
-		CuePrediction cuepredictionR("CuePrediction Right");
-		CueMotion cuemotionR("CueMotion Right");
+		//CuePrediction cuepredictionR("CuePrediction Right");
+		//CueMotion cuemotionR("CueMotion Right");
 		CueColorKernel cuecolorkernelR("CueColorKernel Right");
 		CueContrastKernel cuecontrastkernelR("CueContrastKernel Right");
 
@@ -269,18 +318,18 @@ int main(int argc, char* argv[])
 		CueIntegrationR cueintegrationR("CueIntegrationR right");
 
 		cueintegrationL.setthres(0.2);
-		cueintegrationL.addCue(&cuetemplateL, 1.0);
-		cueintegrationL.addCue(&cuepredictionL, 0.1);
-		cueintegrationL.addCue(&cuemotionL, 0.1);
-		cueintegrationL.addCue(&cuecolorkernelL, 0.4);
-		cueintegrationL.addCue(&cuecontrastkernelL, 0.3);
+		cueintegrationL.addCue(&cuetemplateL, 1);
+		//cueintegrationL.addCue(&cuepredictionL, 0.2);
+		//cueintegrationL.addCue(&cuemotionL, 0.1);
+		//cueintegrationL.addCue(&cuecolorkernelL, 0.3);
+		//cueintegrationL.addCue(&cuecontrastkernelL, 0.3);//0.3
 
 		cueintegrationR.setthres(0.2);
-		cueintegrationR.addCue(&cuetemplateR, 1.0);
-		cueintegrationR.addCue(&cuepredictionR, 0.1);
-		cueintegrationR.addCue(&cuemotionR, 0.1);
-		cueintegrationR.addCue(&cuecolorkernelR, 0.4);
-		cueintegrationR.addCue(&cuecontrastkernelR, 0.3);
+		cueintegrationR.addCue(&cuetemplateR, 1);
+		//cueintegrationR.addCue(&cuepredictionR, 0.2);
+		//cueintegrationR.addCue(&cuemotionR, 0.1);
+		//cueintegrationR.addCue(&cuecolorkernelR, 0.3);
+		//cueintegrationR.addCue(&cuecontrastkernelR, 0.3);//0.3
 
 		Convert32FTo8U convertintegrationL("Convert32FTo8U CueIntegration Left");
 		Convert32FTo8U convertintegrationR("Convert32FTo8U CueIntegration Right");
@@ -335,12 +384,13 @@ int main(int argc, char* argv[])
 		//				//	DRAW A GREEN BOX AROUND THE SALIENT OBJECT/S
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-		objcount++;
-		std::cout << "\nOBJECT NUMBER "<<objcount<<"\nPress any key to go to the next step: \n";
-		std::cin >> go;
-		std::cout << "\nOk...let's go!";
-
+		if(debug)
+		{
+			objcount++;
+			std::cout << "\nOBJECT NUMBER "<<objcount<<"\nPress any key to go to the next step: \n";
+			std::cin >> go;
+			std::cout << "\nOk...let's go!";
+		}
 
 		//////////////////////////////////
 		//				//	LOOP FOR CALCULATING THE CENTER AND THE SIZE OF THE OBJECT, IT SENDS THE CENTER OF 
@@ -351,9 +401,9 @@ int main(int argc, char* argv[])
 		dispLeft.createwin();
 		dispRight.createwin();
 
-		DrawBox.moveWindow(350, 350);
-		dispLeft.moveWindow(50, 50);
-		dispRight.moveWindow(650, 50);
+		DrawBox.moveWindow(190,560);
+		dispLeft.moveWindow(0,0);
+		dispRight.moveWindow(380, 0);
 
 		trackL.imageSize.width = 320;
 		trackL.imageSize.height = 240;
@@ -363,7 +413,12 @@ int main(int argc, char* argv[])
 		trackptrL = NULL;
 		trackptrR = NULL;
 
-		sal.createwin();
+		sal.createwind();
+
+		CvPoint resultsL;
+		CvPoint resultsR;
+		
+		int wait = 0;
 		
 		//MOVE
 		/*
@@ -371,8 +426,6 @@ int main(int argc, char* argv[])
 		IplImage* OriginalL;
 		cvNamedWindow( "ORIGINAL_RIGHT", 1);
 		IplImage* OriginalR;
-		CvPoint resultsL;
-		CvPoint resultsR;
 		*/
 		//MOVE
 
@@ -406,10 +459,18 @@ int main(int argc, char* argv[])
 
 			sal.execute();
 			
-			/*
 			resultsL = sal.pointOL;
 			resultsR = sal.pointOR;
+			
+			double distlx = resultsL.x-160;
+			double distly = resultsL.y-120;			
+			double distrx = resultsR.x-160;
+			double distry = resultsR.y-120;			
 
+			//double rdistL = sqrt(distlx*distlx+distly*distly);
+			//double rdistR = sqrt(distrx*distrx+distry*distry);
+
+			/*
 			OriginalL=(IplImage*)imageLeft->getIplImage();
 			OriginalR=(IplImage*)imageRight->getIplImage();
 			cvCircle(OriginalL, resultsL, 20, cvScalar(0,255,0), 1);
@@ -423,7 +484,7 @@ int main(int argc, char* argv[])
 
 			key = cvWaitKey(delay);
 
-			if(sal.move==true)
+			if(sal.move==true && fabs(distlx)<110 && fabs(distly)<70 && fabs(distrx)<110 && fabs(distry)<70)
 			{
 				g_quit = true;
 
@@ -458,6 +519,8 @@ int main(int argc, char* argv[])
 				key = cvWaitKey(33);
 				if (key == 'e') 
 					g_quit = true;
+
+				wait++;
 			}
 
 
@@ -473,7 +536,7 @@ int main(int argc, char* argv[])
 		dispLeft.destroywin();
 		dispRight.destroywin();
 		DrawBox.destroywin();
-		sal.destroywin();
+		sal.destroywind();
 
 		sleep(1);
 
@@ -487,9 +550,9 @@ int main(int argc, char* argv[])
 		std::cout << "\n\nmain()::initializing";
 
 		dispRealL.createwin();
-		dispRealL.moveWindow(50, 50);
+		dispRealL.moveWindow(50, 140);
 		dispRealR.createwin();
-		dispRealR.moveWindow(450, 50);
+		dispRealR.moveWindow(380, 140);
 		dispSalL.createwin();	
 		dispSalL.moveWindow(50, 380);
 		dispSalR.createwin();
@@ -521,6 +584,7 @@ int main(int argc, char* argv[])
 		cueintegrationR.trackIn.setBuffer(NULL);
 		std::cout << "\nmain()::initializing complete";
 
+		centering = 0;
 
 		g_quit = false;
 		while(!g_quit) {
@@ -548,11 +612,22 @@ int main(int argc, char* argv[])
 
 			dispTempL.execute();
 			dispTempR.execute();
-	
+
 			dispSalL.execute();
 			dispSalR.execute();
-			
+
 			key = cvWaitKey(33);
+
+			if(fabs(cueintegrationL.distxL)<5.1 && fabs(cueintegrationR.distxR)<5.1 )
+			{
+
+				printf("\nSTATE_TRACK distxL = %d, distxR = %d\n", cueintegrationL.distxL, cueintegrationR.distxR);
+				centering ++;	
+				if(centering>20)			
+					break;
+
+			}
+		
 
 			if(key == 'q') 
 				g_quit = true;
@@ -570,22 +645,105 @@ int main(int argc, char* argv[])
 
 		sleep(1);
 
+		if(debug)
+		{
 /////////////////////////////////////
-		std::cout << "\nAgain? [Y/N] : ";
-		std::cin >> go;
-		if (go == "n" || go == "N"){
-
-			std::cout << "You chose not to look at another object..\nSee you man\n";
-			select = false;
-		}
-		else if (object == "y" || object == "Y"){
-
-			std::cout << "E che palle..\niCub è stressato...\n";
-		}
+			std::cout << "\nPress a key : ";
+			std::cin >> go;
 /////////////////////////////////////
+		}
 
 		cueintegrationL.clean();
 		cueintegrationR.clean();
+
+		sleep (1);
+
+		//////////////////////////////////
+		//				//	LOOP FOR CALCULATING THE CENTER AND THE SIZE OF THE OBJECT, IT SENDS THE CENTER OF 
+		//	Gabor Matching		//	THE OBJECT AFTER THAT AT LEAST 10 MATCHING FEATURES FOR 5 FRAMES ARE DETECTED, WHEN   			//				//	YOU ARE READY PRESS "Q" TO JUMP TO THE NEXT SECTION. (CENTER AND STDV ARE DISPLAYED)
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		DrawBoxdisp.createwin();
+		dispLeftdisp.createwin();
+		dispRightdisp.createwin();
+
+		DrawBoxdisp.moveWindow(190, 280);
+		dispLeftdisp.moveWindow(0, 0);
+		dispRightdisp.moveWindow(380, 0);
+
+		int count=0;
+		while(count<10)
+		{
+
+			imageLeft = imagePortLeft.read();	// read an image
+			imageRight = imagePortRight.read();	// read an image
+
+			cam.imageL = (IplImage*)imageLeft->getIplImage();
+			cam.imageR = (IplImage*)imageRight->getIplImage();
+	
+			if (!cam.imageL || !cam.imageR) break;
+
+			cam.execute();
+
+			detectdisp.execute();
+
+			drawLeftdisp.execute();
+			dispLeftdisp.execute();
+
+			drawRightdisp.execute();
+			dispRightdisp.execute();
+
+			DrawBoxdisp.execute();
+
+			key = cvWaitKey(33);
+			if (key == 'e') 
+				g_quit = true;
+			count++;
+
+
+		}
+
+		dispLeftdisp.destroywin();
+		dispRightdisp.destroywin();
+		DrawBoxdisp.destroywin();
+
+		sleep(1);
+
+/////////////////////////////////////
+		if(debug)
+		{
+			g_quit=false;
+			while (!g_quit)
+			{
+				std::cout << "\nAgain? [Y/N] : ";
+				std::cin >> go;
+				if (go == "n" || go == "N"){
+
+					std::cout << "You chose not to look at another object..\nSee you man\n";
+					select = false;
+					g_quit=true;
+				}
+				else if (go == "y" || go == "Y"){
+
+					std::cout << "E che palle..\niCub è stressato...\n";
+					g_quit=true;
+				}
+				else {
+					std::cout << "Incorrect input!\n";
+				}
+			}
+		}
+/////////////////////////////////////
+
+		ToRichardLdisp.execute();
+		ToRichardRdisp.execute();
+
+		sal.inib();
+
+		ToRichardLdisp.release();
+		ToRichardRdisp.release();
+
+
 	}
 
 	imagePortLeft.interrupt();

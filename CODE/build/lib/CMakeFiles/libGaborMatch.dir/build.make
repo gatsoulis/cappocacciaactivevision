@@ -1825,6 +1825,30 @@ lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o.provides: lib/CMakeFiles/libGab
 lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o.provides.build: lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o
 .PHONY : lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o.provides.build
 
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o: lib/CMakeFiles/libGaborMatch.dir/flags.make
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o: ../lib/detectobject_disp.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gabriele/Desktop/ccav/CODE/build/CMakeFiles $(CMAKE_PROGRESS_75)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o"
+	cd /home/gabriele/Desktop/ccav/CODE/build/lib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o -c /home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.cpp
+
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.i"
+	cd /home/gabriele/Desktop/ccav/CODE/build/lib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.cpp > CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.i
+
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.s"
+	cd /home/gabriele/Desktop/ccav/CODE/build/lib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gabriele/Desktop/ccav/CODE/lib/detectobject_disp.cpp -o CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.s
+
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.requires:
+.PHONY : lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.requires
+
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.provides: lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.requires
+	$(MAKE) -f lib/CMakeFiles/libGaborMatch.dir/build.make lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.provides.build
+.PHONY : lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.provides
+
+lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.provides.build: lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o
+.PHONY : lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.provides.build
+
 # Object files for target libGaborMatch
 libGaborMatch_OBJECTS = \
 "CMakeFiles/libGaborMatch.dir/CSCData.cpp.o" \
@@ -1900,7 +1924,8 @@ libGaborMatch_OBJECTS = \
 "CMakeFiles/libGaborMatch.dir/env_pyr.c.o" \
 "CMakeFiles/libGaborMatch.dir/env_stdio_interface.c.o" \
 "CMakeFiles/libGaborMatch.dir/env_visual_cortex.c.o" \
-"CMakeFiles/libGaborMatch.dir/torichard.cpp.o"
+"CMakeFiles/libGaborMatch.dir/torichard.cpp.o" \
+"CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o"
 
 # External object files for target libGaborMatch
 libGaborMatch_EXTERNAL_OBJECTS =
@@ -1979,6 +2004,7 @@ lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/env_pyr.c.o
 lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/env_stdio_interface.c.o
 lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/env_visual_cortex.c.o
 lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o
+lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o
 lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/build.make
 lib/liblibGaborMatch.a: lib/CMakeFiles/libGaborMatch.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library liblibGaborMatch.a"
@@ -2063,6 +2089,7 @@ lib/CMakeFiles/libGaborMatch.dir/requires: lib/CMakeFiles/libGaborMatch.dir/env_
 lib/CMakeFiles/libGaborMatch.dir/requires: lib/CMakeFiles/libGaborMatch.dir/env_stdio_interface.c.o.requires
 lib/CMakeFiles/libGaborMatch.dir/requires: lib/CMakeFiles/libGaborMatch.dir/env_visual_cortex.c.o.requires
 lib/CMakeFiles/libGaborMatch.dir/requires: lib/CMakeFiles/libGaborMatch.dir/torichard.cpp.o.requires
+lib/CMakeFiles/libGaborMatch.dir/requires: lib/CMakeFiles/libGaborMatch.dir/detectobject_disp.cpp.o.requires
 .PHONY : lib/CMakeFiles/libGaborMatch.dir/requires
 
 lib/CMakeFiles/libGaborMatch.dir/clean:

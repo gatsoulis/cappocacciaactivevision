@@ -22,8 +22,6 @@ saliency::saliency(std::string name) : Module(name) {
 	saliencystrL = "Saliency_Left";
 	saliencystrR = "Saliency_Right";
 
-	cvNamedWindow((saliencystrL).c_str(), CV_WINDOW_AUTOSIZE);
-	cvNamedWindow((saliencystrR).c_str(), CV_WINDOW_AUTOSIZE);
 	
 	move = false;
 
@@ -47,7 +45,9 @@ saliency::~saliency() {
 void saliency::createwind(){
 	
 	cvNamedWindow((saliencystrL).c_str(), CV_WINDOW_AUTOSIZE);
+	cvMoveWindow((saliencystrL).c_str(), 0, 280);
 	cvNamedWindow((saliencystrR).c_str(), CV_WINDOW_AUTOSIZE);
+	cvMoveWindow((saliencystrR).c_str(), 380, 280);
 }
 
 void saliency::destroywind(){
@@ -242,6 +242,19 @@ cvWaitKey(0);
 void saliency::release(){
 	free(keypointsL);
 	free(keypointsR);
+}
+
+void saliency::inib(){
+
+	int sizearraydispL = (*sizearraydispInL.getBuffer());
+	int sizearraydispR = (*sizearraydispInR.getBuffer());
+
+	double excite = (sizearraydispL + sizearraydispR)/2;
+
+	printf("\nexcite: %f\n",excite);
+	SC_reset();
+	RF_inject(excite);
+
 }
 
 

@@ -29,6 +29,7 @@ src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/cueprediction.
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/cuetemplate.h
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/cvimage.h
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/detectobject.h
+src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/detectobject_disp.h
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/displaycvimage.h
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/dogdetector.h
 src/CMakeFiles/GaborMatching.dir/gabriele_detectobj.cpp.o: ../lib/drawcross.h
