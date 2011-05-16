@@ -1,0 +1,1 @@
+/home/gabriele/Desktop/Contract_meeting/6_ColorTracking/findLocation/build/CMakeFiles/findLocation_blueobject.dir

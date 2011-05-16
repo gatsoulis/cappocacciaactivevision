@@ -1,0 +1,304 @@
+/*
+ * DrawAtt.h
+ *
+ *  Created on: Mar 1, 2011
+ *      Author: gabriele
+ */
+
+#ifndef ATTENTION2_H_
+#define ATTENTION2_H_
+
+#include "cv.h"
+#include "highgui.h"
+#include "cvaux.h"
+
+#include "module.h"
+#include "inputconnector.h"
+#include "outputconnector.h"
+#include "cvimage.h"
+#include "csctype.h"
+
+#include <yarp/os/all.h>
+#include <yarp/sig/all.h>
+
+#include "camera.h"
+
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <math.h>
+
+
+#include "BRIEF.h"
+
+
+using namespace std;
+
+
+
+
+/************************************ GLOBAL CONSTANTES ***************************************/
+
+// Frame width and height of the capture
+static const int FRame_Width = 320;
+static const int FRame_Height = 240;
+
+// Maximum number of keypoint matches allowed by the program
+static const int MAXIMUM_NUMBER_OF_MATCHEs = 5000;
+
+// Minimum  scale ratio of  the program.  It indicates  that templates
+// having scales  [0.5, 1]  of the original  template will be  used to
+// generate new templates. Scales are determined in a logarithm base.
+static const float SMALLEST_SCALE_CHANGe = 0.5;
+
+// Number of different scales used to generate the templates.
+static const int NUMBER_OF_SCALE_STEPs = 3;
+
+// Number  of   different  rotation   angles  used  to   generate  the
+// templates. 18 indicates that  [0 20 ... 340] degree-rotated samples
+// will be stored in the 2-D array for each scale.
+static const int NUMBER_OF_ROTATION_STEPs = 40;//18;
+
+
+
+class Att2 :public Module{
+public:
+	Att2(std::string name="Attention");
+	~Att2();
+
+	void init(void);
+
+	void execute();
+
+	void run();
+
+	void fpsCalculation(void);
+
+	void takeNewTemplateImage(void);
+
+	bool saveNewTemplate(void);
+
+	void saveCornerCoors(void);
+
+	void learnTemplate(void);
+
+	void drawQuadrangle(IplImage* frame,
+			    const int u0, const int v0,
+			    const int u1, const int v1,
+			    const int u2, const int v2,
+			    const int u3, const int v3,
+			    const CvScalar color, const int thickness);
+
+	void markDetectedObject(IplImage* frame, const double * detectedCorners);
+
+	void drawAPlus(IplImage* img, const int x, const int y);
+
+	void showKeypoints(IplImage* img, const vector<cv::KeyPoint>& kpts);
+
+	void showMatches(const int matchCount);
+
+	bool niceHomography(const CvMat * H);
+
+	void rotateImage(IplImage* dst, IplImage* src, const CvPoint2D32f& center, float angle);
+
+	void transformPointsIntoOriginalImageCoordinates(const int matchNo, const int scaleInd, const int rotInd);
+
+	int matchDescriptors(
+			     CvMat& match1, CvMat& match2,
+			     const vector< bitset<CVLAB::DESC_LEN> > descs1,
+			     const vector< bitset<CVLAB::DESC_LEN> > descs2,
+			     const vector<cv::KeyPoint>& kpts1,
+			     const vector<cv::KeyPoint>& kpts2);
+
+	int chooseFASTThreshold(const IplImage* img, const int lowerBound, const int upperBound);
+
+	void estimateCornerCoordinatesOfNewTemplate(int scaleInd, int rotInd, float scale, float angle);
+
+	int extractKeypoints(vector< cv::KeyPoint >& kpts, int kptDetectorThreshold, IplImage* img);
+
+	bool takeNewFrame(void);
+
+	void putImagesSideBySide(IplImage* result, const IplImage* img1, const IplImage* img2);
+
+	void doDetection(void);
+
+	void showOutput(IplImage* img);
+	void waitKeyAndHandleKeyboardInput(int timeout,bool *one);
+
+	void clean();
+
+	void connecting();
+
+	CVImage* convert2CVImage(IplImage* InputImage);
+	CVImage* converttemp2CVImage(IplImage* InputImage);
+
+
+	InputConnector<CVImage*> cvImageIn;
+	InputConnector<TrackData*> trackIn;
+
+	bool debug;
+
+	bool one;
+
+	bool pointsent;
+
+	bool	stop;
+
+	OutputConnector<CVImage*> cvTemplateOut;
+	OutputConnector<CVImage*> cvFullOut;
+
+	int distx;
+	int disty;
+
+
+
+private:
+
+	yarp::os::BufferedPort<yarp::sig::Vector> PointOutPort;
+	/*yarp::os::BufferedPort<yarp::sig::Vector> StopInPort;
+	yarp::sig::Vector *StopIn;*/
+
+
+	std::string bella;
+
+
+	CVImage* cvimg;
+
+
+	CvPoint pointL ;
+	CvPoint pointR ;
+
+
+	// Brief object which contains methods describing keypoints with BRIEF
+	// descriptors.
+	CVLAB::BRIEF brief;
+
+
+	// 2-D   array   storing  detected   keypoints   for  every   template
+	// taken. Templates  are generated  rotating and scaling  the original
+	// image   for   each  rotation   angle   and   scale  determined   by
+	// NUMBER_OF_SCALE STEPS and NUMBER_OF_ROTATION_STEPS.
+	vector<cv::KeyPoint> templateKpts[NUMBER_OF_SCALE_STEPs][NUMBER_OF_ROTATION_STEPs];
+
+
+	// 2-D array  storing BRIEF descriptors  of corresponding templateKpts
+	// elements
+	vector< bitset<CVLAB::DESC_LEN> > templateDescs[NUMBER_OF_SCALE_STEPs][NUMBER_OF_ROTATION_STEPs];
+
+	// 2-D array storing  the coordinates of the corners  of the generated
+	// templates in original image coordinate system.
+	CvMat templateObjectCorners[NUMBER_OF_SCALE_STEPs][NUMBER_OF_ROTATION_STEPs];
+
+	// Data part of the templateObjectCorners
+	double* templateObjectCornersData[NUMBER_OF_SCALE_STEPs][NUMBER_OF_ROTATION_STEPs];
+
+	// The coordinates  of the keypoints  matching each other in  terms of
+	// Hamming  Distance between  BRIEF descriptors  of  them.  match1Data
+	// represents the  keypoint coordinates  of the matching  template and
+	// match2Data  represents  the  matching  keypoints  detected  in  the
+	// current frame. Elements with even indices contain x coordinates and
+	// those  with odd  indices  contain y  coordinates  of the  keypoints
+	// detected:
+	double match1Data[2 * MAXIMUM_NUMBER_OF_MATCHEs];
+	double match2Data[2 * MAXIMUM_NUMBER_OF_MATCHEs];
+
+
+	// Holds if any template has taken before or not
+	bool hasAnyTemplateChosenBefore;
+
+
+	// Indicates  either all the  BRIEF descriptors  stored or  only BRIEF
+	// descriptors  of the  original template  will be  used  for template
+	// matching.
+	bool doDBSearch;
+
+
+	// Template image captured in RGB.
+	IplImage* templateImageRGBFull;
+
+
+	// The part of the  templateImageRGBFull which is inside the rectangle
+	// drawn by the user. Both in RGB and Grayscale
+	IplImage* templateImageRGB;
+	IplImage* templateImageGray;
+
+
+	// Last frame captured by the camera in RGB and Grayscale
+	IplImage* newFrameRGB;
+	IplImage* newFrameGray;
+
+
+	// Copy of the newFrameRGB for further processing.
+	IplImage* outputImage;
+	IplImage* templateIm;
+
+
+	// Last frame  taken and the original  template image are  put side by
+	// side in order to show the result.
+	IplImage* sideBySideImage;
+
+
+	// Object used for capturing image frames
+	//CvCapture* capture;
+
+
+	// Threshold value given to FAST detector:
+	int fastThreshold;
+
+	// Coordinate of  the top-left  corner of the  rectangle drawn  by the
+	// user on the new template image:
+	int templateROIX;
+	int templateROIY;
+
+
+	// Font which is used to write on the image
+	CvFont font;
+
+
+	// Number of the frames processed per second in the application
+	int fps;
+
+
+	// Time elapsed:
+	double keypointExtractTime; // by FAST detector
+	double bitDescTime; // to describe all keypoints with BRIEF descriptor
+	double matchTime; // to find the matches between 2 BRIEF descriptor vector
+	double hmgEstTime; // to estimate the Homography matrix between 2 images
+	double totalMatchTime; // to match the BRIEF descriptors of the incoming frame with all
+	// the BRIEF descriptors stored
+
+
+	// (# of Matching Keypoints / #  of the Keypoints) * 100, for the best fit:
+	int matchPercentage;
+
+
+
+	// Coordinates of the keypoints of the template which fits best to the
+	// frame captured by the camera.   These are the coordinates which are
+	// transformed back to the original template image coordinates:
+	double pointsOnOriginalImage[MAXIMUM_NUMBER_OF_MATCHEs];
+
+
+	CVImage* mp_cvimgL;
+	CVImage* mp_tempcvimgL;
+	CVImage* cv_templateRGB;
+	CVImage* cv_fullRGB;
+	CvPoint point;
+	CvPoint reliability;
+	TrackData* track;
+
+
+enum APPLICATION_MODE
+  {
+    DO_NOTHING, // Application only captures a frame and shows it
+    DETECTION, // Application detects the planar object whose features are stored
+    TAKING_NEW_TEMPLATE, // Application captures a new template
+    END // Application quits
+  } appMode2;
+
+	bool acquisitiontemp;
+	int pointx;
+	int pointy;
+};
+
+#endif /* ATTENTION_H_ */

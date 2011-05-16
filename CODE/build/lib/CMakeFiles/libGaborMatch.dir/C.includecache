@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_alloc.h
+env_types.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_types.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_config.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_image.h
+env_alloc.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_alloc.h
+env_types.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_types.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_log.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_params.c
+env_params.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_params.h
+env_log.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_log.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_params.h
+env_config.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_config.h
+env_types.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_types.h
+env_image.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_image.h
+
+/home/gabriele/Desktop/ccav/CODE/lib/env_types.h
+env_config.h
+/home/gabriele/Desktop/ccav/CODE/lib/env_config.h
+

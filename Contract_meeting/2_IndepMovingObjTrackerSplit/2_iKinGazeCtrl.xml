@@ -1,0 +1,22 @@
+<application>
+
+<name>FIAS Independent Moving Object Tracker </name>
+
+<dependencies>
+	<port>/root</port>
+		
+</dependencies> 
+
+
+
+<module>
+	<name>iKinGazeCtrl</name>
+	<parameters>--context cameraCalibration/conf --config icubEyes.ini --eyeTiltMin -7.5 --eyeTiltMax 15.0 --ping_robot_tmo 40.0</parameters>
+	<node>pwrNode5</node>
+	<tag>gazeController</tag>
+</module>
+
+
+
+
+</application>

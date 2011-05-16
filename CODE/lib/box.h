@@ -1,0 +1,84 @@
+#ifndef Box_H
+#define Box_H
+
+#include "module.h"
+#include "inputconnector.h"
+#include "outputconnector.h"
+#include "cvimage.h"
+#include "CSCEllipticRegions.h"
+
+#include "cv.h"
+#include "highgui.h"
+#include "cvaux.h"
+
+#include <vector>
+#include <iostream>
+#include <cmath>
+
+/************************************ GLOBAL CONSTANTES ***************************************/
+
+// Frame width and height of the capture
+static const int FRAME_WIDTH = 320;
+static const int FRAME_HEIGHT = 240;
+
+	class Box : public Module{
+
+		public:
+			Box(std::string name="Box");  
+			~Box(); 
+
+			InputConnector<CVImage*> cvGrayImageIn;
+			InputConnector<CVImage*> cvImageInLeft;
+			InputConnector<CVImage*> cvImageInRight;
+			InputConnector<CSCEllipticRegions*> regionsInLeft;
+			InputConnector<CSCEllipticRegions*> regionsInRight;
+
+			void execute(); 
+
+			void memoryall();
+
+			void createwin();
+
+			int moveWindow(int x, int y);
+
+			bool takeNewFrame();
+	
+			void destroywin();
+
+			void putImagesSideBySide(IplImage* result, const IplImage* img1, const IplImage* img2);
+	
+			void doDetection();
+
+			void showKeypoints();
+
+			void drawAPlusandLine(const int xL, const int yL, const int xR, const int yR);
+	  
+			bool debug;
+
+
+		private:
+
+			// Last frame captured by the camera in RGB and Grayscale
+			IplImage* newFrameRGBLeft;
+			IplImage* newFrameRGBRight;
+			IplImage* newFrameGrayLeft;
+			IplImage* newFrameGrayRight;
+
+			// Copy of the newFrameRGB for further processing.
+			IplImage* outputImageLeft;
+			IplImage* outputImageRight;
+
+			// Last frame  taken and the original  template image are  put side by
+			// side in order to show the result.
+			IplImage* sideBySideImage;
+
+			CVImage* cvimgleft;
+			CVImage* cvimgright;
+
+			CSCEllipticRegions* regionLeft;
+			CSCEllipticRegions* regionRight;
+
+	};
+
+
+#endif

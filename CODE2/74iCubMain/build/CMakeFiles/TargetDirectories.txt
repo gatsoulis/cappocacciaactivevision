@@ -1,0 +1,2 @@
+/media/Dati/Testing/GaborMatching/74iCubMain/build/src/CMakeFiles/GaborMatching.dir
+/media/Dati/Testing/GaborMatching/74iCubMain/build/lib/CMakeFiles/libGaborMatch.dir
