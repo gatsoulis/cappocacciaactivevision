@@ -1,0 +1,146 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.6)  6 MAY 2011 09:52
+entering extended mode
+ %&-line parsing enabled.
+**im-clever2011.tex
+(./im-clever2011.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip43
+)
+(/usr/share/texmf-texlive/tex/latex/apacite/apacite.sty
+Package: apacite 2009/03/01 v4.05 APA citation
+\c@BibCnt=\count87
+\bibleftmargin=\skip44
+\bibindent=\skip45
+\bibparsep=\skip46
+\bibitemsep=\skip47
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(./im-clever2011.aux)
+\openout1 = `im-clever2011.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count89
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count90
+\nofMParguments=\count91
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen106
+\MPnumerator=\count93
+\everyMPtoPDFconversion=\toks16
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 17.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<looking_prototype_model.jpg, id=13, 1140.26pt x 590.205pt>
+File: looking_prototype_model.jpg Graphic file (type jpg)
+
+<use looking_prototype_model.jpg> [3 <./looking_prototype_model.jpg>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 167.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 167.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 167.
+ [4]
+[5] <looking_functional_loop.jpg, id=26, 1165.35374pt x 677.53125pt>
+File: looking_functional_loop.jpg Graphic file (type jpg)
+
+<use looking_functional_loop.jpg> [6 <./looking_functional_loop.jpg>]
+<icub_head.jpg, id=30, 2324.685pt x 2304.61pt>
+File: icub_head.jpg Graphic file (type jpg)
+ <use icub_head.jpg>
+<icub_setup.jpg, id=31, 2714.14pt x 2308.625pt>
+File: icub_setup.jpg Graphic file (type jpg)
+ <use icub_setup.jpg>
+<complex_vs_fixtime.png, id=32, 1272.755pt x 343.2825pt>
+File: complex_vs_fixtime.png Graphic file (type png)
+
+<use complex_vs_fixtime.png> [7 <./icub_head.jpg>] [8 <./icub_setup.jpg> <./com
+plex_vs_fixtime.png (PNG copy)>] (./im-clever2011.bbl) [9] (./im-clever2011.aux
+) ) 
+Here is how much of TeX's memory you used:
+ 1354 strings out of 495061
+ 17533 string characters out of 1182622
+ 74598 words of memory out of 3000000
+ 4561 multiletter control sequences out of 15000+50000
+ 9456 words of font info for 33 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 25i,6n,21p,522b,209s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on im-clever2011.pdf (9 pages, 2793141 bytes).
+PDF statistics:
+ 73 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+

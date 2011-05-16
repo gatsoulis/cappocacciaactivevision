@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: im-clever2011.aux
+The style file: apacite.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 140733193391032.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 140733193394032.
+Database file #1: bib.bib
+apacite.bst [2009/03/01 v4.05 APA bibliography style]
+Warning--No address in hainline_1998
+You've used 9 entries,
+            6361 wiz_defined-function locations,
+            1242 strings with 11266 characters,
+and the built_in function-call counts, 16954 in all, are:
+= -- 2070
+> -- 134
+< -- 862
++ -- 878
+- -- 18
+* -- 1141
+:= -- 3311
+add.period$ -- 38
+call.type$ -- 9
+change.case$ -- 46
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 394
+empty$ -- 650
+format.name$ -- 203
+if$ -- 3132
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 0
+newline$ -- 212
+num.names$ -- 74
+pop$ -- 209
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 1123
+stack$ -- 0
+substring$ -- 972
+swap$ -- 262
+text.length$ -- 25
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 784
+warning$ -- 1
+while$ -- 73
+width$ -- 0
+write$ -- 258
+(There was 1 warning)
