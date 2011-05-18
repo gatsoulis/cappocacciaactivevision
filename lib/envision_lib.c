@@ -9,16 +9,16 @@
 #define PRINT_SC 0
 
 //instantaneous map Gaussian LPF SD (in pixels, 1 pixel == 1 unit distance). using salience "mass"
-#define GAUSS_LPF_SD 1.5 //0.00001 for original one (i.e. no gaussian combination)
+#define GAUSS_LPF_SD 0.5 //0.00001 for original one (i.e. no gaussian combination)
 //instantaneous map Gaussian LPF cutoff value (in weight)
-#define GAUSS_LPF_CUTOFF 0.05
+#define GAUSS_LPF_CUTOFF 0.1
 //define to turn on/off edge correction for gaussian (basically normalize by integral of weights)
 #define EDGECORR
 
-#define SC_thresh 0.2 //arbitrary threshold
+#define SC_thresh 0.3 //arbitrary threshold
 #define SC_W_mult 10.0
 
-#define MEMB_T_CONST 0.3 //time constant for membrane potential of SC neurons
+#define MEMB_T_CONST 0.05 //time constant for membrane potential of SC neurons
 
 #define L_EYE 0
 #define R_EYE 1
@@ -93,7 +93,7 @@ float RF_baseline = 0.0; //baseline of activity in RF at all times... (+ gaussia
 //REV: note this isn't modeling SNr effect, but rather DEVIATIONS in SNr effect. I.e. it's already doing top-down inhibition.
 //(alternatively, try roulette wheel from prob mass)
 float SNr_baseline = 1.0; //this is offset (zero?) or is it baseline of VALUE (i.e. for certain X, how much A do we get out?)
-float SNr_gauss_SD = 1.0; //this is for distribution TO DRAW FROM! Just need SD and mean (zero?)
+float SNr_gauss_SD = 0.1; //1.0; //this is for distribution TO DRAW FROM! Just need SD and mean (zero?)
 float SNr_amplitude = 1.0; //multiply things by? Prob of getting 'really far out x values' is less!
 
 //NOTE TO SELF: using learning RATE, not learning PROGRESS (?)
@@ -539,7 +539,7 @@ int SC_subset_winner(int* l_subset, int l_subset_l, int* r_subset, int r_subset_
 } //end subset
 
 //==================== SC_WINNERS_UPDATE ============//
-void SC_winners_update()
+/*void SC_winners_update()
 {
   SC_l_maxval = -1;
   SC_r_maxval = -1;
@@ -565,6 +565,48 @@ void SC_winners_update()
 	    }
 	}
     }
+    }*/
+
+//==================== SC_WINNERS_UPDATE (REV 18 May 2011 -- with return!) ============//
+int* SC_winners_update() 
+{
+  SC_l_maxval = -1;
+  SC_r_maxval = -1;
+  SC_l_maxx = -1; SC_l_maxy = -1;
+  SC_r_maxx = -1; SC_r_maxy = -1;
+  
+  for(int x=0; x<salmap_w; x++)
+    {
+      for(int y=0; y<salmap_h; y++)
+	{
+	  //LEFT SIDE
+	  if(SC_l[x][y] > SC_l_maxval)
+	    {
+	      SC_l_maxval = SC_l[x][y];
+	      SC_l_maxx= x;
+	      SC_l_maxy= y;
+	      
+	      
+	    }
+	  //RIGHT SIDE
+	  if(SC_r[x][y] > SC_r_maxval)
+	    {
+	      SC_r_maxval = SC_r[x][y];
+	      SC_r_maxx= x;
+	      SC_r_maxy= y;
+	      
+	    }
+	}
+    }
+  int* rval = malloc(sizeof(int) * 4); //xy winner of x and y -- note it isn't doing thresholding yet!!!! note some of these might be -1...?
+  
+  rval[0] = SC_l_maxx;
+  rval[1] = SC_l_maxy;
+  rval[2] = SC_r_maxx;
+  rval[3] = SC_r_maxy;
+  //printf("IN ENVLIB: Lwin: %i %i  Rwin: %i %i\n", rval[0], rval[1], rval[2], rval[3]);
+  
+  return rval;
 }
 
 //================== RF INJECT ========================//

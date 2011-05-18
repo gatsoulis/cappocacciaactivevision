@@ -19,10 +19,18 @@ extern "C" {
 }
 #endif
 
-#ifdef  __cplusplus
+/*#ifdef  __cplusplus
 extern "C" {
 #endif
   void SC_winners_update();
+#ifdef  __cplusplus
+}
+#endif*/
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
+  int* SC_winners_update();
 #ifdef  __cplusplus
 }
 #endif
