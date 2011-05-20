@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.5.11)  19 MAY 2011 20:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.5.11)  20 MAY 2011 11:21
 entering extended mode
  %&-line parsing enabled.
-**bare_conf.tex
+**bare_conf
 (./bare_conf.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -336,7 +336,7 @@ File: looking_functional_loop.jpg Graphic file (type jpg)
 <icub_head.jpg, id=21, 2324.685pt x 2304.61pt>
 File: icub_head.jpg Graphic file (type jpg)
  <use icub_head.jpg>
-<saliency_harris.jpg, id=22, 710.655pt x 526.96875pt>
+<saliency_harris.jpg, id=22, 492.33937pt x 390.70969pt>
 File: saliency_harris.jpg Graphic file (type jpg)
 
 <use saliency_harris.jpg> [4 <./looking_functional_loop.jpg> <./icub_head.jpg>]
@@ -353,16 +353,16 @@ File: complex_vs_fixtime.png Graphic file (type png)
 ub_setup.jpg>] <lights.jpg, id=32, 1175.39125pt x 892.33376pt>
 File: lights.jpg Graphic file (type jpg)
 
-<use lights.jpg> [6 <./complex_vs_fixtime.png (PNG copy)> <./lights.jpg>]
-<lights2.jpg, id=36, 1175.39125pt x 892.33376pt>
+<use lights.jpg> <lights2.jpg, id=33, 1175.39125pt x 892.33376pt>
 File: lights2.jpg Graphic file (type jpg)
- <use lights2.jpg>
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 988.
 
+<use lights2.jpg>
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 963.
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+ (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) (./bare_conf.bbl)
+)
+[6 <./complex_vs_fixtime.png (PNG copy)> <./lights.jpg>] (./bare_conf.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -378,11 +378,11 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  2896 strings out of 495061
  40781 string characters out of 1182621
- 98765 words of memory out of 3000000
+ 98764 words of memory out of 3000000
  6017 multiletter control sequences out of 15000+50000
  55334 words of font info for 118 fonts, out of 3000000 for 9000
  31 hyphenation exceptions out of 8191
- 27i,8n,24p,518b,294s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,24p,514b,294s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvip
 s/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
@@ -392,7 +392,7 @@ onts/type1/urw/symbol/usyr.pfb></usr/share/texmf-texlive/fonts/type1/urw/symbol
 e/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive/fon
 ts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on bare_conf.pdf (7 pages, 3441642 bytes).
+Output written on bare_conf.pdf (7 pages, 3270982 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

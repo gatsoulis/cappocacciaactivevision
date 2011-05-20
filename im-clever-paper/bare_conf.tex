@@ -771,7 +771,7 @@ their agreement with all other cues. This makes the system adaptive to
 a given situation as the cues that are not suitable quickly lose
 prominence. In our work we use motion, kalman prediction, template
 matching, color kernel tracking and contrast based kernel as different
-cues. 
+cues.
 
 Tracking executed in the above manner provides a very robust
 coordinated movement of the head and eyes, which is usually a
@@ -874,31 +874,6 @@ the eyes/head move), it's impossible to test the looking dynamics
 without running on the robot or in a simulation environment that moves
 the visual field.
 
-\section{Conclusion}
-By design, the mechanism to determine looking time towards a foveal
-stimulus as a function of its complexity was successful, but this is
-not the interesting result since these dynamics are predicted and
-necessitated by the simple mechanism.
-
-The interesting result will be the inter-object looking behavior in a
-real environment. Will, and how often will, the system make saccades
-to ``noise'' areas but then quickly look away because of lack of
-complexity?
-
-In the future, the model will be implemented as the more complex
-anatomical circuit, the saliency map replaced with proper neural code
-from the eye-up, and the actual neurons ``fudged'' in most of the
-areas and their dynamics actually simulated. The benefit of building
-the more realistic model will be to actually look at the different
-dynamics of the model in reaction to the changing environment, since
-that kind of interaction can not be easily predicted or simulated.
-
-In addition, in the future we intend to explore the interaction of a
-learning system (i.e. a habituation mechanism) and how it interacts
-with the simple ocular-motor control system implemented in this
-report.
-
-
 \section{An experimental board for learning sequences of actions based on visual rewards}
 \label{sec:serial_experimental_board}
 
@@ -997,6 +972,29 @@ and \texttt{demo\_sections.py} demonstrate the use of the provided
 interface. Lastly, the interface can be easily extended for the rest
 of the modules on the board if they follow a similar interface.
 
+\section{Conclusion}
+By design, the mechanism to determine looking time towards a foveal
+stimulus as a function of its complexity was successful, but this is
+not the interesting result since these dynamics are predicted and
+necessitated by the simple mechanism.
+
+The interesting result will be the inter-object looking behavior in a
+real environment. Will, and how often will, the system make saccades
+to ``noise'' areas but then quickly look away because of lack of
+complexity?
+
+In the future, the model will be implemented as the more complex
+anatomical circuit, the saliency map replaced with proper neural code
+from the eye-up, and the actual neurons ``fudged'' in most of the
+areas and their dynamics actually simulated. The benefit of building
+the more realistic model will be to actually look at the different
+dynamics of the model in reaction to the changing environment, since
+that kind of interaction can not be easily predicted or simulated.
+
+In addition, in the future we intend to explore the interaction of a
+learning system (i.e. a habituation mechanism) and how it interacts
+with the simple ocular-motor control system implemented in this
+report.
 
 
 %\bibliographystyle{apacite} \bibliography{bib}
