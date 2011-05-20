@@ -1,0 +1,2905 @@
+@Article{template,
+title={},
+author={},
+journal={},
+volume={},
+year={},
+pages={}
+}
+
+@Article{hikosaka_wurtz_1983_SNr1,
+title={Visual and Oculomotor Functions of Monkey Substantia Nigra Pars
+                  Reticulata. I. Relation of Visual and Auditory
+                  Responses to Saccades},
+author={Okihide Hikosaka and Robert H. Wurtz},
+journal={Journal of Neurophysiology},
+volume={49},
+number={5},
+year={1983},
+pages={1230-1253}
+}
+
+@article{Morelli2004,
+    abstract = {{We study a model of associative memory based on a neural network with small-world structure. The efficacy of the network to retrieve one of the stored patterns exhibits a phase transition at a finite value of the disorder. The more ordered networks are unable to recover the patterns, and are always attracted to non-symmetric mixture states. Besides, for a range of the number of stored patterns, the efficacy has a maximum at an intermediate value of the disorder. We also give a statistical characterization of the spurious attractors for all values of the disorder of the network.}},
+    author = {Morelli, L. G. and Abramson, G. and Kuperman, M. N.},
+    day = {1},
+    doi = {10.1140/epjb/e2004-00144-7},
+    issn = {1434-6028},
+    journal = {European Physical Journal B},
+    keywords = {associativememory, smallworld},
+    month = apr,
+    number = {3},
+    pages = {495--500},
+    priority = {2},
+    publisher = {Springer Berlin / Heidelberg},
+    title = {{Associative memory on a small-world neural network}},
+    url = {http://dx.doi.org/10.1140/epjb/e2004-00144-7},
+    volume = {38},
+    year = {2004}
+}
+
+@article{Vertes_Duke_2010,
+    abstract = {{Despite significant progress in our understanding of the brain at both microscopic and macroscopic scales, the mechanisms by which low-level neuronal behavior gives rise to high-level mental processes such as memory still remain unknown. In this paper, we assess the plausibility and quantify the performance of polychronization, a newly proposed mechanism of neuronal encoding, which has been suggested to underlie a wide range of cognitive phenomena. We then investigate the effect of network topology on the reliability with which input stimuli can be distinguished based on their encoding in the form of so-called polychronous groups or spatiotemporal patterns of spikes. We find that small-world networks perform an order of magnitude better than random ones, enabling reliable discrimination between inputs even when prompted by increasingly incomplete recall cues. Furthermore, we show that small-world architectures operate at significantly reduced energetic costs and that their memory capacity scales favorably with network size. Finally, we find that small-world topologies introduce biologically realistic constraints on the optimal input stimuli, favoring especially the topographic inputs known to exist in many cortical areas. Our results suggest that mammalian cortical networks, by virtue of being both small-world and topographically organized, seem particularly well-suited to information processing through polychronization. This article addresses the fundamental question of encoding in neuroscience. In particular, evidence is presented in support of an emerging model of neuronal encoding in the neocortex based on spatiotemporal patterns of spikes.}},
+    author = {Vertes, Petra E. and Duke, Thomas},
+    doi = {10.2976/1.3386761},
+    issn = {1955-205X},
+    journal = {HFSP journal},
+    keywords = {neuroscience, simulation},
+    month = jun,
+    number = {3-4},
+    pages = {153--163},
+    pmid = {21119767},
+    posted-at = {2011-02-17 22:07:15},
+    priority = {2},
+    title = {{Effect of network topology on neuronal encoding based on spatiotemporal patterns of spikes.}},
+    url = {http://dx.doi.org/10.2976/1.3386761},
+    volume = {4},
+    year = {2010}
+}
+
+
+@article{Simard_Nadeau_Kroger_2004,
+  title={Fastest learning in small world neural networks},
+  volume={336},
+  url={http://arxiv.org/abs/physics/0402076},
+ abstract={We investigate supervised learning in neural networks. We consider a multi-layered feed-forward network with back propagation. We find that the network of small-world connectivity reduces the learning error and learning time when compared to the networks of regular or random connectivity. Our study has potential applications in the domain of data-mining, image processing, speech recognition, and pattern recognition.}, number={1},
+  journal={Physics Letters A},
+  publisher={Elsevier},
+  author={Simard, D and Nadeau, L and Kr\"{o}ger, H},
+  year={2004},
+  pages={14}
+ }
+
+@article{Fagiolo2007,
+    abstract = {{Many empirical networks display an inherent tendency to cluster, i.e., to form circles of connected nodes. This feature is typically measured by the clustering coefficient (CC). The CC, originally introduced for binary, undirected graphs, has been recently generalized to weighted, undirected networks. Here we extend the CC to the case of (binary and weighted) directed networks and we compute its expected value for random graphs. We distinguish between CCs that count all directed triangles in the graph (independently of the direction of their edges) and CCs that only consider particular types of directed triangles (e.g., cycles). The main concepts are illustrated by employing empirical data on world-trade flows.}},
+    author = {Fagiolo, Giorgio},
+    doi = {10.1103/PhysRevE.76.026107},
+    issn = {1550-2376},
+    journal = {Physical Review E},
+    keywords = {clustering-coefficient, directed-graph},
+    month = aug,
+    number = {2},
+    pages = {026107+},
+    publisher = {American Physical Society},
+    title = {{Clustering in complex directed networks}},
+    url = {http://arxiv.org/pdf/physics/0612169},
+    volume = {76},
+    year = {2007}
+}
+
+
+
+@BOOK{Braitenberg_Schuz_1991,
+   AUTHOR  = {V. Braitenberg and A. Schuz},
+   TITLE   = {Anatomy of the cortex: Statistics and geometry},
+   YEAR    = {1991},
+   PUBLISHER = {Springer-Verlag},
+   CITY = {Berlin}
+}
+
+
+@ARTICLE{Izhikevich_2006,
+   AUTHOR  = {Eugene M. Izhikevich},
+   TITLE   = {Polychronization: Computation with Spikes},
+   YEAR    = {2006},
+   JOURNAL = {Neural Computation},
+   VOLUME  = {18},
+   NUMBER = {2},
+   PAGES   = {245--282}
+}
+
+@article{Izhikevich_2003,
+    abstract = {{A model is presented that reproduces spiking and bursting behavior of known types of cortical neurons. The model combines the biologically plausibility of Hodgkin-Huxley-type dynamics and the computational efficiency of integrate-and-fire neurons. Using this model, one can simulate tens of thousands of spiking cortical neurons in real time (1 ms resolution) using a desktop PC.}},
+    author = {Izhikevich, E. M.},
+    booktitle = {Neural Networks, IEEE Transactions on},
+    doi = {10.1109/TNN.2003.820440},
+    issn = {1045-9227},
+    journal = {IEEE Transactions on Neural Networks},
+    keywords = {izhikevich, model, neuron, spiking\_neuron},
+    month = nov,
+    number = {6},
+    pages = {1569--1572},
+    title = {{Simple model of spiking neurons}},
+    url = {http://dx.doi.org/10.1109/TNN.2003.820440},
+    volume = {14},
+    year = {2003}
+}
+
+@article{Izhikevich_2004,
+    abstract = {{We discuss the biological plausibility and computational efficiency of some of the most useful models of spiking and bursting neurons. We compare their applicability to large-scale simulations of cortical neural networks.}},
+    address = {The Neurosciences Institute, San Diego, CA 92121, USA. Eugene.Izhikevich@nsi.edu},
+    author = {Izhikevich, Eugene M.},
+    doi = {10.1109/TNN.2004.832719},
+    issn = {1045-9227},
+    journal = {IEEE transactions on neural networks},
+    keywords = {neuronmodel},
+    month = sep,
+    number = {5},
+    pages = {1063--1070},
+    title = {{Which model to use for cortical spiking neurons?}},
+    url = {http://dx.doi.org/10.1109/TNN.2004.832719},
+    volume = {15},
+    year = {2004}
+}
+
+@ARTICLE{poly_reservoir,
+   AUTHOR  = {H\'{e}l\`{e}ne Paugam-Moisy and R\'{e}gis Martinez and Samy Bengio},
+   TITLE   = {Delay Learning and Polychronization for Reservoir Computing},
+   YEAR    = {2008},
+   JOURNAL = {Neurocomputing},
+   VOLUME  = {71},
+   PAGES   = {1143--1158}
+}
+
+@ARTICLE{perturbations,
+   AUTHOR  = {W. Maass and T. Natschl\"{a}ger and H. Markram},
+   TITLE   = {Real-time computing without stable states: A new framework for neural computation based on perturbations},
+   YEAR    = {2002},
+   JOURNAL = {Neural Computation},
+   VOLUME  = {14},
+   NUMBER  = {11},
+   PAGES   = {2531--2560}
+}
+
+@INCOLLECTION{lsm,
+   AUTHOR  = {W. Maass},
+   BOOKTITLE = {Computability in Context: Computation and Logic in the Real World},
+   EDITORS = {Cooper, B. and Sorbi, A.},
+   TITLE   = {Motivation, theory, and applications of liquid state machines},
+   YEAR   = {2009},
+   PUBLISHER = {Imperial College Press},
+   PAGES   = {(in press)}
+}
+
+@article{Mountcastle1997,
+    abstract = {{The modular organization of nervous systems is a widely documented principle of design for both vertebrate and invertebrate brains of which the columnar organization of the neocortex is an example. The classical cytoarchitectural areas of the neocortex are composed of smaller units, local neural circuits repeated iteratively within each area. Modules may vary in cell type and number, in internal and external connectivity, and in mode of neuronal processing between different large entities; within any single large entity they have a basic similarity of internal design and operation. Modules are most commonly grouped into entities by sets of dominating external connections. This unifying factor is most obvious for the heterotypical sensory and motor areas of the neocortex. Columnar defining factors in homotypical areas are generated, in part, within the cortex itself. The set of all modules composing such an entity may be fractionated into different modular subsets by different extrinsic connections. Linkages between them and subsets in other large entities form distributed systems. The neighborhood relations between connected subsets of modules in different entities result in nested distributed systems that serve distributed functions. A cortical area defined in classical cytoarchitectural terms may belong to more than one and sometimes to several distributed systems. Columns in cytoarchitectural areas located at some distance from one another, but with some common properties, may be linked by long-range, intracortical connections.}},
+    address = {Philip Bard Laboratories, Department of Neuroscience, Baltimore, MD 21218, USA.},
+    author = {Mountcastle, V. B.},
+    doi = {10.1093/brain/120.4.701},
+    issn = {0006-8950},
+    journal = {Brain},
+    keywords = {cortical-column},
+    month = apr,
+    pages = {701--722},
+    title = {{The columnar organization of the neocortex.}},
+    url = {http://dx.doi.org/10.1093/brain/120.4.701},
+    volume = {120 ( Pt 4)},
+    year = {1997}
+}
+
+@article{Watts_Strogatz_1998,
+    abstract = {{Networks of coupled dynamical systems have been used to model biological oscillators1, 2, 3, 4, Josephson junction arrays5,6, excitable media7, neural networks8, 9, 10, spatial games11, genetic control networks12 and many other self-organizing systems. Ordinarily, the connection topology is assumed to be either completely regular or completely random. But many biological, technological and social networks lie somewhere between these two extremes. Here we explore simple models of networks that can be tuned through this middle ground: regular networks 'rewired' to introduce increasing amounts of disorder. We find that these systems can be highly clustered, like regular lattices, yet have small characteristic path lengths, like random graphs. We call them 'small-world' networks, by analogy with the small-world phenomenon13,14 (popularly known as six degrees of separation15). The neural network of the worm Caenorhabditis elegans, the power grid of the western United States, and the collaboration graph of film actors are shown to be small-world networks. Models of dynamical systems with small-world coupling display enhanced signal-propagation speed, computational power, and synchronizability. In particular, infectious diseases spread more easily in small-world networks than in regular lattices.}},
+    address = {Department of Theoretical and Applied Mechanics, Cornell University, Ithaca, New York 14853, USA. djw24@columbia.edu},
+    author = {Watts, Duncan J. and Strogatz, Steven H.},
+    doi = {10.1038/30918},
+    issn = {0028-0836},
+    journal = {Nature},
+    keywords = {strogatz, watts},
+    number = {6684},
+    pages = {440--442},
+    publisher = {Nature Publishing Group},
+    title = {{Collective dynamics of 'small-world' networks}},
+    url = {http://dx.doi.org/10.1038/30918},
+    volume = {393},
+    year = {1998}
+}
+
+@article{Sporns_Tononi_Edelman_2000,
+    abstract = {{Nervous systems facing complex environments have to balance two seemingly opposing requirements. First, there is a need quickly and reliably to extract important features from sensory inputs. This is accomplished by functionally segregated (specialized) sets of neurons, e.g. those found in different cortical areas. Second, there is a need to generate coherent perceptual and cognitive states allowing an organism to respond to objects and events, which represent conjunctions of numerous individual features. This need is accomplished by functional integration of the activity of specialized neurons through their dynamic interactions. These interactions produce patterns of temporal correlations or functional connectivity involving distributed neuronal populations, both within and across cortical areas. Empirical and computational studies suggest that changes in functional connectivity may underlie specific perceptual and cognitive states and involve the integration of information across specialized areas of the brain. The interplay between functional segregation and integration can be quantitatively captured using concepts from statistical information theory, in particular by defining a measure of neural complexity. Complexity measures the extent to which a pattern of functional connectivity produced by units or areas within a neural system combines the dual requirements of functional segregation and integration. We find that specific neuroanatomical motifs are uniquely associated with high levels of complexity and that such motifs are embedded in the pattern of long-range cortico-cortical pathways linking segregated areas of the mammalian cerebral cortex. Our theoretical findings offer new insight into the intricate relationship between connectivity and complexity in the nervous system.}},
+    address = {The Neurosciences Institute, San Diego, CA 92121, USA. osporns@indiana.edu},
+    author = {Sporns, O. and Tononi, G. and Edelman, G. M.},
+    issn = {0893-6080},
+    journal = {Neural networks : the official journal of the International Neural Network Society},
+    keywords = {brain, dynamics, functional-connectivity, small-world-network},
+    number = {8-9},
+    pages = {909--922},
+    title = {{Connectivity and complexity: the relationship between neuroanatomy and brain dynamics.}},
+    url = {http://view.ncbi.nlm.nih.gov/pubmed/11156201},
+    volume = {13},
+    year = {2000}
+}
+
+@article{Sporns2011,
+    abstract = {{Modern anatomical tracing and imaging techniques are beginning to reveal the structural anatomy of neural circuits at small and large scales in unprecedented detail. When examined with analytic tools from graph theory and network science, neural connectivity exhibits highly non-random features, including high clustering and short path length, as well as modules and highly central hub nodes. These characteristic topological features of neural connections shape non-random dynamic interactions that occur during spontaneous activity or in response to external stimulation. Disturbances of connectivity and thus of neural dynamics are thought to underlie a number of disease states of the brain, and some evidence suggests that degraded functional performance of brain networks may be the outcome of a process of randomization affecting their nodes and edges. This article provides a survey of the non-random structure of neural connectivity, primarily at the large scale of regions and pathways in the mammalian cerebral cortex. In addition, we will discuss how non-random connections can give rise to differentiated and complex patterns of dynamics and information flow. Finally, we will explore the idea that at least some disorders of the nervous system are associated with increased randomness of neural connections.}},
+    author = {Sporns, Olaf},
+    doi = {10.3389/fncom.2011.00005},
+    issn = {1662-5188},
+    journal = {Frontiers in computational neuroscience},
+    keywords = {network, neural\_dynamics, neuroanatomy, neuroimaging},
+    title = {{The non-random brain: efficiency, economy, and complex dynamics.}},
+    url = {http://dx.doi.org/10.3389/fncom.2011.00005},
+    volume = {5},
+    year = {2011}
+}
+
+
+@article{Maslov_Sneppen_2002,
+    abstract = {{10.1126/science.1065103}},
+    author = {Maslov, Sergei and Sneppen, Kim},
+    doi = {10.1126/science.1065103},
+    issn = {1095-9203},
+    journal = {Science},
+    keywords = {maslov, networknullmodel, ppi, proteinassociativity, randomization, specificity},
+    month = may,
+    number = {5569},
+    pages = {910--913},
+    title = {{Specificity and Stability in Topology of Protein Networks}},
+    url = {http://dx.doi.org/10.1126/science.1065103},
+    volume = {296},
+    year = {2002}
+}
+
+
+
+@article{Izhikevich_Edelman_2008,
+    author = {Izhikevich, Eugene M. and Edelman, Gerald M.},
+    doi = {10.1073/pnas.0712231105},
+    journal = {Proceedings of the National Academy of Sciences},
+    number = {9},
+    pages = {3593--3598},
+    title = {{Large-scale model of mammalian thalamocortical systems}},
+    url = {http://dx.doi.org/10.1073/pnas.0712231105},
+    volume = {105},
+    year = {2008}
+}
+
+@INCOLLECTION{vision,
+  AUTHOR = {W. Maass and R. Legenstein and H. Markram},
+  TITLE = {A new approach towards vision suggested by biologically realistic neural microcircuit models},
+  EDITORS = {H. Buelthoff and S. Lee and T. Poggio and C. Wallraven},
+  YEAR = {2002},
+  PUBLISHER = {Springer},
+  CITY = {Berlin},
+  VOLUME = {2525},
+  BOOKTITLE = {Biologically Motivated Computer Vision. Proc. of the Second International Workshop},
+  PAGES = {282--293},
+  DATE = {November 22-24}
+}
+
+@ARTICLE {Bertschinger2004,
+	title = {Real-time computation at the edge of chaos in recurrent neural networks},
+	journal = {Neural Computation},
+	volume = {16},
+	number = {7},
+	year = {2004},
+	pages = {1413--1436},
+	publisher = {MIT Press},
+	address = {Cambridge, MA, USA},
+	keywords = {edge of chaos, LSM, recurrent neural networks, reservoir computing},
+	doi = {http://dx.doi.org/10.1162/089976604323057443},
+	author = {N. Bertschinger and T. Natschl{\"a}ger}
+}
+
+@ARTICLE{brody,
+  AUTHOR = {C. D. Brody and J. J. Hopfield},
+  TITLE = {Simple Networks for Spike-Timing-Based Computation, with Application to Olfactory Processing},
+  JOURNAL = {Neuron},
+  VOLUME= {37},
+  PAGES = {843-852},
+  YEAR = {2003}
+}
+
+@ARTICLE{Brunel2000,
+  AUTHOR = {N. Brunel},
+  YEAR = {2000},
+  TITLE = {Dynamics of sparsely connected networks of excitatory and inhibitory spiking neurons},
+  JOURNAL = {Journal of Computational Neuroscience},
+  VOLUME = {8},
+  PAGES = {183--208}
+}
+
+
+@BOOK{james,
+    AUTHOR = {W. James},
+    TITLE = {The Principles of Psychology},
+    LOCATION = {Cambridge, MA},
+    PUBLISHER = {Harvard University Press},
+    YEAR = {1979 (originally published in 1890)}
+}
+
+@ARTICLE{lyon,
+  AUTHOR = {R.F. Lyon},
+  TITLE = {A computational model of Þltering, detection and compression in the cochlea},
+  JOURNAL = {Proceedings of IEEE International Conference on Acoustics Speech and Signal Processing},
+  YEAR= {May, 1982}
+}
+
+
+@ARTICLE{pcsim,
+  AUTHOR = {D. Pecevski and T. Natschlaeger and K. Schuch},
+  YEAR = {2009},
+  TITLE = {PCSIM: A parallel simulation environment for neural circuits fully integrated with Python},
+  JOURNAL = {Frontiers of Neuroinformatics},
+  VOLUME = {3},
+  NUMBER = {11}
+}
+
+@INCOLLECTION{childview,
+  AUTHOR = {A. F. Pereira and C. Yu and L. B. Smith and H. Shen},
+  YEAR = {2009},
+  TITLE = {A First-Person Perspective on a Parent-Child Social Interaction During Object Play},
+  BOOKTITLE = {Proceedings of the 31st Annual Conference of the Cognitive Science Society},
+  CITY = {Austin, TX},
+  PUBLISHER = {Cognitive Science Society},
+  EDITOR = {N. Taatgen and H. van Rijn and J. Nerbonne and L. Schomaker}
+}
+
+@ARTICLE{tsodyks,
+  AUTHOR = {M. Tsodyks and A. Uziel and H. Markram},
+  TITLE = {Synchrony generation in recurrent network with frequency-dependent synapses},
+  JOURNAL = {Journal of Neuroscience},
+  VOLUME = {20},
+  NUMBER = {RC1},
+  PAGES = {1-5},
+  YEAR = {2000}
+}
+
+@inproceedings{speechlsm,
+  author    = {D. Verstraeten and B. Schrauwen and D. Stroobandt},
+  title     = {Isolated word recognition using a Liquid State Machine},
+  booktitle = {ESANN},
+  year      = {2005},
+  pages     = {435-440},
+}
+
+
+@article {Jaeger2001,
+	title = {The {\textquoteleft}{\textquoteleft}echo state{\textquoteright}{\textquoteright} approach to analysing and training recurrent neural networks - with an Erratum note},
+	year = {2001},
+	note = {<p>There is an <a href="http://www.faculty.jacobs-university.de/hjaeger/pubs/EchoStatesTechRepErratum.pdf">Erratum Note</a> for this techreport.</p>},
+	institution = {German National Research Center for Information Technology},
+	keywords = {ESN},
+	url = {http://www.faculty.jacobs-university.de/hjaeger/pubs/EchoStatesTechRep.pdf},
+	author = {Jaeger, Herbert}
+}
+
+
+@InCollection{maass_2010_LSM_motivationtheoryappl,
+title={Liquid state machines: Motivation, theory, and applications},
+author={Wolfgang Maass},
+booktitle={Computability in Context: Computation and Logic in the Real World},
+editor={B. Cooper and A. Sorbi},
+year={2010},
+publisher={Imperial College Press}
+}
+
+@Article{veale_etal_2011_synchrony,
+title={Temporal, Environmental, and Social Constraints of
+                  Word-Referent Learning in Young Infants: A
+                  NeuroRobotic Model of Multimodal Habituation},
+author={Richard Veale and Paul Schermerhorn and Matthias Scheutz},
+journal={IEEE Transactions on Autonomous Mental Development},
+year={in press},
+}
+
+@Article{lakatos_etal_2009,
+title={Neuronal Oscillations and Multisensory Interaction in Primary
+                  Auditory Cortex},
+author={Peter Lakatos and Chi-Ming Chen and Monica N. O’Connell and Aimee
+                  Mills and Charles E. Schroeder},
+journal={Neuron},
+volume={53},
+year={2009},
+pages={279-292}
+}
+@Article{watkins_etal_2007,
+title={Activity in human V1 follows multisensory perception},
+author={S. Watkins and L. Shams and O. Josephs and G. Rees},
+journal={NeuroImage},
+volume={37},
+year={2007},
+pages={572-578}
+}
+
+@Article{wang_etal_2002,
+title={Visuo-auditory interactions in the primary visual cortex of the
+                  behaving monkey: Electrophysiological evidence},
+author={Ye Wang and Simona Celebrini and Yves Trotter and Pascal
+                  Barone},
+journal={BMC Neuroscience},
+volume={9},
+year={2002},
+pages={79-93}
+}
+@Article{clavagnier_etal_2004,
+title={Long-distance feedback projections to area V1: Implications for
+                  multisensory integration, spatial awareness, and
+                  visual consciousness },
+author={Simon Clavagnier and Arnaud Falchier and Henry Kennedy},
+journal={Cognitive, Affective, and Behavioral Neuroscience},
+volume={4},
+number={2},
+year={2004},
+pages={117-126}
+}
+@Article{falchier_etal_2002,
+title={Anatomical Evidence of Multimodal Integration in Primate
+                  Striate Cortex},
+author={Arnaud Falchier and Simon Clavagnier and Pascal Barone and and Henry
+                  Kennedy},
+journal={Journal of Neuroscience},
+volume={22},
+number={13},
+year={2002},
+pages={5749-5759}
+}
+
+@Article{clemo_etal_2008,
+title={Auditory projections to extrastriate visual cortex:
+                  connectional basis for multisensory processing in
+                  ‘unimodal’ visual neurons},
+author={H. Ruth Clemo and Giriraj K. Sharma and Brian L. Allman and
+                  M. Alex Meredith},
+journal={Experimental Brain Research},
+volume={191},
+year={2008},
+pages={37-47}
+}
+
+
+@Article{wallace_stein_2000,
+title={Onset of Cross-Modal Synthesis in the Neonatal Superior
+                  Colliculus is Gated by the Development of Cortical
+                  Influences},
+author={Mark T. Wallace and Barry E. Stein},
+journal={Journal of Neurophysiology},
+volume={83},
+year={2000},
+pages={3578-3582}
+}
+@Article{wallace_stein_1997,
+title={Development of Multisensory Neurons and Multisensory
+                  Integration in Cat Superior Colliculus},
+author={Mark T. Wallace and Barry E. Stein},
+journal={The Journal of Neuroscience},
+volume={17},
+number={7},
+year={1997},
+pages={2429-2444}
+}
+@Article{stein_gallagher_1981,
+title={Maturation of cortical control over superior colliculus cells
+                  in cat},
+author={Barry E. Stein and Henry L. Gallagher},
+journal={Brain Research},
+volume={223},
+year={1981},
+pages={429-435}
+}
+@InCollection{wallace_etal_2010,
+title={Neural Development and Plasticity of Multisensory
+                  Representations},
+author={Mark T. Wallace and Juliane Krueger and David W. Royal},
+booktitle={Multisensory Object Perception in the Primate Brain},
+editor={M. J. Naumer, J. Kaiser},
+year={2010},
+pages={329-349},
+publisher={Springer}
+}
+
+@Article{wallace_etal_2006,
+title={The Development of Cortical Multisensory Integration},
+author={Mark T. Wallace and Brian N. Carriere and Thomas J. Perrault Jr and J. William Vaughan and Barry E. Stein},
+journal={The Journal of Neuroscience},
+volume={26},
+number={46},
+year={2006},
+pages={11844-11849}
+}
+
+@Article{stein_2005_developAESSC,
+title={The development of a dialogue between cortex and midbrain to
+                  integrate multisensory information},
+author={Barry E. Stein},
+journal={Experimental Brain Research},
+volume={166},
+year={2005},
+pages={305-315}
+}
+
+@Article{segal_beckstead_1989_AES_SC,
+title={Distribution of corticotectal axons from the caudal part of the anterior ectosylvian sulcus in the cat},
+author={R.L. Segal and R.M. Beckstead},
+journal={Neuroscience Letters},
+volume={102},
+number={2-3},
+year={1989},
+pages={173-178}
+}
+
+@Article{ruinoso-suarez_roda_1985,
+title={Topographical organization of the cortical afferent connections
+                  to the cortex of the anterior ectosylvian sulcus in
+                  the cat},
+author={F. Reinoso-Suárez and J. M. Roda},
+journal={Experimental Brain Research},
+volume={59},
+number={2},
+year={1985},
+pages={313-324}
+}
+
+@Article{roda_ruinoso-suarez_1983,
+title={Topographical orgainzation of the thalamic projections to the cortex of AES in cat},
+author={J. M. Roda and F. Reinoso-Suarez},
+journal={Experimental Brain Research},
+volume={49},
+year={1983},
+pages={131-139}
+}
+@Article{mucke_etal_1982,
+title={Physiologic and Anatomic Investigation of a Visual Cortical
+                  area situated in the ventral bank of the anterior
+                  ectosylvian sulcus of the cat},
+author={L. Mucke and M. Norita and G. Benedek O. Greutzfeldt},
+journal={Experimental Brain Research},
+volume={46},
+year={1982},
+pages={1-11}
+}
+
+@Article{meredith_etal_2006,
+title={Crossmodal projections from somatosensory area SIV to the
+                  auditory field of the anterior ectosylvian sulcus
+                  (FAES) in Cat: further evidence for subthreshold
+                  forms of multisensory processing},
+author={M. Alex Meredith and Leslie R Keniston and Lisa R. Dehner and
+                  H. Ruth Clemo},
+journal={Experimental Brain Research},
+volume={172},
+year={2006},
+pages={472-484}
+}
+
+@Article{jiang_etal_1994_AES_distribution,
+title={Sensory modality distribution in the anterior ectosylvian cortex (AEC) of cats},
+author={Huai Jiang and Franco Lepore and Maurice Ptito and Jean-Claude Guillemot},
+journal={Experimental Brain Research},
+volume={97},
+year={1994},
+pages={404-414}
+}
+
+@Article{jiang_etal_1994_AES_interaction,
+title={Sensory modality distribution in the anterior ectosylvian cortex (AEC) of cats},
+author={Huai Jiang and Franco Lepore and Maurice Ptito and Jean-Claude Guillemot},
+journal={Experimental Brain Research},
+volume={101},
+year={1994},
+pages={385-396}
+}
+
+@Article{higo_kawamura_1984,
+title={Topographical Linkage of Tecto-Thalamo-Anterior Ectosylvian
+                  Sulcal Cortex in the Cat: An 125I-WGA
+                  Autoradiographic Study},
+author={Shigeyoshi Higo and Syosuke Kawamura},
+journal={Brain Research Bulletin},
+volume={12},
+year={647-655},
+pages={1984}
+}
+
+@Article{dehner_etal_2004,
+title={Cross-modal Circuitry Between Auditory and Somatosensory Areas
+                  of the Cat Anterior Ectosylvian Sulcal Cortex: A
+                  ‘New’ Inhibitory Form of Multisensory Convergence },
+author={Lisa R. Dehner and Leslie P. Keniston and H. Ruth Clemo and
+                  M. Alex Meredith},
+journal={Cerebral Cortex},
+volume={14},
+year={2004},
+pages={387-403}
+}
+
+
+@Article{spitzer_richmond_1991,
+title={Task difficulty: ignoring, attending to, and discriminating a
+                  visual stimulus yield progressively more activity in
+                  inferior temporal neurons},
+author={H. Spitzer and B. J. Richmond},
+journal={Experimental Brain Research},
+volume={83},
+number={2},
+year={1991},
+pages={340-348}
+}
+
+@Article{richmond_sato_1987,
+title={Enhancement of inferior temporal neurons during visual discrimination},
+author={B. J. Richmond and T. Sato},
+journal={Journal of Neurophysiology},
+volume={58},
+year={1987},
+pages={1292-1306}
+}
+
+@InCollection{rothbart_posner_2001,
+title={Mechanism and variation in the development of attentional networks},
+author={Mary K. Rothbart and Michael I. Posner},
+booktitle={Handbook of developmental cognitive neuroscience},
+editor={Charles A. Nelson and Monica Luciana},
+year={2001},
+pages={353-363},
+publisher={MIT Press}
+}
+
+@Article{valenza_etal_1994,
+title={Inhibition of Return in newborn infants},
+author={Eloisa Valenza and Francesca Simion and Carlo Umilta},
+journal={Infant behaivor and development},
+volume={17},
+year={1994},
+pages={293-302}
+}
+
+@InCollection{richards_2001,
+title={Attention in young infants: A developmental psychophysiological perspective},
+author={John E. Richards},
+booktitle={Handbook of developmental cognitive neuroscience},
+editor={Charles A. Nelson and Monica Luciana},
+year={2001},
+pages={321-338},
+publisher={MIT Press}
+}
+
+@Article{nagata_dannemiller_1996,
+title={The Selectivity of Motion-Driven Visual Attention in Infants},
+author={Yoko Nagata and James L. Dannemiller},
+journal={Child Development},
+volume={67},
+number={6},
+year={1996},
+pages={2608-2620}
+}
+
+@InCollection{johnson_1994,
+title={Visual Attention and the Control of Eye Movements in Early
+                  Infancy},
+author={Mark H. Johnson},
+booktitle={Attention and Performance XV},
+editor={Carlo Umiltà},
+year={1994},
+pages={291-310},
+publisher={MIT Press}
+}
+
+@Article{butcher_kalyerboer_1997,
+title={The Early Development of Covert Visuo-spatial Attention and its
+                  Impact on Social Looking},
+author={Phillipa R. Butcher* and Alex F. Kalverboer},
+journal={Early Development and Parenting},
+volume={6},
+number={1},
+year={1997},
+pages={15-26}
+}
+
+@Article{colombo_mitchell_2009,
+title={Infant Visual Habituation},
+author={John Colombo and D. Wayne Mitchell},
+journal={Neurobiology of Learning and Memory},
+volume={92},
+number={2},
+year={2009},
+pages={225-234}
+}
+
+@Article{richards_1998,
+title={Development of selective attention in young infants:
+                  Enhancement and attenuation of startle reflex by
+                  attention},
+author={John E. Richards},
+journal={Developmental Science},
+volume={1},
+number={1},
+year={1998},
+pages={45-51}
+}
+
+@Article{richards_hunter_1997,
+title={Peripheral Stimulus Localization by Infants with Eye and Head
+                  Movements During Visual Attention},
+author={John E. Richards and Sharon K. Hunter},
+journal={Vision Research},
+volume={37},
+number={21},
+year={1997},
+pages={3021-3035}
+}
+
+@Article{richards_1987,
+title={Infant Visual Sustained Attention and Respiratory Sinus Arrhythmia},
+author={John E. Richards},
+journal={Child Development},
+volume={58},
+number={2},
+year={1987},
+pages={488-496}
+}
+
+@Article{richards_casey_1990,
+title={Infant visual recognition memory performance as a function of heart rate defined phases of attention},
+author={John E. Richards and B. J. Casey},
+journal={Infant Behavior and Development},
+volume={13},
+year={1990},
+pages={585}
+}
+
+@Article{tang_mishkin_aigner_1997_muscarinicento,
+title={Effects of muscarinic blockade in perirhinal cortex during
+                  visual recognition },
+author={Yi Tang and Mortimer Mishkin and Thomas G. Aigner},
+journal={Proceedings of the National Academy of Science, USA},
+volume={94},
+year={1997},
+pages={12667-12669}
+}
+
+@Article{disney_calford_2001,
+title={Neurosteroids Mediate Habituation and Tonic Inhibition in the
+                  Auditory Midbrain},
+author={Anita Disney and Mike B. Calford},
+journal={Journal of Neurophysiology},
+volume={86},
+year={2001},
+pages={1052-1056}
+}
+
+@InCollection{doty_1995,
+title={Brainstem influences on forebrain processes, including memory},
+author={Robert W. Doty},
+booktitle={Neurobehavioral plasticity: learning, development, and response to brain insults},
+editor={Norman E. Spear and Linda P. Spear and Michael Lester Woodruff and Robert L. Isaacson},
+year={1995},
+pages={349-370},
+publisher={Erlbaum}
+}
+
+@Article{gardner_etal_1986,
+title={Effects of Visual and Auditory Stimulation on Subsequent Visual Preferences in Neonates},
+author={Judith M. Gardner and David J. Lewkowicz and Susan A. Rose and Bernard Z. Karmel},
+journal={International Journal of Behavioral Development},
+volume={9},
+year={1986},
+pages={251-263}
+}
+
+@Article{gardner_turkewitz_1982_pretermarousalvision,
+title={The effect of arousal level on visual preferences in preterm infants},
+author={Judith M. Gardner and Gerald Turkewitz},
+journal={Infant Behavior and Development},
+volume={5},
+number={2-4},
+year={1982},
+pages={369-385}
+}
+
+
+@Article{gardner_etal_1992_arousal,
+title={Arousal/Visual Preference Interactions in High-Risk Neonate},
+author={Judith M. Gardnera and Bernard Z. Karmela and Catherine L. Magnano},
+journal={Developmental Psychology},
+volume={28},
+number={5},
+year={1992},
+pages={821-830}
+}
+
+@Article{gardner_karmel_1981,
+title={Preferential Looking at Temporal Frequencies by Preterm
+                  Infants},
+author={Judith M. Gardner and Bernard Z. Karmel},
+journal={Child Development},
+volume={52},
+number={4},
+year={1981},
+pages={1299-1302}
+}
+
+@Article{colombo_horowitz_1987,
+title={Behavioral state as a lead variable in neonatal research.},
+author={John Colombo and F. D. Horowitz},
+journal={Merill-Palmer Q.},
+year={1987},
+volume={33},
+pages={423-438}
+}
+
+
+@Article{vinograda_2001,
+title={Hippocampus as Comparator: Role of the Two Input and Two Output
+                  Systems of the Hippocampus in Selection and
+                  Registration of Information},
+author={O.S. Vinogradova},
+journal={Hippocampus},
+volume={11},
+pages={578-598},
+year={2001}
+}
+
+@Article{maikrantz_etal_2000,
+title={Autonomic correlates of individual differences in sensitization
+                  and look duration during infancy},
+author={Julie M. Maikranza and John Colombo and W. Allen Richmana and Janet E. Frick},
+journal={Infant Behavior and Development},
+volume={23},
+year={2000},
+pages={137-151}
+}
+
+@Article{colombo_etal_2010_whathabituates,
+title={What Habituates in Infant Visual Habituation? A
+                  Psychophysiological Analysis},
+author={John Colombo and D. Jill Shaddy and Christa J. Anderson and Linzi
+                  J. Gibson and Otilia M. Blaga and Kathleen N. Kannass},
+journal={Infancy},
+volume={15},
+number={2},
+year={2010},
+pages={107-124}
+}
+
+@InCollection{karmel_etal_1991,
+title={Attention and arousal in early infancy.},
+author={Bernard Z. Karmel and Judith M. Gardner and Catherine L. Magnano},
+booktitle={Newborn Attention: Biological Constraints and the Influence
+                  of Experience},
+editor={M. J. S. Weiss and P. R. Zelazo},
+year={1991},
+publisher={Ablex},
+pages={339-376}
+}
+
+@InCollection{gardner_etal_2003,
+title={Arousal modulation of neonatal visual attention: Implications for development},
+author={Judith M. Gardner and Bernard Z. Karmel and M. J. Flory},
+booktitle={Perspectives on fundamental processes in intellectual functioning: Vol. 2. Visual information processing and individual differences.},
+year={2003},
+editor={S. Saroci},
+publisher={Ablex, JAI}
+}
+
+@Article{gardner_karmel_1995,
+title={Development of arousal-modulated visual preferences in early infancy},
+author={Judith M. Gardner and Bernard Z. Karmel},
+journal={Developmental Psychology},
+volume={31},
+number={3},
+year={1995},
+pages={473-482}
+}
+
+@Article{gardner_karmel_1984,
+title={Arousal effects on visual preferences in neonates},
+author={Judith M. Gardner and Bernard Z. Karmel},
+journal={Developmental Psychology},
+volume={20},
+number={3},
+year={1984},
+pages={374-377}
+}
+
+@Article{hicks_richards_1998,
+title={The effects of stimulus movement and attention on peripheral stimulus localization by 8- to 26-week-old infants},
+author={Julie M. Hicks and John E. Richards},
+journal={Infant Behavior and Development},
+volume={21},
+number={4},
+year={1998},
+pages={571-589}
+}
+
+@InCollection{richards_hunter_1998_bookchapter,
+title={Attention and Eye movement in young infants: neural control and development},
+author={John E. Richards and S. K. Hunter},
+booktitle={Cognitive Neuroscience of Attention: A developmental perspective},
+editor={John E. Richards},
+year={1998},
+publisher={Erlbaum},
+pages={131-162}
+}
+
+@Article{yang_etal_2004,
+title={Long-Term Synaptic Plasticity in Deep Layer-Originated
+                  Associational Projections to Superficial layers of
+                  Rat Entorhinal Cortex},
+author={S. Yang and D. S. Lee and C. H. Chung and M. Y. Cheong and C. J. Lee and M. W. Jung},
+journal={Neuroscience},
+volume={127},
+year={2004},
+pages={805-812}
+}
+
+
+@Article{solger_etal_2004_ento_stdp,
+title={Distinct mechanisms of bidirectional activity-dependent
+                  synaptic plasticity in super®cial and deep layers of
+                  rat entorhinal cortex},
+author={Jorg Solger and Christian Wozny and Denise Manahan-Vaughan and
+                  Joachim Behr},
+journal={European Journal of Neuroscience},
+volume={19},
+year={2004},
+pages={2003-2007}
+}
+
+@Article{heeseol_etal_2007_neurmod_stdp_polarity,
+title={Neuromodulators Control the Polarity of Spike-Timing-Dependent
+                  Synaptic Plasticity },
+author={Geun Hee Seol and Jokubas Ziburkus and ShiYong Huang and Lihua
+                  Song and In Tae Kim and Kogo Takamiya and Richard
+                  L. Huganir and Hey-Kyoung Lee and Alfredo Kirkwood},
+journal={Neuron},
+volume={55},
+year={2007},
+pages={919-929}
+}
+
+@Article{cheong_etal_2001_ento_neurmodstdp,
+title={Cholinergic Modulation of Synaptic Physiology in Deep Layer
+                  Entorhinal Cortex of the Rat },
+author={Mi Young Cheong and Sung Hwan Yun and Inhee Mook-Jung and
+                  Insoo Joo and Kyoon Huh and Min Whan Jung},
+journal={Journal of Neuroscience Research},
+volume={66},
+year={2001},
+pages={117-121}
+}
+
+@Article{caporale_dan_2008_stdp,
+title={Spike Timing–Dependent Plasticity: A Hebbian Learning Rule},
+author={Natalia Caporale and Yang Dan},
+journal={Annual Review of Neuroscience},
+volume={31},
+year={2008},
+pages={25-46}
+}
+
+
+@Article{stephens_banks_1985,
+title={The development of contrast constancy},
+author={Benjamin R. Stephens and Martin S. Banks},
+journal={Journal of Experimental Child Psychology},
+volume={40},
+number={3},
+year={1985},
+pages={528-547}
+}
+
+@Article{atkinson_etal_1977,
+title={Contrast Sensitivity of the human infant for moving and static patterns},
+author={Janette Atkinson and Oliver Braddick and Kathleen Moar},
+journal={Vision Research},
+volume={17},
+year={1977},
+pages={1045-1047}
+}
+
+@Article{slater_morison_rose_1984,
+title={Habituation in the newborn},
+author={Alan Slater and Victoria Morison and David Rose},
+journal={Infant behavior and development},
+volume={7},
+year={1984},
+pages={183-200}
+}
+
+@Article{adams_etal_1986,
+title={Newborns' discrimination of chromatic from achromatic stimuli},
+author={Russell J. Adams and Daphne Maurer and Margaret Davis},
+journal={Journal of Experimental Child Psychology},
+volume={41},
+number={2},
+year={1986},
+pages={267-281}
+}
+
+@Article{colombo_1995,
+title={On the neural mechanisms underlying developmental and
+                  individual differences in visual fixation in
+                  infancy: two hypotheses},
+author={John Colombo},
+journal={Developmental Review},
+volume={15},
+year={1995},
+pages={97-135}
+}
+
+@Article{koch_ullman_1985,
+title={Shifts in selective visual attention: towards the underlying neural circuitry},
+author={C. Koch and S. Ullman},
+journal={Human Neurobiology},
+volume={4},
+year={1985},
+pages={219-227}
+}
+
+@Article{wachtler_etal_2003,
+title={Representation of Color Stimuli in Awake Macaque Primary Visual
+                  Cortex},
+author={Thomas Wachtler and Terrace J. Sejnowski and Thomas D. Albright},
+journal={Neuron},
+volume={37},
+year={2003},
+pages={681-691}
+}
+
+
+
+@Article{gegenfurtner_kiper_2003,
+title={Color Vision},
+author={Karl R. Gegenfurtner and Daniel C. Kiper},
+journal={Annual Review Neuroscience},
+volume={26},
+year={2003},
+pages={181-206}
+}
+@Article{gegenfurtner_2003,
+title={Cortical Mechanisms of Colour Vision},
+author={Karl R. Gegenfurtner},
+journal={Nature Reviews Neuroscience},
+volume={4},
+year={2003},
+pages={563-572}
+}
+
+@Article{conway_livingstone_2006,
+title={Spatial and Temporal Properties of Cone Signals in Alert
+                  Macaque Primary Visual Cortex},
+author={Bevil R. Conway and Margaret S. Livingstone},
+journal={The Journal of Neuroscience},
+volume={26},
+number={42},
+year={2006},
+pages={10826-10846}
+}
+
+@Article{bednar_miikkulainen_2006_traincolormap,
+title={Joint maps for orientation, eye, and direction preference in a self-organizing model of V1},
+author={James A. Bednar and Risto Miikkulainen},
+journal={Neurocomputing},
+volume={69},
+year={2006},
+pages={1272-1276}
+}
+
+@Article{conway_2001,
+title={Spatial Structure of Cone Inputs to Color Cells in Alert
+                  Macaque Primary Visual Cortex (V-1)},
+author={Bevil R. Conway},
+journal={The Journal of Neuroscience},
+volume={21},
+number={8},
+year={2001},
+pages={2768-2783}
+}
+
+@Article{welikey_bosking_fitzpatrick_1996,
+title={A systematic map of direction preference in primary visual cortex},
+author={M. Welikey and W. H. Bosking and D. Fitzpatrick},
+journal={Nature},
+volume={379},
+year={1996},
+pages={725-728}
+}
+@Article{hubel_wiesel_1974_orientationcolumns,
+title={Sequence regularity and geometry of orientation columns in the monkey striate cortex},
+author={David H. Hubel, Torsten N. Wiesel},
+journal={The journal of comparative neurology},
+volume={158},
+number={3},
+year={1974},
+pages={267-293}
+}
+
+@Article{schneider_kastner_2005,
+title={Visual Responses of the Human Superior Colliculus: A
+                  High-Resolution Functional Magnetic Resonance
+                  Imaging Study},
+author={Keith A. Schneider and Sabine Kastner},
+journal={Journal of Neurophysiology},
+volume={94},
+year={2005},
+pages={2491-2503}
+}
+
+@Article{wickelgren_sterling_1969,
+title={Influence of visual cortex on receptive fields in the superior colliculus of the cat},
+author={Barbara G. Wickelgren and Peter Sterling},
+journal={Journal of Neurophysiology},
+volume={31},
+number={1},
+year={1969},
+pages={16-23}
+}
+
+@Article{bronson_1974_subcorticalmodel,
+title={The postnatal growth of visual capacity},
+author={Gordon Bronson},
+journal={Child Development},
+volume={45},
+number={4},
+year={1974},
+pages={873-890}
+}
+
+@Article{colby_1991,
+title={The neuroanatomy and neurophysiology of attention},
+author={C. L. Colby},
+journal={Journal of Child Neurology},
+volume={6},
+year={1991},
+pages={S90-S118}
+}
+
+@InCollection{johnson_1995_modelupdate,
+title={The development of visual attention: A cognitive neuroscience perspective},
+author={Mark Johnson},
+booktitle={The cognitive neurosciences},
+editor={M. S. Gazzaniga},
+year={1995},
+publisher={MIT Press},
+pages={735-747}
+}
+
+@Book{haith_1980,
+title={Rules that babies look by: the organization of newborn visual activity},
+author={Marshall M. Haith},
+year={1980},
+publisher={Erlbaum}
+}
+
+@Article{bronson_1990_infantscanning,
+title={Changes in Infants' Visual scanning across the 2- to 14- week age period},
+author={Gordon W. Bronson},
+journal={Journal of Experimental Child Psychology},
+volume={49},
+year={1990},
+pages={101-125}
+}
+
+@Article{lewis_kagan_kalafat_1966,
+title={Patterns of Fixation in the Young Infant},
+author={Michael Lewis and Jerome Kagan and John Kalafat},
+journal={Child Development},
+volume={37},
+number={2},
+year={1966},
+pages={331-341}
+}
+
+@Article{bronson_1991_scanning_encodingrate,
+title={Infant Differences in Rate of Visual Encoding},
+author={Gordon W. Bronson},
+journal={Child Development},
+volume={62},
+number={1},
+year={1991},
+pages={44-54}
+}
+
+@Article{oreilly_rudy_2001_hippo_fullmodel,
+title={Conjunctive Representations in Learning and Memory: Principles of Cortical and Hippocampal Function},
+author={Randall C. O'Reilly and J. W. Rudy},
+journal={Psychological Review},
+volume={108},
+year={2001},
+pages={311-345}
+}
+
+@Article{oreilly_rudy_2000_hippomodel,
+title={Computational Principles of Learning in the Neocortex and Hippocampus},
+author={Randall C. O'Reilly and J. W. Rudy},
+journal={Hippocampus},
+volume={10},
+year={2000},
+pages={389-397}
+}
+
+@Article{suzuki_miller_desimone_1997,
+title={Object and Place Memory in the Macaque Entorhinal Cortex},
+author={Wendy A. Suzuki and Earl K. Miller and Robert Desimone},
+journal={Journal of Neurophysiology},
+volume={78},
+year={1997},
+pages={1062-1081}
+}
+
+@Article{miller_desimone_1994,
+title={Parallel Neuronal Mechanisms for Short-Term Memory},
+author={Earl K. Miller and Robert Desimone},
+journal={Science},
+volume={263},
+year={1994},
+pages={520-522}
+}
+
+@Article{desimone_duncan_1995,
+title={Neural Mechanisms of Selective Visual Attention},
+author={Robert Desimone and John Duncan},
+journal={Annual Review of Neuroscience},
+volume={18},
+year={1995},
+pages={193-222}
+}
+
+@Article{zeamer_heuer_bachevalier_2010,
+title={Developmental Trajectory of Object Recognition Memory in Infant
+                  Rhesus Macaques with and without Neonatal
+                  Hippocampal Lesions},
+author={Alyson Zeamer and Eric Heuer and Jocelyne Bachevalier},
+journal={The Journal of Neuroscience},
+volume={30},
+number={27},
+year={2010},
+pages={9157-9165}
+}
+
+@Article{murray_mishkin_1998,
+title={Object Recognition and Location Memory in Monkeys with
+                  Excitotoxic Lesions of the Amygdala and Hippocampus},
+author={Elisabeth A. Murray and Mortimer Mishkin},
+journal={The Journal of Neuroscience},
+volume={18},
+number={16},
+year={1998},
+pages={6568-6582}
+}
+
+@Article{webster_etal_1994_TETEO_frontalconn,
+title={Connections of Inferior Temporal Areas TEO and TE with Parietal
+                  and Frontal Cortex in Macaque Monkeys },
+author={Maree J. Webster and Jocelyne Bachevalier and Leslie G.
+Ungerleider},
+journal={Cerebral Cortex},
+volume={5},
+year={1994},
+pages={470-483}
+}
+
+@Article{seress_etal_2001,
+title={Cell Formation in the Human Hippocampal Formation from Mid-Gestation to the late postnatal period},
+author={L. Seress and H. Abraham and T. Tornoczeky and G. Y. Koszytolanyi},
+journal={Neuroscience},
+volume={4},
+year={2001},
+pages={831-843}
+}
+
+@InCollection{bachevalier_2001,
+title={Neural bases of memory  development: insights from neuropsychological studies in primates},
+author={Jocelyne Bachevalier},
+booktitle={Handbook of Developmental cognitive neuroscience},
+editor={Charles A. Nelson and Monica Luciana},
+year={2001},
+pages={365-379},
+publisher={MIT Press}
+}
+
+@InCollection{nelson_dukette_1998_neurodevelop_attn,
+title={Cognitive neurosicnece perspective on relation between attention and memory development},
+author={Charles A. Nelson and D. Dukette},
+booktitle={Cognitiveeneuroscience of attention: A developmental perspective},
+editor={John E. Richards},
+publisher={Erlbaum},
+year={1998},
+pages={327-362}
+}
+
+@InCollection{nelson_1997_neurodevelop_memory,
+title={The Neurobiological Basis of early memory development},
+author={Charles A. Nelson},
+booktitle={The Development of Memory in childhood},
+editor={Nelson Cowan},
+publisher={Psychology Press},
+year={1997},
+pages={41-73}
+}
+
+@Article{berger_alvarez_goldman-rakic_1993_entosynapse_earlygest,
+title={Neurochemical Development of the Hippocampal Region in
+the Fetal Rhesus Monkey. I. Early Appearance of Peptides,
+Calcium-binding Proteins, DARPP-32, and Monoamine
+Innervation in the Entorhinal Cortex During the First Half
+of Gestation (E47 to E90)},
+author={Brigitte Berger and Chantal Alvarez and and Patricia S.
+                  Goldman-Rakic},
+journal={Hippocampus},
+volume={3},
+number={3},
+year={1993},
+pages={279-305}
+}
+
+@Article{berger_alvarez_1994_entosynapse_lategest,
+title={Neurochemical Development of the Hippocampal Region in the
+                  Fetal Rhesus Monkey. 11. Immunocytochemistry of
+                  Peptides, Calcium-binding Proteins, DARPP-32, and
+                  Monoamine Innervation in the Entorhinal Cortex by
+                  the End of Gestation},
+author={Brigitte Berger and Chantal Alvarez},
+journal={Hippocampus},
+volume={4},
+number={1},
+year={1994},
+pages={85-114}
+}
+
+
+
+@Article{alvarado_bachevalier_2000_hippomature,
+title={Revisiting the Maturation of Medial Temporal Lobe Memory
+Functions in Primates},
+author={Maria C. Alvarado and Jocelyne Bachevalier},
+journal={Learning and Memory},
+volume={7},
+year={2000},
+pages={244-256}
+}
+
+@Article{bachevalier_vargha-khadem_2005,
+title={The primate hippocampus: ontogeny, early insult and memory},
+author={Jocelyne Bachevalier and Faraneh Vargha-Khadem},
+journal={Current Opinion in Neurbiology},
+volume={15},
+year={2005},
+pages={168-174}
+}
+
+
+
+@Article{ikeda_etal_1989,
+title={A columnar arrangement of dendritic processes of entorhinal
+                  cortex neurons revealed by a monoclonal antibody},
+author={Jun Ikeda and Kensaku Mori and Shogo Oka and Yasuyoshi Watanabe},
+journal={Brain Research},
+volume={505},
+year={1989},
+pages={176-179}
+}
+
+@Article{suzuki_1996,
+title={Neuroanatomy of the monkey entorhinal, perirhinal and
+                  parahippocampal cortices: Organization of cortical
+                  inputs and interconnections with amygdala and
+                  striatum},
+author={Wendy A. Suzuki},
+journal={Seminars in The Neurosciences},
+volume={8},
+year={1996},
+pages={3-12}
+}
+
+@Article{felleman_vanessen_1991_cortexhierc,
+title={Distributed Hierarchical Processing in the Primate Cerebral
+                  Cortex},
+author={Daniel J. Felleman and David C. van Essen},
+journal={Cerebral Cortex},
+volume={1},
+year={1991},
+pages={1-47}
+}
+
+@Article{kajiwara_etal_2003_amyg_activ_entorhin,
+title={Amygdala Input Promotes Spread of Excitatory Neural Activity
+                  From Perirhinal Cortex to the Entorhinal–Hippocampal
+                  Circuit},
+author={Riichi Kajiwara and Ichiro Takashima and Yuka Mimura and Menno P. Witter and Toshio Iijima},
+journal={Journal of Neurophysiology},
+volume={89},
+year={2003},
+pages={2176-2184}
+}
+
+@Article{jones_powell_1970,
+title={An anatomical study of converging sensory pathways within the cerebral cortex of the monkey},
+author={E. G. Jones and T. P. S. Powell},
+journal={Brain},
+volume={93},
+year={1970},
+pages={793-820}
+}
+
+@Article{vanhoesen_pandya_1975_rhinal_efferents,
+title={Some Connections of the entorhinal (area 28) and perirhinal (area 35) cortices of the rhesus monkey III: Efferent Connections },
+author={Gary W. van Hoesen and Deepak N. Pandya},
+journal={Brain Research},
+volume={95},
+year={1975},
+pages={39-59}
+}
+
+@Article{vanhoesen_pandya_1975_rhinal_templobeafferents,
+title={Some Connections of the entorhinal (area 28) and perirhinal (area 35) cortices of the rhesus monkey I: Temporal Lobe afferents},
+author={Gary W. van Hoesen and Deepak N. Pandya},
+journal={Brain Research},
+volume={95},
+year={1975},
+pages={1-24}
+}
+
+@Article{burwell_2000_parahippo,
+title={The Parahippocampal Region: Corticocortical Connectivity},
+author={Rebecca C. Burwell},
+journal={Annals of the New York Academy of Science},
+volume={911},
+year={2000},
+pages={25-42}
+}
+
+@Article{witter_moser_2006_entorhinalarchit,
+title={Spatial representation and the architecture of the entorhinal
+                  cortex},
+author={Menno P. Witter and Edvard I. Moser},
+journal={TRENDS in Neuroscience},
+volume={29},
+number={2},
+year={2006},
+pages={671-678}
+}
+
+@Article{witter_etal_1989_parahippocampal,
+title={Functional organization of the extrinsic and intrinsic circuitry of the parahippocampal region},
+author={Menno P. Witter and H. J. Groenewegen and F. H. Lopes Da Silva and A.H.M. Lohman},
+journal={Progress in Neurobiology},
+volume={33},
+year={1989},
+pages={161-253}
+}
+
+@Article{witter_1993_entorhin_hippocamp,
+title={Organization of the Entorhinal-Hippocampal System: A Review of Current Anatomical Data},
+author={Menno P. Witter},
+journal={Hippocampus},
+volume={3},
+year={1993},
+pages={33-44}
+}
+
+@Article{wellman_rockland_1997_monkeyTF_entorhinal,
+title={Divergent Cortical Connections to Entorhinal Cortex From Area
+                  TF in the Macaque},
+author={Bryan John Wellman and Kathleen S. Rockland},
+journal={The Journal of Comparative Neurology},
+volume={389},
+year={1997},
+pages={361-376}
+}
+
+@Article{vangroen_wyss_2003_ratrhinal,
+title={Connections of the Retrosplenial Granular b Cortex in the Rat},
+author={Thomas van Groen and J. Michael Wyss},
+journal={The Journal of Comparative Neurology},
+volume={463},
+year={2003},
+pages={249-263}
+}
+
+@Article{vangroen_etal_2003,
+title={The Entorhinal Cortex of the Mouse: Organization of the
+                  Projection to the Hippocampal Formation},
+author={Thomas van Groen and Pasi Miettinen and Inga Kadish},
+journal={Hippocampus},
+volume={13},
+year={2003},
+pages={133-149}
+}
+
+@Article{vangroen_2001_mouseentorhinal,
+title={Entorhinal Cortex of the Mouse: Cytoarchitectonical
+                  Organization},
+author={Thomas van Groen},
+journal={Hippocampus},
+volume={11},
+year={2001},
+pages={397-407}
+}
+
+@Article{mishkin_suzuki_etal_1997_hierarchycognition,
+title={Hierarchical organization of cognitive memory},
+author={Mortimer Mishkin and Wendy A. Suzuki and David G. Gadian and
+                  Faraneh Vargha-Khadem},
+journal={Philosophical Transactions of the Royal Society of London B},
+volume={352},
+year={1997},
+pages={1461-1467}
+}
+
+@Article{kerr_etal_2007_entorhinal,
+title={Functional Neuroanatomy of the Parahippocampal Region: The
+                  Lateral and Medial Entorhinal Areas},
+author={Kristin M. Kerr and Kara L. Agster Sharon C. Furtak and Rebecca D. Burwell},
+journal={Hippocampus},
+volume={17},
+year={2007},
+pages={697-708}
+}
+
+@Article{chrobak_amaral_2007_monkeyintorhinalintrinsic,
+title={Entorhinal Cortex of the Monkey: VII.  Intrinsic Connections},
+author={James J. Chrobak and David G. Amaral},
+journal={Journal of Comparative Neurology},
+volume={500},
+year={2007},
+pages={612-633}
+}
+
+
+@Article{canto_wouterlood_witter_2008,
+title={What Does the Anatomical Organization of the Entorhinal Cortex
+                  Tell Us?},
+author={Cathrin B. Canto and Floris G. Wouterlood and Menno P. Witter},
+journal={Neural Plasticity},
+volume={2008},
+year={2008},
+pages={1-18}
+}
+
+
+@Article{burwell_amaral_1998rhinalinterconnectivity,
+title={Perirhinal and Postrhinal Cortices of the Rat:
+                  Interconnectivity and Connections With the
+                  Entorhinal Cortex},
+author={Rebecca D. Burwell and David G. Amaral},
+journal={Journal of Comparative Neurology},
+volume={391},
+year={1998},
+pages={293-321}
+}
+
+@Article{burwell_amaral_1998rhinalafferents,
+title={Cortical Afferents of the Perirhinal, Postrhinal, and
+                  Entorhinal Cortices of the Rat},
+author={Rebecca D. Burwell and David G. Amaral},
+journal={Journal of Comparative Neurology},
+volume={398},
+year={1998},
+pages={179-205}
+}
+
+@Article{sirois_mareschal_2002_trends_habitmodels,
+title={Models of habituation in infancy},
+author={Sylivan Sirois and Denis Mareschal},
+journal={TRENDS in cognitive science},
+volume={6},
+number={7},
+year={2002},
+pages={293-298}
+}
+
+
+@Article{groves_thompson_1970,
+title={Habituation: A dual-process theory},
+author={Philip M. Groves and Richard F. Thompson},
+journal={Psychological Review},
+volume={77},
+number={5},
+year={1970},
+pages={419-450}
+}
+
+@Article{thompson_spencer_1966,
+title={Habituation: A model phenomenon for the study of neuronal substrates of behavior},
+author={Richard F. Thompson and William A. Spencer},
+journal={Psychological Review},
+volume={73},
+year={1966},
+pages={16-43}
+}
+
+@Book{sokolov_1963_orientingreflex,
+title={Perception and the conditioned reflex},
+author={E. N. Sokolov},
+publisher={Pergamon},
+year={1963}
+}
+
+@Article{rankin_etal_2009,
+title={Habituation Revisited: An updated and revised description of the behavioral characteristics of habituation},
+author={Catharine H. Rankin and Thomas Abrams and Robert J. Barry and
+                  Seema Bhatnagar and David F. Clayton and John
+                  Colombo and Gianluca Coppola and Mark A. Geyer and
+                  David L. Glanzman and Stephen Marsland and Frances
+                  K. McSweeney and Donald A. Wilson and Chun-Fang Wu
+                  and Richard F. Thompson},
+journal={Neurobiology of Learning and Memory},
+volume={92},
+year={2009},
+pages={135-138}
+}
+
+@Article{fantz_1964_seminal_habit,
+title={Visual experience in infants: Decreased attention familiar
+                  patterns relative to novel ones},
+author={Robert Fantz},
+journal={Science},
+volume={146},
+year={1964},
+pages={668-670}
+}
+
+
+@Article{shahidullah_hepper_1994_prenatalaudiohabit,
+title={Frequency discrimination by the fetus},
+author={Sara Shahidullah and Peter G. Hepper},
+journal={Early Human Development},
+volume={36},
+year={1994},
+pages={13-26}
+}
+
+@Article{hunter_ames_1988,
+title={A multifactor model of infant preferences for novel and familiar stimuli},
+author={Michael A. Hunter and Elinor W. Ames},
+journal={Advances in Infancy Research},
+volume={5},
+year={1988},
+pages={69-95}
+}
+
+@Article{wetherford_cohen_1973,
+title={Developmental Changes in Infant Visual Preferences for Novelty and Familiarity},
+author={Margaret J. Wetherford and Leslie B. Cohen},
+journal={Child Development},
+volume={44},
+number={3},
+year={1973},
+pages={416-424}
+}
+
+
+@Article{cohen_etal_1975,
+title={The Effect of Stimulus Complexity on Infant Visual Attention and Habituation},
+author={Leslie B. Cohen and Judy S. DeLoache and Margaret W. Rissman},
+journal={Child Development},
+volume={46},
+year={1975},
+pages={611-617}
+}
+
+@Article{cohen_etal_1971,
+title={Infant habituation and generalization to differing degrees of stimulus novelty},
+author={Leslie B. Cohen and Eric R. Gelber and Marilee A. Lazar},
+journal={Journal of Experimental Child Psychology},
+volume={11},
+year={1971},
+pages={379-389}
+}
+
+@Article{roder_etal_2000,
+title={Infants’ Preferences for Familiarity and Novelty During the
+                  Course of Visual Processing},
+author={Beverly J. Roder and Emily W. Bushnell and Anne Marie Sasseville},
+journal={Infancy},
+volume={1},
+number={4},
+year={2000},
+pages={491-507}
+}
+
+@Article{kaplan_werner_1986,
+title={Habituation, Response to Novelty, and Dishabituation in Human
+                  Infants: Tests of a Dual-Process Theory of Visual
+                  Attention},
+author={Peter S. Kaplan and John S. Werner},
+journal={Journal of Experimental Child Psychology},
+volume={42},
+year={1986},
+pages={199-217}
+}
+
+@Article{bashinski_werner_rudy_1985,
+title={Determinants of Infant Visual Fixation: Evidence for a Two-
+                  Process Theory},
+author={Howard S. Bashinski and John S. Werner and Jerry W. Rudy},
+journal={Journal of Experimental Child Psychology},
+volume={39},
+year={1986},
+pages={580-598}
+}
+
+@Article{geva_gardner_karmel_1999,
+title={Feeding-Based Arousal Effects on Visual Recognition Memory in
+                  Early Infancy},
+author={Ronny Geva and Judith M. Gardner and Bernard Z. Karmel},
+journal={Developmental Psychology},
+volume={35},
+number={3},
+year={1999},
+pages={640-650}
+}
+
+@Article{hunter_ross_ames_1982_1yroldfamiliartime,
+title={Preferences for familiar or novel toys: Effect of familiarization time in 1-year-olds},
+author={Michale A. Hunter and Hildy S. Ross and Elinor W. Ames},
+journal={Developmental Psychology},
+volume={18},
+number={4},
+year={1982},
+pages={519-529}
+}
+
+@Article{rose_etal_1982,
+title={Familiarity and novelty preferences in infant recognition memory: Implications for information processing},
+author={Susan A. Rosea and Allen W. Gottfried and Patricia Melloy-Carminar and Wagner H. Bridger},
+journal={Developmental Psychology},
+volume={18},
+number={5},
+year={1982},
+pages={704-713}
+}
+
+@InCollection{wagner_sakovits_1986,
+title={A process analysis of infant visual and cross-modal recognition memory: Implications for an amodal code},
+author={S. H. Wagner and L. J. Sakovits},
+booktitle={Advances in Infancy Research},
+editor={L. P. Lipsitt and C. Rovee-Collier},
+volume={4},
+publisher={Ablex},
+year={1986},
+pages={195-217}
+}
+
+
+@InCollection{seress_2001,
+title={Morphological changes in human hippocampal formation from midgestation to early childhood},
+author={Laszlo Seress},
+booktitle={Handbook of developmental cognitive neuroscience},
+editor={Charles A. Nelson and Monica Luciana},
+year={2001},
+publisher={MIT Press},
+pages={45-58}
+}
+
+@Article{hasselmo_2006_acetylcholine,
+title={The role of acetylcholine in learning and memory},
+author={Michael E. Hasselmo},
+journal={Current opinion in neurobiology},
+volume={16},
+year={2006},
+pages={710-715}
+}
+
+@Article{quinn_1987_habituation_categorization,
+title={The categorical representation of visual pattern information by young infants},
+author={Paul C. Quinn},
+journal={Cognition},
+volume={27},
+year={1987},
+pages={145-179}
+}
+
+@Article{gutig_etal_2003_hebbian_stdp,
+title={Learning Input Correlations through Nonlinear Temporally Asymmetric Hebbian Plasticity},
+author={R. Gutig and R. Aharonov and S. Rotter and Haim Sompolinsky},
+journal={The Journal of Neuroscience},
+volume={23},
+number={9},
+year={2003},
+pages={3697-3714}
+}
+
+@Article{froemke_dan_2002_stdp,
+title={Spike-timing-dependent synaptic modification induced by natural spike trains},
+author={Robert C. Froemke and Yang Dan},
+journal={Nature},
+volume={416},
+year={2002},
+pages={433-438}
+}
+
+@Article{morrison_2007_stdp,
+title={Spike-timing-dependent plasticity in balanced random networks},
+author={Abigal Morrison and Ad Aertsen and Markus Diesmann},
+journal={Neural Computation},
+volume={19},
+year={2007},
+pages={1437-1467}
+}
+
+@Article{legenstein_etal_2008_rewardSTDP,
+title={Theoretical analysis of learning with reward-modulated spike-timing-dependent plasticity},
+author={Robert Legenstein and Dajan Pecevski and Wolfgang Maass},
+journal={Advances in Neural Information Processing Systems},
+volume={20},
+year={2008},
+pages={881-888}
+}
+
+@Article{legenstein_etal_2008_PLoSrewardSTDP,
+title={A learning theory for reward-modulated spike-timing-dependent plasticity with application to biofeedback},
+author={Robert Legenstein and Dajan Pecevski and Wolfgang Maass},
+journal={PLoS Computational Biology},
+volume={4},
+number={10},
+year={2008},
+pages={1-27}
+}
+
+@InCollection{hainline_1998,
+title={Summary and Commentary: Eye Movements, Attention, and Development},
+author={Louise Hainline},
+booktitle={Cognitive Neuroscience of Attention: A developmental perspective},
+editor={John E. Richards},
+year={1998},
+publisher={Lawrence Earlbaum},
+pages={163-178}
+}
+
+@Article{colombo_2001,
+title={The development of visual attention in infancy},
+author={John Colombo},
+journal={Annual Review of Psychology},
+volume={52},
+year={2001},
+pages={337-367}
+}
+
+@Article{richards_1997,
+title={Effects of Attention on Infants' Preference for Briefly Exposed Visual Stimuli in the Paired-Comparison Recognition-Memory Paradigm},
+author={John E. Richards},
+journal={Developmental Psychology},
+volume={33},
+number={1},
+year={1997},
+pages={22-31}
+}
+
+@Article{sirois_mareschal_2004,
+title={An interacting systems model of infant habituation},
+author={Sylvain Sirois and Denis Mareschal},
+journal={Journal of Cognitive Neuroscience},
+volume={16},
+number={8},
+year={2004},
+pages={1352-1362}
+}
+
+@Article{stein_1998,
+title={Neural mechanisms for synthesizing sensory information and producing adaptive behaviors},
+author={Barry Stein},
+journal={Experimental Brain Research},
+volume={123},
+year={1998},
+pages={124-135}
+}
+
+@Article{ursino_etal_2009_SCmodel,
+title={Multisensory integration in the SC: a neural network model},
+author={Mauro Ursino and Cristiano Cuppini and Elisa Magosso and Andrea Serino and Giuseppe di Pellegrino},
+journal={Journal of Computational Neuroscience},
+volume={26},
+year={2009},
+pages={55-73}
+}
+
+@Article{jiang_etal_2001_corticalSC,
+title={Two cortical areas mediate multisensory integration in superior colliculus neurons},
+author={Wan Jiang and Mark Wallace and Huai Jiang and William Vaughan and Barry Stein},
+journal={Journal of Neurophysiology},
+volume={85},
+year={2001},
+pages={506-522}
+}
+
+@Article{mishkin_etal_1997,
+title={Hierarchical organization of cognitive memory},
+author={Mortimer Mishkin and Wendy Suzuki and David Gadian and Faraneh Vargha-Khadem},
+journal={Philosophical transactions of the Royal Society of London B},
+volume={352},
+year={1997},
+pages={1461-1467}
+}
+
+@Article{desimone_1998_biased_vissearch,
+title={Visual attention mediated by biased competition in extrastriate visual cortex},
+author={Robert Desimone},
+journal={Philosophical transactions of the Royal Society of London B},
+volume={353},
+year={1998},
+pages={1245-1255}
+}
+
+@Article{desimone_1996,
+title={Neural mechanisms for Visual Memory and their role in attention},
+author={Robert Desimone},
+journal={PNAS},
+volume={93},
+number={24},
+year={1996},
+pages={13494-13499}
+}
+
+@Article{witter_etal_1989,
+title={Functional organization of the extrinsic and intrinsic circuitry of the parahippocampal region},
+author={M.P. Witter and H.J. Groenewegen and F.H. Lopes de Silva and A.H.M. Lohman},
+journal={Progress in Neurobiology},
+volume={33},
+pages={161-253},
+year={1989}
+}
+
+@Article{haas_etal_2006_synplastic_entorhinal,
+title={Spike-timing-dependent plasticity of inhibitory synapses in the entorhinal cortex},
+author={Julie Haas and Thomas Nowotny and H.D.I. Abarbanel},
+journal={Journal of Neurophysiology},
+volume={96},
+year={2006},
+pages={3305-3313}
+}
+
+@Article{nelson_1995,
+title={The ontogeny of human memory: a cognitive neuroscience perspective},
+author={Charles Nelson},
+journal={Developmental Psychology},
+volume={31},
+number={5},
+year={1995},
+pages={723-738}
+}
+
+@Article{pascalis_bachevalier_1999,
+title={Neonatal aspiration lesions of the hippocampal formation impair visual recognition memory when assesed by paired-comparison task but not by delayed nonmatching-to-sample task},
+author={Olivier Pascalis and Jocelyne Bachevalier},
+journal={Hippocampus},
+volume={6},
+year={1999},
+pages={609-616}
+}
+
+@Article{bachevalier_etal_1993_limbicrecog,
+title={Limbic-dependent recognition memory in monkeys develops early in infancy},
+author={Jocelyne Bachevalier and Mimi Brickson and Corinne Hagger},
+journal={NeuroReport},
+volume={4},
+year={1993},
+pages={77-80}
+}
+
+@Article{bourne_2010_developvis,
+title={Unravelling the development of the visual cortex: implications for plasticity and repair},
+author={James Bourne},
+journal={Journal of Anatomy},
+volume={217},
+year={2010},
+pages={449-468}
+}
+
+@Article{Volkmann1976,
+title = {Infant responses of ocular fixation to moving visual stimuli},
+journal = {Journal of Experimental Child Psychology},
+volume = {22},
+number = {1},
+pages = {86-99},
+year = {1976},
+note = {},
+issn = {0022-0965},
+doi = {DOI: 10.1016/0022-0965(76)90092-8},
+url = {http://www.sciencedirect.com/science/article/B6WJ9-4D6YY2D-DF/2/f6aa7389245f75248a99b14a9b94d51f},
+author = {Frances C. Volkmann and M. Velma Dobson}
+}
+
+
+@Article{johnson_1990,
+ author = {Mark H. Johnson},
+ title = {Cortical maturation and the development of visual attention in early infancy},
+ journal = {J. Cognitive Neuroscience},
+ volume = {2},
+ number = {2},
+ year = {1990},
+ issn = {0898-929X},
+ pages = {81--95},
+ doi = {http://dx.doi.org/10.1162/jocn.1990.2.2.81},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+ }
+
+@Article{lewkowicz_2000,
+author={David J. Lewkowicz},
+title={The Development of Intersensory Temporal Perception: An
+                  Epigenetic Systems/Limitations View },
+year={2000},
+journal={Psychological Bulletin},
+volume={126},
+number={2},
+pages={281-308}
+}
+
+
+
+@Article{roy_pentland_2002,
+author={Deb Roy and Arthur Pentland},
+title={Learning words from sights and sounds: a computational model},
+year={2002},
+journal={Cognitive Science},
+volume={26},
+number={1},
+pages={113-146}
+}
+
+@Article{ghazanfar_etal_2008,
+author={Asif. A Ghazanfar and C Chandrasekaran and NK Logothetis},
+title={Interactions between the superior temporal sulcus and auditory cortex mediate dynamic face/voice integration in rhesus monkeys},
+year={2008},
+journal={Journal of Neuroscience},
+volume={28},
+pages={4457-4469}
+}
+
+@Article{conway_tsao_2009,
+author={Bevil R. Conway and Doris Y. Tsao},
+title={Color-tuned neurons are spatially clustered according to color
+                  preference within alert macaque posterior inferior
+                  temporal cortex },
+year={2009},
+journal={PNAS},
+volume={106},
+number={42},
+pages={18034-18039}
+}
+
+@Article{king_etal_1996,
+author={AJ King and JWH Schnupp and S Carlile and AL Smith and ID Thompson },
+title={The development of topographically-aligned maps of visual and
+                  auditory space in the superior colliculus},
+year={1996},
+journal={Progressive Brain Research},
+volume={112},
+pages={335-350}
+}
+
+@Book{kandel_etal_2000,
+author={E.R. Kandel and J.H. Schwartz and T.M. Jessell},
+title={Principles of Neuroscience, 4th ed.},
+year={2000},
+publisher={McGraw-Hill, New York}
+}
+
+@Article{white_etal_2009_SCcolor,
+author={Brian J. White and Susan E. Boehnke and Robert A. Marino and Laurent Itti and Douglas P. Munoz},
+title={Color-Related Signals in the Primate Superior Colliculus},
+year={2009},
+journal={The Journal of Neuroscience},
+volume={29},
+number={39},
+pages={12159-12166}
+}
+
+
+@Article{mundhenk_itti_2005,
+author={T Nathan Mundhenk and Laurent Itti},
+title={Computational modeling and exploration of contour integration
+                  for visual saliency},
+year={2005},
+journal={Biological Cybernetics},
+volume={93},
+pages={188-212}
+}
+
+
+@Article{xiao_etal_2003,
+author={Youping Xiao and Yi Wang and Daniel J. Felleman},
+title={A spatially organized representation of colour in macaque
+                  cortical area V2},
+year={2003},
+journal={Nature},
+volume={421},
+pages={535-539}
+}
+
+@Article{albright_etal_1984,
+author={Thomas D. Albright and Robert Desimone and Charles G. Gross},
+title={Columnar Orgnization of Directionally Selective Cells in Visual Area MT of the Macaque},
+year={1984},
+journal={Journal of Neurophysiology},
+volume={54},
+number={1},
+pages={16-31}
+}
+
+
+@Article{solomon_lennie_2007,
+author={Samuel G. Solomon and Peter Lennie},
+title={The machinery of colour vision},
+year={2007},
+journal={Nature Reviews Neuroscience},
+volume={8},
+pages={276-286}
+}
+
+@Article{adams_zeki_2001,
+author={Daniel L. Adams and Semir Zeki},
+title={Functional Organization of Macaque V3 for Stereoscopic Depth},
+year={2001},
+journal={Journal of Neurophysiology},
+volume={86},
+pages={2195-2203}
+}
+
+@Article{livingstone_1998,
+author={Margaret S. Livingstone},
+title={Mechanisms of Direction Selectivity in Macaque V1},
+year={1998},
+journal={Neuron},
+volume={20},
+pages={509-526}
+}
+
+@Article{bi_poo_2001,
+author={Guoqiang Bi and Muming Poo},
+title={Synaptic modifications by correlated activity: Hebb’s postulate
+                  revisited},
+year={2001},
+journal={Ann. Rev. Neurosci.},
+volume={24},
+pages={139-166}
+}
+
+@Article{Sugita_Tani_2005,
+author={Sugita and Jun Tani},
+title={Learning semantic combinatoriality from the interaction between
+                  linguistic and behavioral processes},
+journal={Adaptive Behavior},
+year={2005},
+volume={13},
+number={1},
+pages={33-52}
+}
+
+@InCollection{zukow-goldring_1997,
+author={Patricia Zukow-Goldring},
+title={ A social ecological realist approach to the emergence of the
+                  lexicon: educating attention to amodal invariants in
+                  gesture and speech },
+booktitle = {Evolving explanations of development: Ecological
+                  approaches to organism-environment systems},
+editor={Cathy Dent-Read and Patricia Zukow-Goldring},
+year={1997},
+address={Washington, DC},
+pages={199-250},
+publisher={American Psychological Association}
+}
+
+@Article{gogate_etal_2001_overview,
+author = {Lakshmi J. Gogate and Arlene S. Walker-Andrews and and
+                  Lorraine E. Bahrick},
+title = {The intersensory origins of word comprehension:
+an ecological-dynamic systems view},
+journal = {Developmental Science},
+year = {2001},
+volume={4},
+number={1},
+pages={1-37}
+}
+
+
+@Article{carpenter88art,
+  author =       {G.A. Carpenter and S. Grossberg},
+  title =        {The ART of Adaptive Pattern Recognition by a Self-Organizing Neural Network},
+  journal =      {IEEE Computer},
+  year =         {1988},
+  month = 	 {March},
+  pages =        {77--88}
+}
+
+@Book{thelen_smith_1994,
+author={Esther Thelen and Linda Smith},
+title={A dynamic systems approach to the development of cognition and
+                  action},
+year={1994},
+publisher={MIT Press}
+}
+
+@Article{beer_activecategory_2003,
+author = {Randall D. Beer},
+title={The Dynamics of Active Categorical Perception in an
+Evolved Model Agent},
+year = {2003},
+journal = {Adaptive Behavior},
+volume ={11},
+number={4},
+pages={209-243}
+}
+
+@Article{phattanasri_chiel_beer_mouth2007,
+author = {Phattanard Phattanasri and Hillel J. Chiel and Randall D. Beer},
+title={The Dynamics of Associative Learning in Evolved Model Circuits},
+year={2007},
+journal = {Adaptive Behavior},
+volume={15},
+number={4},
+pages={377-396}
+}
+
+@Article{ward_ward_humanvsevolved2008,
+author={Robert Ward and Ronnie Ward},
+title={Selective Attention and Control of Action: Comparative
+                  Psychology of an Artificial, Evolved Agent and
+                  People},
+year={2008},
+journal={Journal of Experimental Psychology: Human Perception and Performance},
+volume={34},
+number={5},
+pages={1165-1182}
+}
+
+@Article{clark_chalmers_extendedmind1998,
+author = {Andy Clark and David Chalmers},
+title = {The Extended Mind},
+year = {1998},
+journal = {Analysis},
+volume = {58},
+number = {1},
+pages = {10-23}
+}
+
+@InCollection{gibson_affordances1977,
+author = {James J. Gibson},
+booktitle ={Perceiving, Acting, and Knowing},
+editor = {Robert Shaw and John Bransford},
+year = {1977},
+title ={The Theory of Affordances},
+publisher = {Lawrence Erlbaum}
+}
+
+@Book{gibbs_embodimentcogscibook2006,
+author ={Raymond Gibbs, Jr.},
+year = {2006},
+title = {Embodiment and Cognitive Science},
+publisher = {Cambridge University Press}
+}
+
+
+@Article{gogate_2010,
+author = {Lakshmi J. Gogate},
+title = {Learning of syllable–-object relations by preverbal infants:
+                  The role of temporal synchrony and syllable
+                  distinctiveness},
+year = {2010},
+journal = {Journal of Experimental Child Psychology},
+volume = {105},
+pages={178-197}
+}
+
+@Article{gogate_etal_2009,
+author = {Lakshmi J. Gogate and Christopher G. Prince and Dalit J. Matatyaho},
+title = {Two--Month--Old Infants’ Sensitivity to Changes in Arbitrary
+                  Syllable–-Object Pairings: The Role of Temporal
+                  Synchrony},
+year={2009},
+journal = {Journal of Experimental Child Psychology},
+volume={35},
+number={2},
+pages={508-519}
+}
+
+@Article{gogate_etal_2000_motherese,
+author = {Lakshmi J. Gogate and Lorraine E. Bahrick and Jilayne D. Watson},
+title = {A Study of Multimodal Motherese: The Role of Temporal
+                  Synchrony between Verbal Labels and Gestures},
+journal = {Child Development},
+year = {2000},
+volume = {71},
+number = {4},
+pages = {878-894}
+}
+
+@Article{gogate_bahrick_1998_redundancy,
+author = {Lakshmi J. Gogate and Lorraine E. Bahrick},
+title = {Intersensory Redundancy Facilitates Learning of Arbitrary
+                  Relations between Vowel Sounds and Objects in
+                  Seven--Month--Old Infants },
+journal = {Journal of Experimental Child Psychology},
+year={1998},
+volume = {69},
+pages = {133-149}
+
+}
+
+@Article{         maass_2002_perturb,
+  author        = {Wolfgang Maass and Thomas Natschlager and Henry Markram},
+  title         = {Real--time computing without stable states: A new
+                  framework for neural computation based on
+                  perturbations},
+  journal       = {Neural Computation},
+  year          = {2002},
+  volume        = {14},
+  number        = {11},
+  pages         = {2531-2560}
+}
+
+@Article{         anderson02mind,
+  author        = {J.R. Anderson and D. Bothell and M.D. Byrne and C.
+                  Lebiere},
+  title         = {An Integrated Theory of the Mind},
+  journal       = {Psychological Review},
+  year          = {2004},
+  volume        = {11},
+  pages         = {1036-1060}
+}
+
+@Article{         carbonelletal91prodigy,
+  author        = {Jaime Carbonell and Oren Etzioni and Yolanda Gil and
+                  Robert Joseph and Craig Knoblock and Steve Minton and
+                  Manuela Veloso},
+  title         = {PRODIGY: an integrated architecture for planning and
+                  learning},
+  journal       = {SIGART Bull.},
+  volume        = {2},
+  number        = {4},
+  year          = {1991},
+  pages         = {51-55},
+  publisher     = {ACM},
+  address       = {New York, NY, USA}
+}
+
+@Article{         cooper1974,
+  author        = {Roger M. Cooper},
+  title         = {The control of eye fixation by the meaning of spoken
+                  language},
+  year          = {1974},
+  journal       = {Cognitive Psychology},
+  volume        = {6},
+  pages         = {84-107}
+}
+
+@Article{         huettigaltmann2005,
+  author        = {Falk Huettig and Gerry TM Altmann},
+  title         = {Word meaning and the control of eye fixation: semantic
+                  competitor effects and the visual world paradigm},
+  year          = {2005},
+  journal       = {Cognition},
+  volume        = {96},
+  pages         = {23-32}
+}
+
+@Article{         ittietal1998saliency,
+  author        = {Laurent Itti and Christof Koch and Ernst Niebur},
+  title         = {A Model of Saliency-based Visual Attention for Rapid Scene
+                  Analysis},
+  journal       = {IEEE Transactions on Pattern Analysis and Machine
+                  Intelligence},
+  volume        = {20},
+  pages         = {1254-1259},
+  year          = {1998}
+}
+
+@InProceedings{   kachergis_shiff_yu2009temporal,
+  author        = {George Kachergis and Chen Yu and Richard Shiffrin},
+  title         = {Temporal Contiguity in Cross-Situation Statistical
+                  Learning},
+  booktitle     = {Proceedings of the 31st Annual Conference of the Cognitive
+                  Science Society},
+  year          = {2009}
+}
+
+@Article{         kramerscheutz07autrobot,
+  author        = {James Kramer and Matthias Scheutz},
+  title         = {Robotic Development Environments for Autonomous Mobile
+                  Robots: A Survey},
+  journal       = {Autonomous Robots},
+  year          = {2007},
+  volume        = {22},
+  number        = {2},
+  pages         = {101--132}
+}
+
+@Article{         laird87soar,
+  author        = {John Laird and Allen Newell and Paul Rosenbloom},
+  title         = {{SOAR}: An architecture for general intelligence},
+  journal       = {Artificial Intelligence},
+  year          = {1987},
+  volume        = {33},
+  pages         = {1--64}
+}
+
+@Article{         lairdetal91,
+  author        = {John E. Laird and Eric S. Yager and Michael Hucka and
+                  Christopher M. Truck},
+  title         = {Robo-{SOAR}: An integration of external interaction,
+                  planning, and learning using {SOAR}.},
+  journal       = {Robotics and Autonomous Systems},
+  year          = {1991},
+  volume        = {11},
+  number        = {1-2},
+  pages         = {113--129}
+}
+
+@Article{         meyer97computational,
+  author        = {D.E. Meyer and D.E. Kieras},
+  title         = {A computational theory of executive cognitive processes
+                  and multiple-task performance. Part 1},
+  journal       = {Psychological Review},
+  year          = {1997},
+  volume        = {104},
+  pages         = {3--65},
+  number        = {1}
+}
+
+@InProceedings{   pfeiferetal2008synthetic,
+  author        = {Rolf Pfeifer and Max Lungarella and Olaf Sporns},
+  title         = {The synthetic approach to cognitive science: a primer},
+  booktitle     = {he Cambridge Handbook of Artificial Intelligence},
+  year          = {in press}
+}
+
+@Article{         scheutz06ade,
+  author        = {Matthias Scheutz},
+  title         = {{ADE} - Steps Towards a Distributed Development and
+                  Runtime Environment for Complex Robotic Agent
+                  Architectures},
+  journal       = {Applied Artificial Intelligence},
+  year          = {2006},
+  volume        = {20},
+  number        = {4-5},
+  pages         = {275-304}
+}
+
+@Article{         schonerthelen2006,
+  author        = {Gregor Shoner and Esther Thelen},
+  title         = {Using dynamic field theory to rethink infant habituation},
+  journal       = {Psychological Review},
+  year          = {2006},
+  volume        = {113},
+  number        = {2},
+  pages         = {273-299}
+}
+
+@Article{         smith_yu_2008,
+  author        = {Linda B. Smith and Chen Yu},
+  title         = {Infants rapidly learn word-referent mappings via
+                  cross-situational statistics},
+  year          = {2008},
+  journal       = {Cognition},
+  volume        = {106},
+  pages         = {1558-1568}
+}
+
+@Article{         tanenhausetal1995,
+  author        = {Michael K. Tanenhaus and Michael J. Spivey-Knowlton and
+                  Kathleen M. Eberhard and Julie C. Sedivy},
+  title         = {Integration of visual and linguistic information in spoken
+                  language comprehension},
+  year          = {1995},
+  journal       = {Science},
+  volume        = {268},
+  pages         = {1632-1634}
+}
+
+@Article{         trafton05enabling,
+  author        = {J. Trafton and N. Cassimatis and M. Bugajska and D. Brock
+                  and F. Mintz and A. Schultz},
+  title         = {Enabling effective human-robot interaction using
+                  perspective-taking in robots},
+  journal       = {{IEEE} Transactions on Systems, Man and Cybernetics},
+  pages         = {460--470},
+  volume        = {25},
+  number        = {4},
+  year          = {2005}
+}
+
+@InProceedings{   traftonetal09,
+  author        = {J. Gregory Trafton and Benjamin Fransen and Anthony M.
+                  Harrison and Magdalena Bugajska},
+  title         = {An embodied model of infant gaze-following},
+  booktitle     = {International Conference on Cognitive Modeling},
+  year          = {2009}
+}
+
+@Article{         yu_smith_2007,
+  author        = {Chen Yu and Linda B. Smith},
+  title         = {Rapid word learning under uncertainty via
+                  cross-situational statistics},
+  year          = {2007},
+  journal       = {Psychological Science},
+  volume        = {18},
+  pages         = {414-420}
+}
+
+@InProceedings{   yu_etal_2008,
+  author        = {Chen Yu and Linda B. Smith and A.F. Pereira},
+  title         = {Embodied solution: The world from a toddler’s point of
+                  view},
+  year          = {2008},
+  booktitle     = {7th IEEE International Conference on Development and
+                  Learning},
+  pages         = {97-102}
+}
+
+@Article{ Cooper1974,
+author = {Roger M. Cooper},
+title = {The control of eye fixation by the meaning of spoken language},
+year = {1974},
+journal = {Cognitive Psychology},
+volume = {6},
+pages = {84-107}
+}
+
+@Article{HuettigAltmann2005,
+author= {Falk Huettig and Gerry TM Altmann},
+title = {Word meaning and the control of eye fixation: semantic
+                  competitor effects and the visual world paradigm},
+year = {2005},
+journal = {Cognition},
+volume = {96},
+pages ={23-32}
+}
+
+@Article{ Peterzell1993,
+author = {David H. Peterzell},
+title = {Individual differences in the visual attention of human
+                  infants: further evidence for separate sensitization
+                  and habituation processes},
+year={1993},
+journal={Developmental Psychobiology},
+volume = {26},
+number= {4},
+pages={207-218}
+}
+
+@Article{ KaplanEtAl1995,
+author = {Peter S. Kaplan and Michael H. Goldstein and Elizabeth R. Huckeby and Robin P. Cooper},
+title = {Habituation, Sensitization, and Infants' responses to motherese speech},
+year = {1995},
+journal = {Developmental Psychobiology},
+volume = {28},
+number = {1},
+pages = {45-57}
+}
+
+@Article{IttiEtAl1998Saliency,
+    author = {Laurent Itti and Christof Koch and Ernst Niebur},
+    title = {A Model of Saliency-based Visual Attention for Rapid Scene Analysis},
+journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+volume = {20},
+pages={1254-1259},
+    year = {1998}
+}
+
+@Article{TanenhausEtAl1995,
+author = {Michael K. Tanenhaus and Michael J. Spivey-Knowlton and
+                  Kathleen M. Eberhard and Julie C. Sedivy},
+title={Integration of visual and linguistic information in spoken
+                  language comprehension},
+year={1995},
+journal={Science},
+volume={268},
+pages={1632-1634}
+}
+
+@InProceedings{ PfeiferEtAl2008Synthetic,
+author={Rolf Pfeifer and Max Lungarella and Olaf Sporns},
+title={The synthetic approach to cognitive science: a primer},
+booktitle={The Cambridge Handbook of Artificial Intelligence},
+year={in press}
+}
+
+@InCollection{          bates_macwhinney_1987,
+title=          {Competition, variation, and language learning},
+author=         {Elizabeth Bates and Brian MacWhinney},
+editor=         {Brian MacWhinney},
+booktitle=      {Mechanisms of language acquisition},
+year=           {1987},
+address=        {Hillsdale, New Jersey},
+publisher=      {Psychology Press}
+}
+
+
+
+@Article{         kuhl_meltzoff_1982,
+  author        = {Patricia K. Kuhl and Andrew N. Meltzoff},
+  title         = {The bimodal perception of speech in infancy},
+  year          = {1982},
+  month         = {December},
+  journal       = {Science},
+  volume        = {218},
+  pages         = {1138-1141}
+}
+
+@Article{         kuhl_meltzoff_1984,
+  author        = {Patricia K. Kuhl and Andrew N. Meltzoff},
+  title         = {The intermodal representation of speech in infants},
+  year          = {1984},
+  journal       = {Infant Behavior and Development},
+  volume        = {7},
+  pages         = {361-381}
+}
+
+@InCollection{    kuhl_meltzoff_1988,
+  author        = {Patricia K. Kuhl and Andrew N. Meltzoff},
+  title         = {Speech as an intermodal object of perception},
+  booktitle     = {Minnesota symposia on child psychology: Vol. 20.
+                    The development of perception},
+  editor        = {A. Yonas},
+  year          = {1988},
+  publisher     = {Hillsdale, NJ: Erlbaum}
+}
+
+@Article{         bahrick_1983,
+  author        = {Lorraine E. Bahrick},
+  title         = {Infants' perception of substance and temporal synchrony in multimodal events},
+  year          = {1983},
+  journal       = {Infant Behavior and Development},
+  volume        = {6},
+  number        = {4},
+  pages         = {429-451}
+}
+
+@Article{         bahrick_1992,
+  author        = {Lorraine E. Bahrick},
+  title         = {Infants' perceptual differentiation of amodal and modality-specific audio-visual relations},
+  year          = {1992},
+  journal       = {Journal of Experimental Child Psychology},
+  volume        = {53},
+  number        = {42},
+  pages         = {180-199}
+}
+
+@Article{         bahrick_licklitter_2000,
+  author        = {Lorraine E. Bahrick and Robert Lickliter},
+  title         = {Intersensory Redundancy Guides Attentional Selectivity and Perceptual Learning in Infancy},
+  year          = {2000},
+  journal       = {Developmental Psychology},
+  volume        = {36},
+  number        = {2},
+  pages         = {190-201}
+}
+
+@Article{         bahrick_1994,
+  author        = {Lorraine E. Bahrick},
+  title         = {The Development of Infants' Sensitivity to Arbitrary Intermodal Relations},
+  year          = {1994},
+  journal       = {Ecological Psychology},
+  volume        = {6},
+  number         = {2},
+  pages         = {111-123}
+}
+
+@Article{golinkoff_etal_1987,
+    author = {Golinkoff, R. M. and Hirsh-Pasek, K. and Cauley, K. M. and Gordon, L.},
+    journal = {Journal of child language},
+    keywords = {eye-movement, history, infant, language\_acquisition, nonverbal, syntax},
+    month = {February},
+    number = {1},
+    pages = {23--45},
+    title = {The eyes have it: lexical and syntactic comprehension in a new paradigm.},
+    volume = {14},
+    year = {1987}
+}
+
+@Article{licklitter_1990a,
+title = {Premature visual experience facilitates visual responsiveness in bobwhite quail neonates},
+journal = {Developmental Psychobiology},
+volume = {23},
+pages = {15 - 17},
+year = {1990},
+author = {Robert Lickliter}
+}
+
+@Article{licklitter_1990b,
+title = {Premature visual experience facilitates visual responsiveness in bobwhite quail neonates},
+journal = {Infant Behavior and Development},
+volume = {13},
+number = {4},
+pages = {487 - 496},
+year = {1990},
+author = {Robert Lickliter}
+}
+
+@Article{licklitter_stoumbos_1991,
+title = {Enhanced Prenatal Auditory Experience Facilitates Species-Specific Visual Responsiveness in Bobwhite Quail Chicks (Colinus virginianus)},
+journal = {Journal of Comparative Psychology},
+volume = {105},
+number = {1},
+pages = {89 - 94},
+year = {1991},
+author = {Robert Lickliter and Julia Stoumbos}
+}
+
+@Article{         slater_etal_1997,
+  author        = {Alan Slater and Elizabeth Brown and Marion Badenoch},
+  title         = {Intermodal Perception at Birth: Newborn Infants' Memory
+                    for Arbitrary Auditory-Visual Pairings},
+  year          = {1997},
+  journal       = {Early Development and Parenting},
+  volume        = {6},
+  pages         = {99-104}
+}
+
+@Article{rolf_etal_2009,
+author={Rolf, M. and Hanheide, M. and Rohlfing, K.J.},
+journal={Autonomous Mental Development, IEEE Transactions on},
+title={Attention via Synchrony: Making Use of Multimodal Cues in Social Learning},
+year={2009},
+month={May},
+volume={1},
+number={1},
+pages={55-67},
+keywords={adult-like tutoring;audio-visual synchrony;developmental psychology;infants learning;interactive learning scenarios;multimodal cues;multimodal motherese;multimodal signal-level synchrony;social interaction;social learning;social robots;learning (artificial intelligence);psychology;robots;social sciences;},
+doi={10.1109/TAMD.2009.2021091},
+ISSN={1943-0604},
+}
+
+@Article{werker_etal_1998,
+title = {Acquisition of Word-Object Associations by 14-Month-Old Infants},
+journal = {Developmental Psychology},
+volume = {34},
+number = {6},
+pages = {1289-1309},
+year = {1998},
+author = {Janet F. Werker and Leslie B. Cohen and Valerie L. Lloyd and Marianella Casasola and Christine L. Stager}
+}
+
+@article{kaplan_etal_1994,
+title = {Dishabituation of visual attention in 4-month-olds by infant-directed frequency sweeps},
+journal = {Infant Behavior and Development},
+volume = {17},
+number = {4},
+pages = {347-358},
+year = {1994},
+author = {Peter S. Kaplan and Michael J. Owren},
+}
+
+@InCollection{          bahrick_licklitter_2002_bookchapter,
+title=          {Perceptual development and the origins of multisensory responsiveness},
+author=         {Robert Lickliter and Lorraine E. Bahrick},
+editor=         {Gemma A. Calvert and Charles Spence and Barry E. Stein},
+booktitle=      {The Handbook of Multisensory Processes},
+year=           {2002},
+publisher=      {MIT Press}
+}
+
+@inproceedings{       lyon_1982,
+title = {A Computational Model of Filtering, Detection, and Compression in the Cochlea},
+booktitle = {Acoustics, Speech, and Signal Processing, IEEE International Conference on ICASSP '82},
+pages = {1282-1285},
+year = {1982},
+month = {May},
+author = {Richard F. Lyon}
+}
+
+@techreport{        slaney_1988,
+	author = {Malcolm Slaney},
+	institution = {Apple Computer Inc. Cupertino, Ca.},
+	title = {Lyon's Cochlear Model},
+	number = {13},
+	year = {1998}
+}
+
+@inproceedings{yu_ballard_2002,
+ author = {Chen Yu and Dana H. Ballard},
+ title = {Understanding Human Behaviors Based on Eye-Head-Hand Coordination},
+ booktitle = {BMCV '02: Proceedings of the Second International Workshop on Biologically Motivated Computer Vision},
+ year = {2002},
+ isbn = {3-540-00174-3},
+ pages = {611-619},
+ publisher = {Springer-Verlag},
+ address = {London, UK},
+ }
+
+@inproceedings{markram_etal_1998,
+ author = {Henry Markram and Yun Wang and Misha Tsodyks},
+ title = {Differential signaling via the same axon of neocortical
+pyramidal neurons},
+ booktitle = {Proceedings of the National Academy of Sciences of the United States of America},
+ year = {1998},
+ month = {April},
+ volume={95},
+ number={9},
+ pages = {5323-5328},
+ }
+
+@article{       itti_etal_1998,
+ author = {Laurent Itti and Christof Koch and Ernst Niebur},
+ title = {A Model of Saliency-based Visual Attention for Rapid Scene Analysis},
+ journal = {IEEE Trans. Pattern Anal. Mach. Intell.},
+ volume = {20},
+ number = {11},
+ year = {1998},
+ issn = {0162-8828},
+ pages = {1254--1259},
+ doi = {http://dx.doi.org/10.1109/34.730558},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+ }
+
+@article{song_etal_2000,
+    abstract = {Hebbian models of development and learning require
+                  both activity-dependent synaptic plasticity and a
+                  mechanism that induces competition between different
+                  synapses. One form of experimentally observed
+                  long-term synaptic plasticity, which we call
+                  spike-timing-dependent plasticity (STDP), depends on
+                  the relative timing of pre- and postsynaptic action
+                  potentials. In modeling studies, we find that this
+                  form of synaptic modification can automatically
+                  balance synaptic strengths to make postsynaptic
+                  firing irregular but more sensitive to presynaptic
+                  spike timing. It has been argued that neurons in
+                  vivo operate in such a balanced regime. Synapses
+                  modifiable by STDP compete for control of the timing
+                  of postsynaptic action potentials. Inputs that fire
+                  the postsynaptic neuron with short latency or that
+                  act in correlated groups are able to compete most
+                  successfully and develop strong synapses, while
+                  synapses of longer-latency or less-effective inputs
+                  are weakened.},
+    address = {Volen Center for Complex Systems and Department of
+                  Biology, Brandeis University, Waltham, Massachusetts
+                  02254-9110, USA.},
+    author = {Song, Sen and Miller, Kenneth D. and Abbott, L. F.},
+    citeulike-article-id = {548135},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1038/78829},
+    citeulike-linkout-1 = {http://dx.doi.org/10.1038/nn0900\_919},
+    citeulike-linkout-2 = {http://view.ncbi.nlm.nih.gov/pubmed/10966623},
+    citeulike-linkout-3 = {http://www.hubmed.org/display.cgi?uids=10966623},
+    day = {01},
+    doi = {10.1038/78829},
+    issn = {1097-6256},
+    journal = {Nature Neuroscience},
+    keywords = {computational\_modelling, spike\_timing, synaptic\_plasticity},
+    month = {September},
+    number = {9},
+    pages = {919--926},
+    posted-at = {2009-04-22 11:36:26},
+    priority = {2},
+    publisher = {Nature Publishing Group},
+    title = {Competitive Hebbian learning through spike-timing-dependent synaptic
+plasticity},
+    volume = {3},
+    year = {2000}
+}
+
+@article{legenstein_etal_2005,
+ author = {Legenstein, Robert and Naeger, Christian and Maass, Wolfgang},
+ title = {What Can a Neuron Learn with Spike-Timing-Dependent Plasticity?},
+ journal = {Neural Comput.},
+ volume = {17},
+ number = {11},
+ year = {2005},
+ issn = {0899-7667},
+ pages = {2337--2382},
+ doi = {http://dx.doi.org/10.1162/0899766054796888},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+ }
+
+@article{triesch2001,
+ author = {Triesch, Jochen and Von Der Malsburg, Christoph},
+ title = {Democratic Integration: Self-Organized Integration of Adaptive Cues},
+ journal = {Neural Comput.},
+ volume = {13},
+ issue = {9},
+ month = {September},
+ year = {2001},
+ issn = {0899-7667},
+ pages = {2049--2074},
+ numpages = {26},
+ url = {http://portal.acm.org/citation.cfm?id=1119715.1119722},
+ doi = {10.1162/089976601750399308},
+ acmid = {1119722},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+}
